@@ -8,8 +8,8 @@ const jsonLd = [
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: '日本退稅試算', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW', url: new URL('/tools/japan-tax-refund/', Astro.site).href, description, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' } },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
     { q: '2026 年 11 月起日本免稅怎麼變？', a: '改為リファンド方式：在免稅店先付含稅價，購買日起 90 天內出境時，在機場或港口的免稅手續機台出示護照與商品，經海關確認後由店家或退稅業者退還消費稅。' },
-    { q: '退稅門檻還是 5,000 日圓嗎？', a: '多個解說來源指出下限維持同一店同一天未稅合計 5,000 日圓，且不再區分一般物品與消耗品；消耗品 50 萬日圓上限取消。請以國稅廳、觀光廳原文為準。' },
-    { q: '退稅有手續費嗎？', a: '政府沒有統一規定，由店家與退稅業者決定。依 2026 年 10 月底報導，部分連鎖店宣布不收退稅申請手續費，但領款方式的費用各家不同，結帳時請先問。' },
+    { q: '退稅門檻還是 5,000 日圓嗎？', a: '是。觀光廳說明：同一店鋪一天的購買額（未稅）5,000 日圓以上才適用；消耗品的特殊包裝取消。若免稅店把手續委託給退稅櫃台，同一人同一天在多家店的購買可在櫃台合算 5,000 日圓門檻。' },
+    { q: '退稅有手續費嗎？', a: '觀光廳只寫「返金的詳細請洽免稅店等」，沒有統一規定。依 2026 年 10 月底報導，部分連鎖店宣布不收退稅申請手續費，但領款方式的費用各家不同，結帳時請先問。' },
   ].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 ---
@@ -20,7 +20,7 @@ const jsonLd = [
 
   <div class="card" id="refund">
     <h2 style="margin-top:0">1. 輸入收據</h2>
-    <p class="meta">「店家＋日期」相同的收據會合算門檻（同店同日未稅合計 ≥ ¥5,000）。稅率以收據標示為準：多數商品 10%，食品飲料多為 8%。</p>
+    <p class="meta">「店家＋日期」相同的收據會合算門檻（同店同日未稅合計 ≥ ¥5,000）。若店家委託退稅櫃台辦理，同日多家店可在櫃台合算，這時把它們填成同一個「店家＋日期」即可。稅率以收據標示為準：多數商品 10%，食品飲料多為 8%。</p>
     <div class="table-scroll">
       <table>
         <thead><tr><th>店家＋日期</th><th class="num">含稅金額 ¥</th><th>稅率</th><th>在日本用掉／沒帶走</th><th>操作</th></tr></thead>
@@ -55,11 +55,11 @@ const jsonLd = [
         <tr><td>消耗品上限</td><td>¥500,000</td><td>取消</td></tr>
         <tr><td>密封袋</td><td>消耗品需特殊包裝</td><td>取消</td></tr>
         <tr><td>在日本用掉</td><td>消耗品不可在日本使用</td><td>用掉或未帶出境，該筆交易不能退</td></tr>
-        <tr><td>退款方式、手續費</td><td>—</td><td>依店家／業者（信用卡、現金、帳戶等），<strong>待確認</strong></td></tr>
+        <tr><td>退款方式、手續費</td><td>—</td><td>依店家／業者（觀光廳：「請洽免稅店」）</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="meta">來源：<a href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" rel="nofollow noopener" target="_blank">觀光廳 リファンド方式とは</a>、<a href="https://www.customs.go.jp/kaigairyoko/taxrefund/jpn.htm" rel="nofollow noopener" target="_blank">日本海關</a>、<a href="https://www.nippon.com/ja/japan-data/h02925/" rel="nofollow noopener" target="_blank">nippon.com</a>、<a href="https://zenmenkyo.jp/refund-top/refund-system-2026/" rel="nofollow noopener" target="_blank">全国免税店協会</a>、<a href="https://pievat.com/japan/merchant-blog/tax-free-changes-for-travelers-2026" rel="nofollow noopener" target="_blank">PIE VAT</a>、<a href="https://city.gvm.com.tw/article/134015" rel="nofollow noopener" target="_blank">遠見</a>。查核 {checked}。「同店同日合算」與 5,000 日圓下限出自民間解說，國稅廳原文本次未能直接讀取，待確認。</p>
+  <p class="meta">來源：<a href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" rel="nofollow noopener" target="_blank">觀光廳 リファンド方式とは</a>、<a href="https://www.customs.go.jp/kaigairyoko/taxrefund/jpn.htm" rel="nofollow noopener" target="_blank">日本海關</a>、<a href="https://www.nippon.com/ja/japan-data/h02925/" rel="nofollow noopener" target="_blank">nippon.com</a>、<a href="https://zenmenkyo.jp/refund-top/refund-system-2026/" rel="nofollow noopener" target="_blank">全国免税店協会</a>、<a href="https://pievat.com/japan/merchant-blog/tax-free-changes-for-travelers-2026" rel="nofollow noopener" target="_blank">PIE VAT</a>、<a href="https://city.gvm.com.tw/article/134015" rel="nofollow noopener" target="_blank">遠見</a>。查核 {checked}。5,000 日圓下限（同一店鋪一天、未稅）、90 天期限、消耗品在日本用掉就不能退，皆已對照觀光廳頁面。退稅櫃台可跨店合算門檻（店家有委託櫃台時）也出自觀光廳。退款方式與手續費觀光廳只寫「請洽免稅店」。</p>
 
   <h2>出境前檢查清單</h2>
   <ol>

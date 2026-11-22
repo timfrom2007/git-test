@@ -16,7 +16,7 @@ affiliates: [hotel-search, klook-jrpass, kkday-jrpass, esim]
 
 | 項目 | 內容 | 來源 |
 |---|---|---|
-| 期間 | 2027/2/4（四）～2/11（四・祝），8 天 | [sapporo.travel](https://www.sapporo.travel/en/event/event-list/sapporo_snow_festival/)、[JTB](https://www.jtb.co.jp/season/winter/yukimatsuri/)、[tabix](https://www.tabix.co.jp/domestic/special/festival/sapporo-yukimatsuri/) |
+| 期間 | 2027/2/4（四）～2/11（四・祝），8 天；大通、つどーむ、薄野三會場同期間 | [さっぽろ雪まつり官網](https://www.snowfes.com/) |
 | 大通會場 | 大通公園 西 1～西 11 丁目，約 1.5 km 雪像 | [sapporo.travel](https://www.sapporo.travel/en/event/event-list/sapporo_snow_festival/) |
 | 薄野（すすきの）會場 | 札幌站前通 南 4 條～南 6（或 7）條 西 3・4 丁目，冰雕為主 | [阪急交通社](https://www.hankyu-travel.com/kokunai/yukimatsuri/)；範圍各來源寫法不同，待確認 |
 | つどーむ會場 | 札幌市體育交流設施「つどーむ」 | [HOKKAIDO LOVE!](https://www.visit-hokkaido.jp/event/detail_11001.html) |
@@ -25,7 +25,7 @@ affiliates: [hotel-search, klook-jrpass, kkday-jrpass, esim]
 
 </div>
 
-查核日 2026-11-22。日期多為旅行業者與觀光網站轉載，官方網站本次無法直接讀取，**待官方確認**。
+查核日 2026-11-22。期間已對照官網；會場範圍與各會場開放時間以官網各會場頁為準。
 
 ## 新千歲機場 → 札幌
 
@@ -47,13 +47,13 @@ affiliates: [hotel-search, klook-jrpass, kkday-jrpass, esim]
 | 天數 | 來源 A | 來源 B |
 |---:|---:|---:|
 | 3 日 | — | ¥12,000（標示「概算」） |
-| 5 日 | ¥22,000 | ¥20,000 |
+| 5 日 | ¥22,000（官網一致） | ¥20,000（與官網不符） |
 | 7 日 | ¥28,000 | ¥24,000 |
 | 10 日 | ¥37,000 | — |
 
 </div>
 
-來源 A：[watabi.org](https://watabi.org/en/articles/hokkaido-jr-pass-guide)；來源 B：[Pelago](https://www.pelago.com/en/articles/hokkaido-rail-pass-guide/)。兩者落差大，**價格待確認**，購買前請看 JR 北海道官網。只在札幌、小樽一帶玩的話，單買車票通常就夠，周遊券要排到旭川、函館等長程才可能划算（實際以[試算器](/tools/jr-pass-calculator/)填入票價比較）。
+JR 北海道官網寫明 **5 日券 ¥22,000**（[JR 北海道 Hokkaido Rail Pass](https://www.jrhokkaido.co.jp/global/english/ticket/railpass/index.html)），與來源 A 一致；其他天數官網價格表是圖片，本次無法自動讀取，仍以第三方數字列出、**待確認**。來源 A：[watabi.org](https://watabi.org/en/articles/hokkaido-jr-pass-guide)；來源 B：[Pelago](https://www.pelago.com/en/articles/hokkaido-rail-pass-guide/)。只在札幌、小樽一帶玩的話，單買車票通常就夠，周遊券要排到旭川、函館等長程才可能划算（實際以[試算器](/tools/jr-pass-calculator/)填入票價比較）。
 
 ## 雪祭行前清單
 
@@ -69,7 +69,23 @@ affiliates: [hotel-search, klook-jrpass, kkday-jrpass, esim]
 
 </div>
 
-上表為行前準備建議；札幌 2 月平均氣溫等氣象數據本次無法從氣象廳取得，**待確認**。
+上表為行前準備建議。
+
+## 札幌 2 月有多冷？（氣象廳平年值 1991–2020）
+
+<div class="table-scroll">
+
+| 項目 | 2 月平年值 |
+|---|---:|
+| 平均氣溫 | -2.7℃ |
+| 平均每日最高 | 0.4℃ |
+| 平均每日最低 | -6.2℃ |
+| 降雪量（月合計） | 116 cm |
+| 最深積雪 | 95 cm |
+
+</div>
+
+來源：[氣象廳 札幌 平年值（月別）](https://www.data.jma.go.jp/obd/stats/etrn/view/nml_sfc_ym.php?prec_no=14&block_no=47412&year=&month=&day=&view=)。白天最高氣溫平均也只在 0℃ 上下，路面結冰是常態，防滑鞋真的比較重要。
 
 ## 延伸
 - 冬天也想看合掌村？見[北陸冬季懶人包：白川鄉點燈 2027](/articles/hokuriku-winter-2027/)。

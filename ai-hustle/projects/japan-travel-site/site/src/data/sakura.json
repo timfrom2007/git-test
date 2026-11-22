@@ -4,123 +4,945 @@
   "forecast2027": null,
   "cities": [
     {
-      "id": "sapporo", "name": "札幌", "station": "札幌管區氣象台",
-      "normalBloom": "05-01", "normalFull": "05-06", "confidence": "secondary",
+      "id": "sapporo",
+      "name": "札幌",
+      "station": "札幌管區氣象台",
+      "normalBloom": "05-01",
+      "normalFull": "05-06",
+      "confidence": "official",
       "recent": [
-        { "year": 2024, "bloom": null, "full": "04-24", "note": "由 2025 年「比去年晚 3 日」推算" },
-        { "year": 2025, "bloom": null, "full": "04-27", "note": "比平年早 9 日" }
+        {
+          "year": 2017,
+          "bloom": "04-28",
+          "full": "05-03",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "04-26",
+          "full": "04-29",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "04-24",
+          "full": "04-29",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "04-30",
+          "full": "05-02",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "04-22",
+          "full": "04-27",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "04-23",
+          "full": "04-25",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "04-15",
+          "full": "04-21",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "04-18",
+          "full": "04-24",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "04-23",
+          "full": "04-27",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "04-18",
+          "full": "04-24",
+          "note": ""
+        }
       ],
-      "passes": [{ "name": "JR 北海道鐵路周遊券", "price": null, "link": null }],
+      "passes": [
+        {
+          "name": "JR 北海道鐵路周遊券（5 日 ¥22,000）",
+          "price": 22000,
+          "link": "/articles/hokkaido-winter-2027/"
+        }
+      ],
       "sources": [
-        { "label": "氣象廳 主要都市開花日比較（1991–2020 平年值）", "url": "https://www.data.jma.go.jp/cpdinfo/monitor/2021/pdf/ccmr2021_sec2-7.pdf" },
-        { "label": "Weathernews 標本木開花・滿開預想（滿開平年值）", "url": "https://weathernews.jp/sakura/news/kaikaforecast/" },
-        { "label": "tenki.jp：札幌 2025 年滿開", "url": "https://tenki.jp/forecaster/hmochida/2025/04/27/33457.html" }
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
       ]
     },
     {
-      "id": "hirosaki", "name": "弘前（弘前公園）", "station": "弘前公園標準木（弘前市）",
-      "normalBloom": "04-22", "normalFull": "04-27", "confidence": "official",
+      "id": "hirosaki",
+      "name": "弘前（弘前公園）",
+      "station": "弘前公園標準木（弘前市）",
+      "normalBloom": "04-22",
+      "normalFull": "04-27",
+      "confidence": "official",
       "recent": [
-        { "year": 2020, "bloom": "04-19", "full": "04-27", "note": "滿開期間 4/27–4/30" },
-        { "year": 2021, "bloom": "04-14", "full": "04-19", "note": "滿開期間 4/19–4/21" },
-        { "year": 2022, "bloom": "04-14", "full": "04-21", "note": "滿開期間 4/21–4/22" },
-        { "year": 2023, "bloom": "04-07", "full": "04-13", "note": "滿開期間 4/13–4/15" },
-        { "year": 2024, "bloom": "04-14", "full": "04-19", "note": "滿開期間 4/19–4/22" },
-        { "year": 2025, "bloom": "04-18", "full": "04-23", "note": "滿開期間 4/23–4/25" },
-        { "year": 2026, "bloom": null, "full": "04-17", "note": "比平年早 10 日；開花日待確認" }
+        {
+          "year": 2017,
+          "bloom": "04-18",
+          "full": "04-25",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2018,
+          "bloom": "04-20",
+          "full": "04-22",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2019,
+          "bloom": "04-19",
+          "full": "04-24",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2020,
+          "bloom": "04-19",
+          "full": "04-27",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2021,
+          "bloom": "04-14",
+          "full": "04-19",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2022,
+          "bloom": "04-14",
+          "full": "04-21",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2023,
+          "bloom": "04-07",
+          "full": "04-13",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2024,
+          "bloom": "04-14",
+          "full": "04-19",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2025,
+          "bloom": "04-18",
+          "full": "04-23",
+          "note": "滿開期間首日"
+        },
+        {
+          "year": 2026,
+          "bloom": null,
+          "full": "04-17",
+          "note": "弘前市滿開宣言；官網年度表尚未收錄開花日"
+        }
       ],
-      "passes": [{ "name": "JR 東日本鐵路周遊券（東北地區）", "price": null, "link": null }],
+      "passes": [
+        {
+          "name": "JR 東日本鐵路周遊券（東北地區）",
+          "price": null,
+          "link": null
+        }
+      ],
       "sources": [
-        { "label": "弘前さくらまつり官方：過去開花日・滿開期間", "url": "https://www.hirosakipark.jp/sakura/kaika/data/" },
-        { "label": "弘前さくらまつり官方：2026/4/17 滿開宣言", "url": "https://www.hirosakipark.jp/sakura/2026/04/19308/" }
+        {
+          "label": "弘前さくらまつり官方：過去開花日・滿開期間",
+          "url": "https://www.hirosakipark.jp/sakura/kaika/data/"
+        },
+        {
+          "label": "弘前さくらまつり官方：2026/4/17 滿開宣言",
+          "url": "https://www.hirosakipark.jp/sakura/2026/04/19308/"
+        }
       ]
     },
     {
-      "id": "sendai", "name": "仙台", "station": "仙台管區氣象台",
-      "normalBloom": "04-08", "normalFull": null, "confidence": "secondary",
+      "id": "sendai",
+      "name": "仙台",
+      "station": "仙台管區氣象台",
+      "normalBloom": "04-08",
+      "normalFull": "04-13",
+      "confidence": "official",
       "recent": [
-        { "year": 2024, "bloom": "04-02", "full": null, "note": "" },
-        { "year": 2026, "bloom": "03-31", "full": null, "note": "比平年早 8 日" }
+        {
+          "year": 2017,
+          "bloom": "04-07",
+          "full": "04-13",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "03-30",
+          "full": "04-04",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "04-05",
+          "full": "04-10",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "03-28",
+          "full": "04-03",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "03-28",
+          "full": "03-31",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "04-08",
+          "full": "04-11",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "03-26",
+          "full": "03-31",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "04-02",
+          "full": "04-09",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "04-04",
+          "full": "04-10",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "03-31",
+          "full": "04-04",
+          "note": ""
+        }
       ],
-      "passes": [{ "name": "JR 東日本鐵路周遊券（東北地區）", "price": null, "link": null }],
+      "passes": [
+        {
+          "name": "JR 東日本鐵路周遊券（東北地區）",
+          "price": null,
+          "link": null
+        }
+      ],
       "sources": [
-        { "label": "氣象廳 主要都市開花日比較（1991–2020 平年值）", "url": "https://www.data.jma.go.jp/cpdinfo/monitor/2021/pdf/ccmr2021_sec2-7.pdf" },
-        { "label": "Yahoo!ニュース（ミヤギテレビ）：2026 仙台開花", "url": "https://news.yahoo.co.jp/articles/00fb7804498cf18e648d5aad12d89b59fec879e6" }
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
       ]
     },
     {
-      "id": "kanazawa", "name": "金澤", "station": "金澤地方氣象台",
-      "normalBloom": "04-03", "normalFull": "04-08", "confidence": "secondary",
-      "recent": [],
-      "passes": [{ "name": "北陸拱型鐵路周遊券", "price": 35000, "link": "/tools/jr-pass-calculator/" }],
-      "sources": [
-        { "label": "tenki.jp 桜開花・満開の記録（平年值）", "url": "https://tenki.jp/sakura/record/" }
-      ]
-    },
-    {
-      "id": "tokyo", "name": "東京", "station": "靖國神社標本木",
-      "normalBloom": "03-24", "normalFull": "03-31", "confidence": "official",
+      "id": "kanazawa",
+      "name": "金澤",
+      "station": "金澤地方氣象台",
+      "normalBloom": "04-03",
+      "normalFull": "04-08",
+      "confidence": "official",
       "recent": [
-        { "year": 2018, "bloom": "03-17", "full": "03-24", "note": "" },
-        { "year": 2024, "bloom": "03-29", "full": "04-04", "note": "近年偏晚的一年" },
-        { "year": 2025, "bloom": "03-24", "full": "03-30", "note": "" },
-        { "year": 2026, "bloom": "03-19", "full": "03-28", "note": "比平年早 5 日開花" }
+        {
+          "year": 2017,
+          "bloom": "04-04",
+          "full": "04-08",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "03-29",
+          "full": "04-03",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "04-01",
+          "full": "04-06",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "03-26",
+          "full": "04-01",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "03-23",
+          "full": "03-29",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "03-30",
+          "full": "04-05",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "03-23",
+          "full": "03-30",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "04-01",
+          "full": "04-08",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "03-29",
+          "full": "04-06",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "03-29",
+          "full": "04-03",
+          "note": ""
+        }
       ],
-      "passes": [{ "name": "東京市區不需周遊券（長程才考慮 JR Pass）", "price": null, "link": "/tools/jr-pass-calculator/" }],
+      "passes": [
+        {
+          "name": "北陸拱型鐵路周遊券",
+          "price": 35000,
+          "link": "/tools/jr-pass-calculator/"
+        }
+      ],
       "sources": [
-        { "label": "氣象廳 主要都市開花日比較（1991–2020 平年值）", "url": "https://www.data.jma.go.jp/cpdinfo/monitor/2021/pdf/ccmr2021_sec2-7.pdf" },
-        { "label": "靖國神社：標本木滿開發表", "url": "https://www.yasukuni.or.jp/news_detail.html?id=692" },
-        { "label": "tenki.jp：東京 2026 年開花預想", "url": "https://tenki.jp/forecaster/gureweather/2026/03/12/38136.html" }
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
       ]
     },
     {
-      "id": "nagoya", "name": "名古屋", "station": "名古屋地方氣象台",
-      "normalBloom": "03-24", "normalFull": "04-02", "confidence": "secondary",
-      "recent": [{ "year": 2026, "bloom": "03-17", "full": null, "note": "比平年早 7 日" }],
-      "passes": [{ "name": "待確認（多半單買即可）", "price": null, "link": null }],
+      "id": "tokyo",
+      "name": "東京",
+      "station": "靖國神社標本木",
+      "normalBloom": "03-24",
+      "normalFull": "03-31",
+      "confidence": "official",
+      "recent": [
+        {
+          "year": 2017,
+          "bloom": "03-21",
+          "full": "04-02",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "03-17",
+          "full": "03-24",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "03-21",
+          "full": "03-27",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "03-14",
+          "full": "03-22",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "03-14",
+          "full": "03-22",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "03-20",
+          "full": "03-27",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "03-14",
+          "full": "03-22",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "03-29",
+          "full": "04-04",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "03-24",
+          "full": "03-30",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "03-19",
+          "full": "03-28",
+          "note": ""
+        }
+      ],
+      "passes": [
+        {
+          "name": "東京市區不需周遊券（長程才考慮 JR Pass）",
+          "price": null,
+          "link": "/tools/jr-pass-calculator/"
+        }
+      ],
       "sources": [
-        { "label": "氣象廳 主要都市開花日比較（1991–2020 平年值）", "url": "https://www.data.jma.go.jp/cpdinfo/monitor/2021/pdf/ccmr2021_sec2-7.pdf" },
-        { "label": "Weathernews 標本木開花・滿開預想（滿開平年值）", "url": "https://weathernews.jp/sakura/news/kaikaforecast/" }
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
       ]
     },
     {
-      "id": "kyoto", "name": "京都", "station": "京都地方氣象台",
-      "normalBloom": "03-26", "normalFull": "04-04", "confidence": "official",
-      "recent": [{ "year": 2026, "bloom": "03-23", "full": "03-30", "note": "" }],
-      "passes": [{ "name": "關西廣域周遊券", "price": 12000, "link": "/articles/kansai-area-passes-2026/" }],
+      "id": "nagoya",
+      "name": "名古屋",
+      "station": "名古屋地方氣象台",
+      "normalBloom": "03-24",
+      "normalFull": "04-02",
+      "confidence": "official",
+      "recent": [
+        {
+          "year": 2017,
+          "bloom": "03-28",
+          "full": "04-06",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "03-19",
+          "full": "03-27",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "03-22",
+          "full": "04-04",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "03-22",
+          "full": "04-01",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "03-17",
+          "full": "03-28",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "03-22",
+          "full": "03-30",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "03-17",
+          "full": "03-27",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "03-28",
+          "full": "04-07",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "03-26",
+          "full": "04-04",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "03-17",
+          "full": "03-30",
+          "note": ""
+        }
+      ],
+      "passes": [
+        {
+          "name": "待確認（多半單買即可）",
+          "price": null,
+          "link": null
+        }
+      ],
       "sources": [
-        { "label": "京都地方氣象台：植物季節觀測", "url": "https://www.jma-net.go.jp/kyoto/2_data/seibutsu/index.html" }
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
       ]
     },
     {
-      "id": "osaka", "name": "大阪", "station": "大阪管區氣象台",
-      "normalBloom": "03-27", "normalFull": "04-04", "confidence": "secondary",
-      "recent": [],
-      "passes": [{ "name": "關西廣域周遊券", "price": 12000, "link": "/articles/kansai-area-passes-2026/" }],
+      "id": "kyoto",
+      "name": "京都",
+      "station": "京都地方氣象台",
+      "normalBloom": "03-26",
+      "normalFull": "04-04",
+      "confidence": "official",
+      "recent": [
+        {
+          "year": 2017,
+          "bloom": "03-31",
+          "full": "04-07",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "03-22",
+          "full": "03-28",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "03-27",
+          "full": "04-06",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "03-22",
+          "full": "03-30",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "03-16",
+          "full": "03-26",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "03-24",
+          "full": "03-30",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "03-17",
+          "full": "03-24",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "03-29",
+          "full": "04-05",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "03-27",
+          "full": "04-05",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "03-23",
+          "full": "03-30",
+          "note": ""
+        }
+      ],
+      "passes": [
+        {
+          "name": "關西廣域周遊券",
+          "price": 12000,
+          "link": "/articles/kansai-area-passes-2026/"
+        }
+      ],
       "sources": [
-        { "label": "氣象廳 主要都市開花日比較（1991–2020 平年值）", "url": "https://www.data.jma.go.jp/cpdinfo/monitor/2021/pdf/ccmr2021_sec2-7.pdf" },
-        { "label": "氣象廳 さくらの満開日", "url": "https://www.data.jma.go.jp/sakura/data/sakura_mankai.html" }
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
       ]
     },
     {
-      "id": "hiroshima", "name": "廣島", "station": "廣島地方氣象台",
-      "normalBloom": "03-25", "normalFull": "04-03", "confidence": "secondary",
-      "recent": [{ "year": 2026, "bloom": "03-19", "full": null, "note": "比平年早 6 日" }],
-      "passes": [{ "name": "關西＋廣島周遊券", "price": 17000, "link": "/articles/kansai-area-passes-2026/" }],
+      "id": "osaka",
+      "name": "大阪",
+      "station": "大阪管區氣象台",
+      "normalBloom": "03-27",
+      "normalFull": "04-04",
+      "confidence": "official",
+      "recent": [
+        {
+          "year": 2017,
+          "bloom": "03-30",
+          "full": "04-06",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "03-20",
+          "full": "03-26",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "03-27",
+          "full": "04-04",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "03-23",
+          "full": "04-03",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "03-19",
+          "full": "03-28",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "03-23",
+          "full": "03-30",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "03-19",
+          "full": "03-27",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "03-30",
+          "full": "04-06",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "03-27",
+          "full": "04-04",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "03-26",
+          "full": "04-03",
+          "note": ""
+        }
+      ],
+      "passes": [
+        {
+          "name": "關西廣域周遊券",
+          "price": 12000,
+          "link": "/articles/kansai-area-passes-2026/"
+        }
+      ],
       "sources": [
-        { "label": "氣象廳 主要都市開花日比較（1991–2020 平年值）", "url": "https://www.data.jma.go.jp/cpdinfo/monitor/2021/pdf/ccmr2021_sec2-7.pdf" },
-        { "label": "氣象廳 さくらの満開日", "url": "https://www.data.jma.go.jp/sakura/data/sakura_mankai.html" }
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
       ]
     },
     {
-      "id": "fukuoka", "name": "福岡", "station": "福岡管區氣象台",
-      "normalBloom": "03-22", "normalFull": "03-31", "confidence": "secondary",
-      "recent": [{ "year": 2025, "bloom": "03-25", "full": null, "note": "比平年晚 3 日" }],
-      "passes": [{ "name": "JR 九州鐵路周遊券", "price": null, "link": null }],
+      "id": "hiroshima",
+      "name": "廣島",
+      "station": "廣島地方氣象台",
+      "normalBloom": "03-25",
+      "normalFull": "04-03",
+      "confidence": "official",
+      "recent": [
+        {
+          "year": 2017,
+          "bloom": "03-27",
+          "full": "04-07",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "03-22",
+          "full": "03-28",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "03-22",
+          "full": "04-03",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "03-22",
+          "full": "04-03",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "03-11",
+          "full": "03-25",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "03-21",
+          "full": "03-29",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "03-19",
+          "full": "03-28",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "03-25",
+          "full": "04-05",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "03-26",
+          "full": "04-02",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "03-19",
+          "full": "03-30",
+          "note": ""
+        }
+      ],
+      "passes": [
+        {
+          "name": "關西＋廣島周遊券",
+          "price": 17000,
+          "link": "/articles/kansai-area-passes-2026/"
+        }
+      ],
       "sources": [
-        { "label": "氣象廳 主要都市開花日比較（1991–2020 平年值）", "url": "https://www.data.jma.go.jp/cpdinfo/monitor/2021/pdf/ccmr2021_sec2-7.pdf" },
-        { "label": "氣象廳 さくらの満開日", "url": "https://www.data.jma.go.jp/sakura/data/sakura_mankai.html" },
-        { "label": "tenki.jp：2025 年開花・滿開預想（福岡開花實績）", "url": "https://tenki.jp/forecaster/t_yoshida/2025/03/26/33031.html" }
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
+      ]
+    },
+    {
+      "id": "fukuoka",
+      "name": "福岡",
+      "station": "福岡管區氣象台",
+      "normalBloom": "03-22",
+      "normalFull": "03-31",
+      "confidence": "official",
+      "recent": [
+        {
+          "year": 2017,
+          "bloom": "03-25",
+          "full": "04-05",
+          "note": ""
+        },
+        {
+          "year": 2018,
+          "bloom": "03-19",
+          "full": "03-27",
+          "note": ""
+        },
+        {
+          "year": 2019,
+          "bloom": "03-21",
+          "full": "03-29",
+          "note": ""
+        },
+        {
+          "year": 2020,
+          "bloom": "03-21",
+          "full": "04-02",
+          "note": ""
+        },
+        {
+          "year": 2021,
+          "bloom": "03-12",
+          "full": "03-22",
+          "note": ""
+        },
+        {
+          "year": 2022,
+          "bloom": "03-17",
+          "full": "03-27",
+          "note": ""
+        },
+        {
+          "year": 2023,
+          "bloom": "03-18",
+          "full": "03-26",
+          "note": ""
+        },
+        {
+          "year": 2024,
+          "bloom": "03-27",
+          "full": "04-02",
+          "note": ""
+        },
+        {
+          "year": 2025,
+          "bloom": "03-25",
+          "full": "03-28",
+          "note": ""
+        },
+        {
+          "year": 2026,
+          "bloom": "03-24",
+          "full": "04-03",
+          "note": ""
+        }
+      ],
+      "passes": [
+        {
+          "name": "JR 九州鐵路周遊券",
+          "price": null,
+          "link": "https://www.jrkyushu.co.jp/english/railpass/railpass.html"
+        }
+      ],
+      "sources": [
+        {
+          "label": "氣象廳 さくらの開花日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの開花日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura003_07.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2011–2020）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_06.html"
+        },
+        {
+          "label": "氣象廳 さくらの満開日（2021–2026）",
+          "url": "https://www.data.jma.go.jp/sakura/data/sakura004_07.html"
+        }
       ]
     }
   ]

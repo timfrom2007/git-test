@@ -17,8 +17,8 @@ const jsonLd = [
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: [
       { q: '試算器的票價從哪裡來？', a: `每筆票價旁都有來源連結與可信度標籤，查核日期 ${data.checked}。查不到的票價標「待確認」，需要你自行填入。` },
-      { q: 'JR Pass 可以搭 Nozomi 嗎？', a: 'JR Pass 本身不含 Nozomi／Mizuho，可搭 Hikari／Sakura；若要搭 Nozomi 需另購 Nozomi・Mizuho 券，東京–新大阪約 ¥4,960（二手來源，待官方確認）。' },
-      { q: '在官網買和在代理商買 JR Pass 價格一樣嗎？', a: '2026 年 10 月 1 日起不一樣：代理商 7 日券 ¥53,000，JR 官網期間限定維持 ¥50,000（二手來源整理，待官方確認）。' },
+      { q: 'JR Pass 可以搭 Nozomi 嗎？', a: 'JR Pass 本身不含 Nozomi／Mizuho，可搭 Hikari／Sakura；若要搭 Nozomi 需另購 JR Pass 專用 Nozomi・Mizuho 券，東京–新大阪 ¥4,960、東京–廣島 ¥6,500、東京–博多 ¥8,140（JR Pass 官網）。' },
+      { q: '在官網買和在代理商買 JR Pass 價格一樣嗎？', a: '2026 年 10 月 1 日起不一樣：海外代理商 7 日券 ¥53,000，JR Pass 官網在一定期間內維持 ¥50,000，截止日 JR 集團將另行公告（JR 集團 2026-04-09 公告）。' },
     ].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   },
 ];
@@ -28,7 +28,7 @@ const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozo
   <h1>{title}</h1>
   <p class="lead">輸入每段行程搭幾次，試算器會比較「全部單買」和每一種票券的總花費。票價查核日期：{data.checked}。</p>
   <div class="note">
-    <strong>先看這裡：</strong>JR 官網、JR 西日本官網這次無法直接讀取，所以多數數字來自第三方整理，標為「二手來源・待官方確認」。
+    <strong>先看這裡：</strong>票券價格與 Nozomi 券金額已對照 JR 官方網站（北陸拱型周遊券除外，見下表）。各路段<strong>單程票價</strong> JR 官方只提供逐筆查詢、沒有固定票價表可引用，所以仍標「二手來源」，你可以直接改成自己查到的金額。
     查不到的票價標「待確認」，欄位留空讓你自己填，<strong>不會用估計值代替</strong>。票券涵蓋範圍只是簡化，實際以官方路線圖為準。
   </div>
 
@@ -36,7 +36,7 @@ const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozo
     <h2 style="margin-top:0">1. 購買管道</h2>
     <label><input type="radio" name="channel" value="official" checked /> JR 官方網站（JR Pass 官網價）</label><br />
     <label><input type="radio" name="channel" value="agency" /> 海外代理商（Klook、KKday、旅行社等，2026-10-01 起較貴）</label>
-    <p><label><input type="checkbox" id="nozomi" /> 持 JR Pass 也要搭 Nozomi（東京–新大阪／京都每趟加 Nozomi 券）</label></p>
+    <p><label><input type="checkbox" id="nozomi" /> 持 JR Pass 也要搭 Nozomi（東海道・山陽新幹線各段每趟加 Nozomi 券）</label></p>
 
     <h2>2. 行程（填單程次數）</h2>
     <p class="meta">快速套用：
@@ -96,7 +96,7 @@ const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozo
   <h3>試算器的票價從哪裡來？</h3>
   <p>每筆票價旁都有來源連結與可信度標籤，查核日期 {data.checked}。查不到的票價標「待確認」，需要你自行填入。</p>
   <h3>JR Pass 可以搭 Nozomi 嗎？</h3>
-  <p>JR Pass 本身不含 Nozomi／Mizuho，可以搭 Hikari／Sakura；若要搭 Nozomi，要另購 Nozomi・Mizuho 券，東京–新大阪約 ¥4,960（二手來源，待官方確認）。細節見<a href="/articles/tokyo-osaka-shinkansen-jr-pass/">東京–大阪新幹線票價與 JR Pass 划算門檻</a>。</p>
+  <p>JR Pass 本身不含 Nozomi／Mizuho，可以搭 Hikari／Sakura；若要搭 Nozomi，要另購 JR Pass 專用 Nozomi・Mizuho 券：東京–新大阪／京都 ¥4,960、東京–廣島 ¥6,500、東京–博多 ¥8,140（<a href="https://japanrailpass.net/en/use/special-ticket/" rel="nofollow noopener" target="_blank">JR Pass 官網</a>）。細節見<a href="/articles/tokyo-osaka-shinkansen-jr-pass/">東京–大阪新幹線票價與 JR Pass 划算門檻</a>。</p>
   <h3>在官網買和在代理商買價格一樣嗎？</h3>
   <p>2026 年 10 月 1 日起不一樣，見<a href="/articles/jr-pass-price-2026/">2026 年 10 月 JR Pass 漲價整理</a>。</p>
 
@@ -137,7 +137,7 @@ const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozo
         }
         rows.push({ name: `${p.name}`, pass: price, extra, total: price + extra });
       }
-      if (nozomi) warn.push('Nozomi 券金額 ¥4,960 為二手來源，待官方確認；東京–廣島／博多的 Nozomi 券金額待確認，未計入。');
+      if (nozomi) warn.push('Nozomi 券金額取自 JR Pass 官網（東京–新大阪／京都 ¥4,960、東京–廣島 ¥6,500、東京–博多 ¥8,140、新大阪–廣島 ¥2,530、新大阪–博多 ¥4,960）。');
       const best = rows.reduce((a, b) => (b.total < a.total ? b : a));
       document.getElementById('warnings')!.innerHTML = warn.map((w) => `<div class="note">${w}</div>`).join('');
       document.getElementById('result')!.innerHTML = rows.map((r) => {

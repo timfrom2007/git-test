@@ -27,8 +27,8 @@ affiliates: [klook-jrpass, hotel-search, esim]
 
 - 在免稅店先付含稅價；**購買日起 90 天內**出境時，在機場或港口的免稅手續機台出示護照與商品，經海關確認後由店家或退稅業者退款（[觀光廳](https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html)、[日本海關](https://www.customs.go.jp/kaigairyoko/taxrefund/jpn.htm)）。
 - 取消一般物品／消耗品區分、消耗品 ¥500,000 上限與密封袋規定（[nippon.com](https://www.nippon.com/ja/japan-data/h02925/)）。
-- 門檻：同店同日未稅合計 ¥5,000（民間解說一致，國稅廳原文待確認，[PIE VAT](https://pievat.com/japan/merchant-blog/tax-free-changes-for-travelers-2026)）。
-- 退款方式與手續費：沒有統一規定，依店家而異（[遠見](https://city.gvm.com.tw/article/134015)），**待確認**。
+- 門檻：同一店鋪一天的購買額（未稅）¥5,000 以上；店家委託退稅櫃台時，同一天多家店可在櫃台合算（[觀光廳](https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html)）。
+- 退款方式與手續費：觀光廳只寫「請洽免稅店」，沒有統一規定；部分連鎖店宣布不收申請手續費（[遠見](https://city.gvm.com.tw/article/134015)）。
 
 詳細規則與試算：[日本退稅試算](/tools/japan-tax-refund/)。
 
@@ -63,7 +63,7 @@ affiliates: [klook-jrpass, hotel-search, esim]
 
 </div>
 
-來源：[京都市公告 PDF](https://www.city.kyoto.lg.jp/gyozai/cmsfiles/contents/0000236/236952/A4822.pdf)、[LIVE JAPAN](https://livejapan.com/zh-tw/in-kansai/in-pref-kyoto/in-kyoto-station_to-ji-temple/article-a2001023/)。級距邊界（剛好 ¥6,000 算哪一級、住宿費是否含消費稅）**待確認**，以京都市公告原文為準。
+來源：[京都市公告 PDF](https://www.city.kyoto.lg.jp/gyozai/cmsfiles/contents/0000236/236952/A4822.pdf)、[LIVE JAPAN](https://livejapan.com/zh-tw/in-kansai/in-pref-kyoto/in-kyoto-station_to-ji-temple/article-a2001023/)。京都市公告寫明級距為「未達 6,000 日圓／6,000 日圓以上、未達 20,000 日圓……」，所以**剛好 ¥6,000 算 ¥400 那一級**；住宿費指純住宿費與相關服務費，**不含餐費與消費稅**。住宿稅在住宿設施付款，已透過訂房網站或旅行社付過的不用再付。
 
 **試算：**2 人住 3 晚，每人每晚住宿費 ¥15,000 → ¥400 × 2 人 × 3 晚 = **¥2,400**。
 每人每晚 ¥25,000 的飯店 → ¥1,000 × 2 × 3 = **¥6,000**。

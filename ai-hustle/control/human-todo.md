@@ -33,11 +33,7 @@
   4. 上方「網址審查」貼上 `https://www.你的網域/tools/jr-pass-calculator/` → **要求建立索引**。三篇文章也各做一次（一天有配額，做不完隔天再做）。
   5. 完成日期寫進 `projects/japan-travel-site/STATUS.md`，驗收指標（30 天曝光 > 1,000、點擊 > 50）從這天起算。
 
-- [ ] [japan-travel-site] A-5 核對官方票價（15 分鐘，可選但建議）
-  這次 agent 的環境無法直接開 JR 官網，網站上多數票價標「二手來源・待官方確認」。請打開以下 3 頁，核對 `site/src/data/fares.json` 的數字，有不同就在 STATUS.md 記下（agent 下次會更新）：
-  1. https://japanrailpass.net/ （JR Pass 7／14／21 日，官網價與代理商價）
-  2. https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_hiroshima/ （關西＋廣島 ¥17,000？）
-  3. https://tabidachi.travel/hokuriku-arch-pass 或 JR 西日本北陸拱型券頁面（¥35,000？）
+- [x] ~~[japan-travel-site] A-5 核對官方票價（15 分鐘，可選但建議）~~ **已改由 agent 處理（A4，2026-11-22）**：網路權限開放後，agent 已逐項對照官方網站，結果見 `projects/japan-travel-site/STATUS.md`「A4 查證結果」。仍需人工確認的只剩少數幾項（JR 東日本、臺銀拒絕自動存取），列在同一節。
 
 - [ ] [japan-travel-site] A-6 申請聯盟行銷帳號（每個約 15 分鐘，分天做；**是註冊帳號，需你決定**）
   網站已在工具和文章裡預留聯盟連結位置，正式版目前不顯示。拿到連結後填進 `site/src/data/affiliates.json` 的 `url` 欄，就會自動顯示並加上「聯盟連結」揭露文字。

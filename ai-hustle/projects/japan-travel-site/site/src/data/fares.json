@@ -9,14 +9,35 @@
       "days": 7,
       "priceOfficialSite": 50000,
       "priceAgency": 53000,
-      "priceNote": "2026-10-01 起海外代理商售價調漲為 ¥53,000；JR 官方網站購買「期間限定」維持 ¥50,000，結束日未公布。",
-      "confidence": "secondary",
+      "priceNote": "2026-10-01 起海外代理商 ¥53,000；官網（JAPAN RAIL PASS Reservation）在一定期間內維持 ¥50,000，截止日 JR 集團表示「確定後另行公告」。",
+      "confidence": "official",
       "sources": [
-        { "label": "Japan Rail Pass 官方價格調整公告（PDF，中文）", "url": "https://japanrailpass.net/assets/pdf/JRP_Price_Changes_Zh.pdf" },
-        { "label": "JNTO：price increases are coming to the nationwide Japan Rail Pass 2026", "url": "https://www.japan.travel/en/ca/news/price-increases-are-coming-to-the-nationwide-japan-rail-pass-2026/" },
-        { "label": "Wheels Down Japan：Agency vs Online", "url": "https://wheelsdownjapan.com/articles/japan-rail-pass-price-increase-2026/" }
+        {
+          "label": "Japan Rail Pass 官方：Types and prices",
+          "url": "https://japanrailpass.net/en/purchase/price/"
+        },
+        {
+          "label": "JR 集團 2026-04-09 價格調整公告（中文 PDF）",
+          "url": "https://japanrailpass.net/assets/pdf/JRP_Price_Changes_Zh.pdf"
+        }
       ],
-      "covers": ["tokyo-shinosaka", "tokyo-kyoto", "tokyo-hiroshima", "tokyo-hakata", "shinosaka-hiroshima", "shinosaka-hakata", "tokyo-kanazawa", "kanazawa-osaka", "kix-kyoto", "kyoto-osaka", "shinosaka-okayama"]
+      "covers": [
+        "tokyo-shinosaka",
+        "tokyo-kyoto",
+        "tokyo-hiroshima",
+        "tokyo-hakata",
+        "shinosaka-hiroshima",
+        "shinosaka-hakata",
+        "tokyo-kanazawa",
+        "kanazawa-osaka",
+        "kix-kyoto",
+        "kyoto-osaka",
+        "shinosaka-okayama"
+      ],
+      "childOfficialSite": 25000,
+      "childAgency": 27000,
+      "greenOfficialSite": 70000,
+      "greenAgency": 74000
     },
     {
       "id": "jrp14",
@@ -25,13 +46,35 @@
       "days": 14,
       "priceOfficialSite": 80000,
       "priceAgency": 84000,
-      "priceNote": "同上，2026-10-01 起代理商 ¥84,000；官網期間限定 ¥80,000。",
-      "confidence": "secondary",
+      "priceNote": "2026-10-01 起海外代理商 ¥84,000；官網（JAPAN RAIL PASS Reservation）在一定期間內維持 ¥80,000，截止日 JR 集團表示「確定後另行公告」。",
+      "confidence": "official",
       "sources": [
-        { "label": "Japan Rail Pass 官方價格調整公告（PDF，中文）", "url": "https://japanrailpass.net/assets/pdf/JRP_Price_Changes_Zh.pdf" },
-        { "label": "Tanaka Tokyo Tours：Another price increase (Oct 2026)", "url": "https://www.tanaka-tokyotours.com/2026/04/10/another-price-increase-for-the-japan-rail-pass-oct-2026/" }
+        {
+          "label": "Japan Rail Pass 官方：Types and prices",
+          "url": "https://japanrailpass.net/en/purchase/price/"
+        },
+        {
+          "label": "JR 集團 2026-04-09 價格調整公告（中文 PDF）",
+          "url": "https://japanrailpass.net/assets/pdf/JRP_Price_Changes_Zh.pdf"
+        }
       ],
-      "covers": ["tokyo-shinosaka", "tokyo-kyoto", "tokyo-hiroshima", "tokyo-hakata", "shinosaka-hiroshima", "shinosaka-hakata", "tokyo-kanazawa", "kanazawa-osaka", "kix-kyoto", "kyoto-osaka", "shinosaka-okayama"]
+      "covers": [
+        "tokyo-shinosaka",
+        "tokyo-kyoto",
+        "tokyo-hiroshima",
+        "tokyo-hakata",
+        "shinosaka-hiroshima",
+        "shinosaka-hakata",
+        "tokyo-kanazawa",
+        "kanazawa-osaka",
+        "kix-kyoto",
+        "kyoto-osaka",
+        "shinosaka-okayama"
+      ],
+      "childOfficialSite": 40000,
+      "childAgency": 42000,
+      "greenOfficialSite": 110000,
+      "greenAgency": 116000
     },
     {
       "id": "jrp21",
@@ -40,13 +83,35 @@
       "days": 21,
       "priceOfficialSite": 100000,
       "priceAgency": 105000,
-      "priceNote": "同上，2026-10-01 起代理商 ¥105,000；官網期間限定 ¥100,000。",
-      "confidence": "secondary",
+      "priceNote": "2026-10-01 起海外代理商 ¥105,000；官網（JAPAN RAIL PASS Reservation）在一定期間內維持 ¥100,000，截止日 JR 集團表示「確定後另行公告」。",
+      "confidence": "official",
       "sources": [
-        { "label": "Japan Rail Pass 官方價格調整公告（PDF，中文）", "url": "https://japanrailpass.net/assets/pdf/JRP_Price_Changes_Zh.pdf" },
-        { "label": "Tanaka Tokyo Tours：Another price increase (Oct 2026)", "url": "https://www.tanaka-tokyotours.com/2026/04/10/another-price-increase-for-the-japan-rail-pass-oct-2026/" }
+        {
+          "label": "Japan Rail Pass 官方：Types and prices",
+          "url": "https://japanrailpass.net/en/purchase/price/"
+        },
+        {
+          "label": "JR 集團 2026-04-09 價格調整公告（中文 PDF）",
+          "url": "https://japanrailpass.net/assets/pdf/JRP_Price_Changes_Zh.pdf"
+        }
       ],
-      "covers": ["tokyo-shinosaka", "tokyo-kyoto", "tokyo-hiroshima", "tokyo-hakata", "shinosaka-hiroshima", "shinosaka-hakata", "tokyo-kanazawa", "kanazawa-osaka", "kix-kyoto", "kyoto-osaka", "shinosaka-okayama"]
+      "covers": [
+        "tokyo-shinosaka",
+        "tokyo-kyoto",
+        "tokyo-hiroshima",
+        "tokyo-hakata",
+        "shinosaka-hiroshima",
+        "shinosaka-hakata",
+        "tokyo-kanazawa",
+        "kanazawa-osaka",
+        "kix-kyoto",
+        "kyoto-osaka",
+        "shinosaka-okayama"
+      ],
+      "childOfficialSite": 50000,
+      "childAgency": 53000,
+      "greenOfficialSite": 140000,
+      "greenAgency": 147000
     },
     {
       "id": "kansai-wide",
@@ -55,12 +120,19 @@
       "days": 5,
       "priceOfficialSite": 12000,
       "priceAgency": null,
-      "priceNote": "JR 西日本官方頁列成人 ¥12,000、兒童 ¥6,000。不含東海道新幹線（京都–新大阪）。",
+      "priceNote": "JR 西日本官方：成人 ¥12,000、兒童 ¥6,000（5 日）。含山陽新幹線新大阪–岡山指定席、Haruka 等特急指定席；不含東海道新幹線。",
       "confidence": "official",
       "sources": [
-        { "label": "JR 西日本：Kansai WIDE Area Pass", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_wide/" }
+        {
+          "label": "JR 西日本：Kansai WIDE Area Pass",
+          "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_wide/"
+        }
       ],
-      "covers": ["kix-kyoto", "kyoto-osaka", "shinosaka-okayama"]
+      "covers": [
+        "kix-kyoto",
+        "kyoto-osaka",
+        "shinosaka-okayama"
+      ]
     },
     {
       "id": "kansai-hiroshima",
@@ -69,13 +141,20 @@
       "days": 5,
       "priceOfficialSite": 17000,
       "priceAgency": null,
-      "priceNote": "¥17,000 來自第三方整理，JR 西日本官方頁價格本次未能直接讀取，待官方確認。山陽新幹線限新大阪–廣島，不含廣島–博多。",
-      "confidence": "secondary",
+      "priceNote": "JR 西日本官方：成人 ¥17,000、兒童 ¥8,500（5 日）。山陽新幹線限新大阪–廣島指定席，含 Haruka、JR 宮島渡輪（另付宮島訪問稅 ¥100）。",
+      "confidence": "official",
       "sources": [
-        { "label": "JR 西日本：Kansai-Hiroshima Area Pass", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_hiroshima/" },
-        { "label": "JRailPass blog：Kansai-Hiroshima Area Pass guide", "url": "https://www.jrailpass.com/blog/kansai-hiroshima-area-pass-guide" }
+        {
+          "label": "JR 西日本：Kansai-Hiroshima Area Pass",
+          "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_hiroshima/"
+        }
       ],
-      "covers": ["shinosaka-hiroshima", "kix-kyoto", "kyoto-osaka", "shinosaka-okayama"]
+      "covers": [
+        "shinosaka-hiroshima",
+        "kix-kyoto",
+        "kyoto-osaka",
+        "shinosaka-okayama"
+      ]
     },
     {
       "id": "hokuriku-arch",
@@ -84,32 +163,185 @@
       "days": 7,
       "priceOfficialSite": 35000,
       "priceAgency": null,
-      "priceNote": "2026-03-14 起售價由 ¥30,000 調為 ¥35,000（多個第三方來源一致，待官方確認）。不含東海道新幹線。",
+      "priceNote": "2026-03-14 起 ¥35,000（多個第三方來源一致）。發售方 JR 東日本官網拒絕自動存取（HTTP 403），JR 西日本的周遊券列表未列此券，官方價格待人工確認。不含東海道新幹線。",
       "confidence": "secondary",
       "sources": [
-        { "label": "tabidachi.travel：Hokuriku Arch Pass 2026", "url": "https://tabidachi.travel/hokuriku-arch-pass" },
-        { "label": "JRailPass blog：Hokuriku Arch Pass guide", "url": "https://www.jrailpass.com/blog/hokuriku-arch-pass-guide" }
+        {
+          "label": "tabidachi.travel：Hokuriku Arch Pass 2026",
+          "url": "https://tabidachi.travel/hokuriku-arch-pass"
+        },
+        {
+          "label": "JRailPass blog：Hokuriku Arch Pass guide",
+          "url": "https://www.jrailpass.com/blog/hokuriku-arch-pass-guide"
+        }
       ],
-      "covers": ["tokyo-kanazawa", "kanazawa-osaka", "kix-kyoto", "kyoto-osaka"]
+      "covers": [
+        "tokyo-kanazawa",
+        "kanazawa-osaka",
+        "kix-kyoto",
+        "kyoto-osaka"
+      ]
     }
   ],
   "routes": [
-    { "id": "tokyo-shinosaka", "name": "東京 → 新大阪（東海道新幹線）", "fare": 14720, "train": "Nozomi 指定席", "confidence": "secondary", "note": "JR Pass 不含 Nozomi，持券者可免費搭 Hikari，或另購 Nozomi・Mizuho 券 ¥4,960。", "sources": [{ "label": "NAVITIME Japan Travel：Tokyo to Osaka 2026", "url": "https://japantravel.navitime.com/en/area/jp/guide/NTJhowto0210-en/" }, { "label": "Tokyo Cheapo：Tokyo to Osaka 2026", "url": "https://tokyocheapo.com/travel/transport/tokyo-to-osaka-fast-cheap/" }] },
-    { "id": "tokyo-kyoto", "name": "東京 → 京都（東海道新幹線）", "fare": 13970, "train": "Nozomi 指定席（smartEX 價）", "confidence": "secondary", "note": "此為 smartEX 訂票價，車站窗口價可能略高，待確認。", "sources": [{ "label": "Japan Shinkansen Net：Tokyo to Osaka", "url": "https://japanshinkansen.net/guide/tokyo-osaka-shinkansen" }] },
-    { "id": "tokyo-hiroshima", "name": "東京 → 廣島（東海道＋山陽新幹線）", "fare": 19560, "train": "Nozomi 指定席", "confidence": "secondary", "note": "來源間有落差（¥19,560–¥19,760），採較低值。", "sources": [{ "label": "hontojapan：Shinkansen Price 2026", "url": "https://hontojapan.com/shinkansen-price/" }, { "label": "asoventure：Shinkansen Price Breakdown 2026", "url": "https://japan.asoventure.jp/en/article/shinkansen-price-breakdown-2026-tokyo-osaka-vs-hiroshima" }] },
-    { "id": "tokyo-hakata", "name": "東京 → 博多（東海道＋山陽新幹線）", "fare": 23610, "train": "Nozomi 指定席", "confidence": "secondary", "note": "僅單一來源，待確認。", "sources": [{ "label": "hontojapan：Shinkansen Price 2026", "url": "https://hontojapan.com/shinkansen-price/" }] },
-    { "id": "shinosaka-hiroshima", "name": "新大阪 → 廣島（山陽新幹線）", "fare": 10420, "train": "Hikari／Sakura 指定席", "confidence": "secondary", "note": "Nozomi／Mizuho 約 ¥10,950；來源間落差 ¥10,200–¥11,000，採 Hikari 值。", "sources": [{ "label": "Ekitan：Shin Osaka – Hiroshima", "url": "https://ekitan.com/en/planner/shinkansen/section/shin-osaka/hiroshima" }, { "label": "Authentic Japan：Hiroshima by Shinkansen 2026", "url": "https://japanauthentic.com/blog/hiroshima-shinkansen-guide-tokyo-osaka-kyoto" }] },
-    { "id": "shinosaka-hakata", "name": "新大阪 → 博多（山陽新幹線）", "fare": 16020, "train": "指定席", "confidence": "secondary", "note": "僅單一來源，待確認。", "sources": [{ "label": "hontojapan：Shinkansen Price 2026", "url": "https://hontojapan.com/shinkansen-price/" }] },
-    { "id": "tokyo-kanazawa", "name": "東京 → 金澤（北陸新幹線）", "fare": 14600, "train": "Kagayaki 指定席", "confidence": "secondary", "note": "多個來源為 ¥14,600（運賃 ¥7,700＋特急 ¥6,900），依季節 ¥14,400–¥15,000。", "sources": [{ "label": "tabidachi.travel：Hokuriku Shinkansen 2026", "url": "https://tabidachi.travel/plan/hokuriku-shinkansen" }] },
-    { "id": "kanazawa-osaka", "name": "金澤 → 大阪（北陸新幹線＋Thunderbird）", "fare": null, "train": "經敦賀轉乘", "confidence": "unknown", "note": "票價待確認，請自行填入查到的金額。", "sources": [] },
-    { "id": "kix-kyoto", "name": "關西機場 → 京都（Haruka）", "fare": null, "train": "Haruka 指定席", "confidence": "unknown", "note": "票價待確認，請自行填入查到的金額。", "sources": [] },
-    { "id": "kyoto-osaka", "name": "京都 → 大阪（JR 京都線新快速）", "fare": null, "train": "新快速（免預約）", "confidence": "unknown", "note": "票價待確認，請自行填入查到的金額。", "sources": [] },
-    { "id": "shinosaka-okayama", "name": "新大阪 → 岡山（山陽新幹線）", "fare": null, "train": "指定席", "confidence": "unknown", "note": "票價待確認，請自行填入查到的金額。", "sources": [] }
+    {
+      "id": "tokyo-shinosaka",
+      "name": "東京 → 新大阪（東海道新幹線）",
+      "fare": 14720,
+      "train": "Nozomi 指定席",
+      "confidence": "secondary",
+      "note": "JR Pass 不含 Nozomi，持券者可免費搭 Hikari，或另購 Nozomi・Mizuho 券 ¥4,960。（JR 官方票價需在 smartEX／JR 網站逐筆查詢，沒有可引用的固定票價表，維持二手來源。）",
+      "sources": [
+        {
+          "label": "NAVITIME Japan Travel：Tokyo to Osaka 2026",
+          "url": "https://japantravel.navitime.com/en/area/jp/guide/NTJhowto0210-en/"
+        },
+        {
+          "label": "Tokyo Cheapo：Tokyo to Osaka 2026",
+          "url": "https://tokyocheapo.com/travel/transport/tokyo-to-osaka-fast-cheap/"
+        }
+      ]
+    },
+    {
+      "id": "tokyo-kyoto",
+      "name": "東京 → 京都（東海道新幹線）",
+      "fare": 13970,
+      "train": "Nozomi 指定席（smartEX 價）",
+      "confidence": "secondary",
+      "note": "此為 smartEX 訂票價，車站窗口價可能略高，待確認。（JR 官方票價需在 smartEX／JR 網站逐筆查詢，沒有可引用的固定票價表，維持二手來源。）",
+      "sources": [
+        {
+          "label": "Japan Shinkansen Net：Tokyo to Osaka",
+          "url": "https://japanshinkansen.net/guide/tokyo-osaka-shinkansen"
+        }
+      ]
+    },
+    {
+      "id": "tokyo-hiroshima",
+      "name": "東京 → 廣島（東海道＋山陽新幹線）",
+      "fare": 19560,
+      "train": "Nozomi 指定席",
+      "confidence": "secondary",
+      "note": "來源間有落差（¥19,560–¥19,760），採較低值。（JR 官方票價需在 smartEX／JR 網站逐筆查詢，沒有可引用的固定票價表，維持二手來源。）",
+      "sources": [
+        {
+          "label": "hontojapan：Shinkansen Price 2026",
+          "url": "https://hontojapan.com/shinkansen-price/"
+        },
+        {
+          "label": "asoventure：Shinkansen Price Breakdown 2026",
+          "url": "https://japan.asoventure.jp/en/article/shinkansen-price-breakdown-2026-tokyo-osaka-vs-hiroshima"
+        }
+      ]
+    },
+    {
+      "id": "tokyo-hakata",
+      "name": "東京 → 博多（東海道＋山陽新幹線）",
+      "fare": 23610,
+      "train": "Nozomi 指定席",
+      "confidence": "secondary",
+      "note": "僅單一來源，待確認。（JR 官方票價需在 smartEX／JR 網站逐筆查詢，沒有可引用的固定票價表，維持二手來源。）",
+      "sources": [
+        {
+          "label": "hontojapan：Shinkansen Price 2026",
+          "url": "https://hontojapan.com/shinkansen-price/"
+        }
+      ]
+    },
+    {
+      "id": "shinosaka-hiroshima",
+      "name": "新大阪 → 廣島（山陽新幹線）",
+      "fare": 10420,
+      "train": "Hikari／Sakura 指定席",
+      "confidence": "secondary",
+      "note": "Nozomi／Mizuho 約 ¥10,950；來源間落差 ¥10,200–¥11,000，採 Hikari 值。（JR 官方票價需在 smartEX／JR 網站逐筆查詢，沒有可引用的固定票價表，維持二手來源。）",
+      "sources": [
+        {
+          "label": "Ekitan：Shin Osaka – Hiroshima",
+          "url": "https://ekitan.com/en/planner/shinkansen/section/shin-osaka/hiroshima"
+        },
+        {
+          "label": "Authentic Japan：Hiroshima by Shinkansen 2026",
+          "url": "https://japanauthentic.com/blog/hiroshima-shinkansen-guide-tokyo-osaka-kyoto"
+        }
+      ]
+    },
+    {
+      "id": "shinosaka-hakata",
+      "name": "新大阪 → 博多（山陽新幹線）",
+      "fare": 16020,
+      "train": "指定席",
+      "confidence": "secondary",
+      "note": "僅單一來源，待確認。（JR 官方票價需在 smartEX／JR 網站逐筆查詢，沒有可引用的固定票價表，維持二手來源。）",
+      "sources": [
+        {
+          "label": "hontojapan：Shinkansen Price 2026",
+          "url": "https://hontojapan.com/shinkansen-price/"
+        }
+      ]
+    },
+    {
+      "id": "tokyo-kanazawa",
+      "name": "東京 → 金澤（北陸新幹線）",
+      "fare": 14600,
+      "train": "Kagayaki 指定席",
+      "confidence": "secondary",
+      "note": "多個來源為 ¥14,600（運賃 ¥7,700＋特急 ¥6,900），依季節 ¥14,400–¥15,000。（JR 官方票價需在 smartEX／JR 網站逐筆查詢，沒有可引用的固定票價表，維持二手來源。）",
+      "sources": [
+        {
+          "label": "tabidachi.travel：Hokuriku Shinkansen 2026",
+          "url": "https://tabidachi.travel/plan/hokuriku-shinkansen"
+        }
+      ]
+    },
+    {
+      "id": "kanazawa-osaka",
+      "name": "金澤 → 大阪（北陸新幹線＋Thunderbird）",
+      "fare": null,
+      "train": "經敦賀轉乘",
+      "confidence": "unknown",
+      "note": "票價待確認：JR 官方只提供逐筆查詢，沒有可引用的固定票價表。請自行查詢後填入。",
+      "sources": []
+    },
+    {
+      "id": "kix-kyoto",
+      "name": "關西機場 → 京都（Haruka）",
+      "fare": null,
+      "train": "Haruka 指定席",
+      "confidence": "unknown",
+      "note": "票價待確認：JR 官方只提供逐筆查詢，沒有可引用的固定票價表。請自行查詢後填入。",
+      "sources": []
+    },
+    {
+      "id": "kyoto-osaka",
+      "name": "京都 → 大阪（JR 京都線新快速）",
+      "fare": null,
+      "train": "新快速（免預約）",
+      "confidence": "unknown",
+      "note": "票價待確認：JR 官方只提供逐筆查詢，沒有可引用的固定票價表。請自行查詢後填入。",
+      "sources": []
+    },
+    {
+      "id": "shinosaka-okayama",
+      "name": "新大阪 → 岡山（山陽新幹線）",
+      "fare": null,
+      "train": "指定席",
+      "confidence": "unknown",
+      "note": "票價待確認：JR 官方只提供逐筆查詢，沒有可引用的固定票價表。請自行查詢後填入。",
+      "sources": []
+    }
   ],
   "nozomiSupplement": {
     "tokyo-shinosaka": 4960,
     "tokyo-kyoto": 4960,
-    "source": { "label": "hontojapan：Nozomi Tickets 2026", "url": "https://hontojapan.com/nozomi-tickets/" },
-    "confidence": "secondary"
+    "tokyo-hiroshima": 6500,
+    "tokyo-hakata": 8140,
+    "shinosaka-hiroshima": 2530,
+    "shinosaka-hakata": 4960,
+    "source": {
+      "label": "Japan Rail Pass 官方：NOZOMI MIZUHO Ticket 全區間價格（PDF）",
+      "url": "https://japanrailpass.net/assets/pdf/special-ticket/en/price_for_all_sections_new.pdf"
+    },
+    "confidence": "official"
   }
 }
