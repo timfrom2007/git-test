@@ -90,6 +90,34 @@ def cmd_analyze(a) -> None:
     print(f"\noutputs in {a.out}/")
 
 
+def _lan_ip() -> str | None:
+    import socket
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("192.0.2.1", 9))  # no packet is sent; just picks the LAN interface
+        return s.getsockname()[0]
+    except OSError:
+        return None
+    finally:
+        s.close()
+
+
+def cmd_serve(a) -> None:
+    import uvicorn
+
+    from .web.app import create_app
+
+    app = create_app(a.data)
+    ip = _lan_ip()
+    print("\n  投籃分析伺服器已啟動")
+    print(f"  這台電腦：  http://localhost:{a.port}")
+    if ip and a.host == "0.0.0.0":
+        print(f"  iPhone：    http://{ip}:{a.port}   （要連同一個 Wi-Fi）")
+    print(f"  資料存放：  {Path(a.data).resolve()}\n")
+    uvicorn.run(app, host=a.host, port=a.port, log_level="warning")
+
+
 def main(argv=None) -> None:
     p = argparse.ArgumentParser(prog="shot_tracker", description="Basketball shot trajectory analysis")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -118,6 +146,12 @@ def main(argv=None) -> None:
         help="playback speed vs real time, e.g. 0.125 for slow-mo exported at 1/8 (default: auto-detect)",
     )
     s.set_defaults(func=cmd_analyze)
+
+    s = sub.add_parser("serve", help="start the web app (open it on the iPhone)")
+    s.add_argument("--host", default="0.0.0.0", help="0.0.0.0 = reachable from other devices on the Wi-Fi")
+    s.add_argument("--port", type=int, default=8000)
+    s.add_argument("--data", default="data", help="where uploads and results are stored")
+    s.set_defaults(func=cmd_serve)
 
     a = p.parse_args(argv)
     a.func(a)
