@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Article.astro
+layout: ../../../layouts/Article.astro
 title: 櫻花季避開人潮：用南北開花時間差規劃 3 條追櫻路線（2027）
 short: 櫻花季避開人潮
 description: 日本櫻花從福岡到札幌，平年滿開日相差一個多月。用氣象廳平年值排出 3 條追櫻路線，避開最擠的東京・京都滿開週末，並附每條路線適合的 JR 周遊券。
@@ -27,7 +27,7 @@ affiliates: [klook-jrpass, kkday-jrpass, hotel-search, esim]
 
 </div>
 
-全部為氣象廳平年值（弘前為弘前市官方平年值）。資料來源見 [2027 櫻花時程表](/sakura/2027/)，查核日 2026-11-22。
+全部為氣象廳平年值（弘前為弘前市官方平年值）。資料來源見 [2027 櫻花時程表](/japan/sakura/2027/)，查核日 2026-11-22。
 
 ## 3 條追櫻路線
 
@@ -35,7 +35,7 @@ affiliates: [klook-jrpass, kkday-jrpass, hotel-search, esim]
 福岡（3/31）→ 廣島（4/3）→ 大阪・京都（4/4）
 
 - 從福岡往東走，跟著滿開日移動。
-- 票券：新大阪⇄廣島可用關西＋廣島周遊券（¥17,000，5 天）；福岡–廣島段不在券內，要另買或考慮 JR Pass。用[試算器](/tools/jr-pass-calculator/)比較。
+- 票券：新大阪⇄廣島可用關西＋廣島周遊券（¥17,000，5 天）；福岡–廣島段不在券內，要另買或考慮 JR Pass。用[試算器](/japan/tools/jr-pass-calculator/)比較。
 
 ### 路線 B：避開東京京都尖峰，改看北陸（4 月第 2 週）
 大阪・京都尾聲（4/4 後）→ 金澤（4/8）→ 東京
@@ -57,7 +57,7 @@ affiliates: [klook-jrpass, kkday-jrpass, hotel-search, esim]
 | 做法 | 說明 |
 |---|---|
 | 避開滿開後第一個週末 | 滿開日公布後的週末容易最擠；能排平日就排平日 |
-| 一早去 | 上野恩賜公園 5:00 就開園（見[賞櫻名所交通](/articles/sakura-spots-access-2027/)） |
+| 一早去 | 上野恩賜公園 5:00 就開園（見[賞櫻名所交通](/japan/articles/sakura-spots-access-2027/)） |
 | 選晚開的品種或地點 | 同城市內，山區、北側地點通常比市中心晚開，可多看幾天（依地點而異，請看當地資訊） |
 | 預留彈性 | 旅程前後各多一天在附近城市，照當年開花狀況調整 |
 | 盯緊官方發表 | 氣象台「開花」「滿開」發表後，各景點的見頃大致跟著來 |
@@ -70,5 +70,5 @@ affiliates: [klook-jrpass, kkday-jrpass, hotel-search, esim]
 
 1. 2027 年 1–2 月起看各氣象公司的開花預測（本站時程表會更新）。
 2. 出發前 2–3 週再確認一次，必要時調整城市順序。
-3. 先用[預算計算機](/tools/japan-trip-budget/)估總花費，櫻花季住宿可能比平常貴，訂房網站報價直接填進去。
-4. 確定路線後再決定周遊券，用[試算器](/tools/jr-pass-calculator/)比較。
+3. 先用[預算計算機](/japan/tools/japan-trip-budget/)估總花費，櫻花季住宿可能比平常貴，訂房網站報價直接填進去。
+4. 確定路線後再決定周遊券，用[試算器](/japan/tools/jr-pass-calculator/)比較。

@@ -1,18 +1,18 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Badge from '../../components/Badge.astro';
-import Affiliate from '../../components/Affiliate.astro';
-import b from '../../data/budget.json';
-import fares from '../../data/fares.json';
+import Base from '../../../layouts/Base.astro';
+import Badge from '../../../components/Badge.astro';
+import Affiliate from '../../../components/Affiliate.astro';
+import b from '../../../data/budget.json';
+import fares from '../../../data/fares.json';
 const title = '日本旅遊預算計算機（台幣顯示，可自訂匯率）';
 const description = '輸入天數、人數、住宿、餐飲、交通、機票，算出日本自由行總預算與每人花費，以新台幣顯示。預設匯率標註臺灣銀行牌告日期，可自行修改。';
 const passOptions = fares.passes.map((p) => ({ id: p.id, name: p.name, price: p.priceOfficialSite }));
 const jsonLd = [{
   '@context': 'https://schema.org', '@type': 'WebApplication', name: '日本旅遊預算計算機', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW',
-  url: new URL('/tools/japan-trip-budget/', Astro.site).href, description, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' },
+  url: new URL('/japan/tools/japan-trip-budget/', Astro.site).href, description, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' },
 }];
 ---
-<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: '旅遊預算計算機', path: '/tools/japan-trip-budget/' }]}>
+<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: '旅遊預算計算機', path: '/japan/tools/japan-trip-budget/' }]}>
   <h1>{title}</h1>
   <p class="lead">每個人住的、吃的差很多，所以這個計算機<strong>不替你預設住宿、餐飲金額</strong>。填你查到的價格（例如訂房網站的報價），它會幫你加總並換成台幣。</p>
 
@@ -39,9 +39,9 @@ const jsonLd = [{
         <option value="0">不買周遊券（在下方填單買金額）</option>
         {passOptions.map((p) => <option value={p.price}>{p.name}：¥{p.price.toLocaleString('en-US')}</option>)}
       </select></label></p>
-    <p class="meta">周遊券價格取自<a href="/sources/">資料來源</a>頁（JR Pass 為官網價）。</p>
+    <p class="meta">周遊券價格取自<a href="/japan/sources/">資料來源</a>頁（JR Pass 為官網價）。</p>
     <p><label>單買車票合計 ¥ <input type="number" id="tickets" min="0" step="10" placeholder="0" style="width:9em" /></label>
-      <span class="meta">不確定買哪個？先用 <a href="/tools/jr-pass-calculator/">JR Pass 試算器</a> 算。</span></p>
+      <span class="meta">不確定買哪個？先用 <a href="/japan/tools/jr-pass-calculator/">JR Pass 試算器</a> 算。</span></p>
     <p><label>市區交通（地鐵、公車）每人每天 ¥ <input type="number" id="local" min="0" step="10" placeholder="0" style="width:8em" /></label></p>
 
     <h2>餐飲・活動・購物（日圓，每人）</h2>

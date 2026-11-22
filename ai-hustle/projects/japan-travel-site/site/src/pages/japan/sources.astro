@@ -1,13 +1,13 @@
 ---
-import Base from '../layouts/Base.astro';
-import Badge from '../components/Badge.astro';
-import data from '../data/fares.json';
-import sakura from '../data/sakura.json';
-import budget from '../data/budget.json';
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import data from '../../data/fares.json';
+import sakura from '../../data/sakura.json';
+import budget from '../../data/budget.json';
 const items = [...data.passes.map((p) => ({ name: p.name, value: p.priceOfficialSite, c: p.confidence, sources: p.sources, note: p.priceNote })),
   ...data.routes.map((r) => ({ name: r.name, value: r.fare, c: r.confidence, sources: r.sources, note: r.note }))];
 ---
-<Base title="資料來源與查核日期" description="本站所有票價的來源連結、可信度與查核日期。" breadcrumbs={[{ name: '資料來源', path: '/sources/' }]}>
+<Base title="資料來源與查核日期" description="本站所有票價的來源連結、可信度與查核日期。" breadcrumbs={[{ name: '資料來源', path: '/japan/sources/' }]}>
   <h1>資料來源與查核日期</h1>
   <p>最近一次查核：<strong>{data.checked}</strong>（Asia/Taipei）。金額為日圓、成人、單程、普通車指定席、一般期，另有註明者除外。</p>
   <ul>
@@ -27,7 +27,7 @@ const items = [...data.passes.map((p) => ({ name: p.name, value: p.priceOfficial
     </table>
   </div>
   <h2>櫻花平年值與近年實際日期</h2>
-  <p>查核日 {sakura.checked}。平年值＝1991–2020 年平均；詳細表格見 <a href="/sakura/2027/">2027 櫻花時程表</a>。</p>
+  <p>查核日 {sakura.checked}。平年值＝1991–2020 年平均；詳細表格見 <a href="/japan/sakura/2027/">2027 櫻花時程表</a>。</p>
   <div class="table-scroll"><table><thead><tr><th>城市</th><th>可信度</th><th>來源</th></tr></thead><tbody>
     {sakura.cities.map((c) => <tr><td>{c.name}</td><td><Badge c={c.confidence as any} /></td><td>{c.sources.map((s) => <><a href={s.url} rel="nofollow noopener" target="_blank">{s.label}</a><br /></>)}</td></tr>)}
   </tbody></table></div>

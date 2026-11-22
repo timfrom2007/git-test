@@ -12,8 +12,13 @@ body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.75 syste
 a { color: var(--accent); }
 .site-header { border-bottom: 1px solid var(--line); background: var(--card); }
 .site-header .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between; padding-block: 12px; }
-.brand { font-weight: 700; text-decoration: none; color: var(--fg); }
-.site-header nav { display: flex; gap: 16px; font-size: 15px; }
+.brand { text-decoration: none; color: var(--fg); display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.logo { font-weight: 900; font-size: 1.25rem; letter-spacing: 0.02em; }
+.logo b { color: var(--accent); font-weight: 900; }
+.tagline { font-size: 12px; color: var(--muted); }
+.soon { opacity: .6; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 15px; }
+.site-header nav a { white-space: nowrap; }
 .site-header nav a { color: var(--fg); text-decoration: none; }
 main { padding-block: 24px 48px; }
 h1 { font-size: 1.75rem; line-height: 1.35; margin: 8px 0 12px; }

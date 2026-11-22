@@ -1,8 +1,9 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Badge from '../../components/Badge.astro';
-import Affiliate from '../../components/Affiliate.astro';
-import data from '../../data/sakura.json';
+import Base from '../../../layouts/Base.astro';
+import Badge from '../../../components/Badge.astro';
+import Affiliate from '../../../components/Affiliate.astro';
+import data from '../../../data/sakura.json';
+import { SITE_NAME } from '../../../site';
 const md = (s: string | null) => (s ? `${Number(s.slice(0, 2))}/${Number(s.slice(3))}` : '待確認');
 const title = '2027 日本櫻花季懶人包：10 城市開花・滿開時程表與日期速查';
 const description = '東京、京都、大阪、福岡、名古屋、廣島、金澤、仙台、弘前、札幌的櫻花平年開花・滿開日與近年實際日期。輸入旅遊日期，馬上看哪些城市可能遇到滿開與該買哪張 JR 周遊券。';
@@ -18,11 +19,11 @@ const initialRows = data.cities.map((c) => {
 const labels = ['🌸 很可能遇到滿開', '🤞 看當年早晚', '— 不太可能'];
 const years = [...new Set(data.cities.flatMap((c) => c.recent.map((r) => r.year)))].sort();
 const jsonLd = [
-  { '@context': 'https://schema.org', '@type': 'Article', headline: title, description, inLanguage: 'zh-Hant-TW', datePublished: '2026-11-22', dateModified: data.checked, mainEntityOfPage: new URL('/sakura/2027/', Astro.site).href, image: new URL('/og-default.png', Astro.site).href, author: { '@type': 'Organization', name: '日本鐵道省錢工具箱' } },
-  { '@context': 'https://schema.org', '@type': 'WebApplication', name: '櫻花滿開日期速查', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW', url: new URL('/sakura/2027/', Astro.site).href, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' } },
+  { '@context': 'https://schema.org', '@type': 'Article', headline: title, description, inLanguage: 'zh-Hant-TW', datePublished: '2026-11-22', dateModified: data.checked, mainEntityOfPage: new URL('/japan/sakura/2027/', Astro.site).href, image: new URL('/og-default.png', Astro.site).href, author: { '@type': 'Organization', name: SITE_NAME } },
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: '櫻花滿開日期速查', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW', url: new URL('/japan/sakura/2027/', Astro.site).href, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' } },
 ];
 ---
-<Base title={title} description={description} jsonLd={jsonLd} ogType="article" breadcrumbs={[{ name: '2027 櫻花季', path: '/sakura/2027/' }]}>
+<Base title={title} description={description} jsonLd={jsonLd} ogType="article" breadcrumbs={[{ name: '2027 櫻花季', path: '/japan/sakura/2027/' }]}>
   <h1>{title}</h1>
   <p class="meta">發布 2026-11-22｜資料查核 {data.checked}</p>
   <div class="note">
@@ -86,9 +87,9 @@ const jsonLd = [
 
   <h2>延伸閱讀</h2>
   <ul>
-    <li><a href="/articles/sakura-spots-access-2027/">賞櫻名所 × 交通方式：5 個經典景點怎麼去、搭什麼車</a></li>
-    <li><a href="/articles/sakura-avoid-crowds-2027/">櫻花季避開人潮：用開花時間差規劃追櫻路線</a></li>
-    <li><a href="/tools/jr-pass-calculator/">JR Pass／周遊券划算試算器</a>｜<a href="/tools/japan-trip-budget/">日本旅遊預算計算機</a></li>
+    <li><a href="/japan/articles/sakura-spots-access-2027/">賞櫻名所 × 交通方式：5 個經典景點怎麼去、搭什麼車</a></li>
+    <li><a href="/japan/articles/sakura-avoid-crowds-2027/">櫻花季避開人潮：用開花時間差規劃追櫻路線</a></li>
+    <li><a href="/japan/tools/jr-pass-calculator/">JR Pass／周遊券划算試算器</a>｜<a href="/japan/tools/japan-trip-budget/">日本旅遊預算計算機</a></li>
   </ul>
 
   <script type="application/json" id="sakura-data" set:html={JSON.stringify(data.cities)}></script>

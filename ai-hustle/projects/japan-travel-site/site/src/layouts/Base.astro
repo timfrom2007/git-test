@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE_NAME, SITE_DESC } from '../site';
+import { SITE_NAME, SITE_DESC, SITE_TAGLINE } from '../site';
 
 interface Props {
   title: string;
@@ -15,6 +15,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogUrl = new URL(ogImage, Astro.site).href;
 const fullTitle = title === SITE_NAME ? title : `${title}｜${SITE_NAME}`;
 
+const isJapan = Astro.url.pathname.startsWith('/japan/');
+if (isJapan && Astro.url.pathname !== '/japan/' && breadcrumbs[0]?.path !== '/japan/') breadcrumbs.unshift({ name: '日本', path: '/japan/' });
 const ld: Record<string, unknown>[] = [...jsonLd];
 if (breadcrumbs.length) {
   ld.push({
@@ -54,14 +56,15 @@ if (breadcrumbs.length) {
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/">🚄 {SITE_NAME}</a>
+      <a class="brand" href="/"><span class="logo">走啊<b>敢不敢</b></span><span class="tagline">{SITE_TAGLINE}</span></a>
       <nav>
-        <a href="/tools/jr-pass-calculator/">JR Pass 試算</a>
-        <a href="/tools/japan-trip-budget/">預算計算</a>
-        <a href="/tools/japan-tax-refund/">退稅試算</a>
-        <a href="/sakura/2027/">2027 櫻花</a>
-        <a href="/articles/">文章</a>
-        <a href="/sources/">資料來源</a>
+        <a href="/japan/">日本</a>
+        <a href="/japan/tools/jr-pass-calculator/">JR Pass</a>
+        <a href="/japan/tools/japan-tax-refund/">退稅</a>
+        <a href="/japan/tools/japan-trip-budget/">預算</a>
+        <a href="/japan/sakura/2027/">櫻花</a>
+        <a href="/japan/articles/">文章</a>
+        <a href="/japan/sources/">來源</a>
       </nav>
     </div>
   </header>
@@ -75,7 +78,7 @@ if (breadcrumbs.length) {
   </main>
   <footer class="site-footer">
     <div class="wrap">
-      <p>票價會變動，本站資料僅供規劃參考，購買前請以 JR 官方公告為準。各筆資料的來源與查核日期列於<a href="/sources/">資料來源</a>頁。</p>
+      <p>價格與規定會變動，本站資料僅供規劃參考，購買前請以官方公告為準。各筆資料的來源與查核日期列於<a href="/japan/sources/">資料來源</a>頁。</p>
       <p>© {new Date().getFullYear()} {SITE_NAME}</p>
     </div>
   </footer>

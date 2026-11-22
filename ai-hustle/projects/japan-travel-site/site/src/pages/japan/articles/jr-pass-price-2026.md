@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Article.astro
+layout: ../../../layouts/Article.astro
 title: 2026 年 10 月 JR Pass 漲價整理：官網 vs 代理商價差表
 short: JR Pass 2026 漲價
 description: JR Pass 全國版 2026 年 10 月 1 日起海外代理商售價調漲，JR 官網在一定期間內維持原價。整理 7／14／21 日普通車、綠色車廂、兒童價（JR 官方數字），以及 Nozomi 券與購買管道差異。
@@ -90,4 +90,4 @@ JR Pass 不能搭東海道・山陽・九州新幹線的 Nozomi 與 Mizuho（含
 
 來源：[官網購買說明](https://japanrailpass.net/en/purchase/online/)、[海外代理商購買說明](https://japanrailpass.net/en/purchase/overseas/)。
 
-**我們的建議：**先用[試算器](/tools/jr-pass-calculator/)確認你的行程到底需不需要 JR Pass。多數「東京＋關西」7 日行程單買反而比較便宜；需要 JR Pass 的大多是「東京→廣島／九州」這類長距離行程。
+**我們的建議：**先用[試算器](/japan/tools/jr-pass-calculator/)確認你的行程到底需不需要 JR Pass。多數「東京＋關西」7 日行程單買反而比較便宜；需要 JR Pass 的大多是「東京→廣島／九州」這類長距離行程。

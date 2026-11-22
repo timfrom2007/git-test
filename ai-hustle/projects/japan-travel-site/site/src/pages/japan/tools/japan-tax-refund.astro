@@ -1,11 +1,11 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Affiliate from '../../components/Affiliate.astro';
+import Base from '../../../layouts/Base.astro';
+import Affiliate from '../../../components/Affiliate.astro';
 const title = '日本退稅試算（2026/11/1 新制：先付稅、出境才退）';
 const description = '日本 2026 年 11 月 1 日起免稅改為退稅制（リファンド方式）。輸入每張收據金額，試算可退多少消費稅、要先墊多少錢、哪幾筆未達 5,000 日圓門檻，並檢查 90 天期限。';
 const checked = '2026-11-22';
 const jsonLd = [
-  { '@context': 'https://schema.org', '@type': 'WebApplication', name: '日本退稅試算', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW', url: new URL('/tools/japan-tax-refund/', Astro.site).href, description, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' } },
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: '日本退稅試算', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW', url: new URL('/japan/tools/japan-tax-refund/', Astro.site).href, description, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' } },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
     { q: '2026 年 11 月起日本免稅怎麼變？', a: '改為リファンド方式：在免稅店先付含稅價，購買日起 90 天內出境時，在機場或港口的免稅手續機台出示護照與商品，經海關確認後由店家或退稅業者退還消費稅。' },
     { q: '退稅門檻還是 5,000 日圓嗎？', a: '是。觀光廳說明：同一店鋪一天的購買額（未稅）5,000 日圓以上才適用；消耗品的特殊包裝取消。若免稅店把手續委託給退稅櫃台，同一人同一天在多家店的購買可在櫃台合算 5,000 日圓門檻。' },
@@ -13,7 +13,7 @@ const jsonLd = [
   ].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 ---
-<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: '退稅試算', path: '/tools/japan-tax-refund/' }]}>
+<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: '退稅試算', path: '/japan/tools/japan-tax-refund/' }]}>
   <h1>{title}</h1>
   <p class="meta">資料查核 {checked}</p>
   <div class="note"><strong>新制一句話：</strong>2026/11/1 起在免稅店<strong>先付含稅價</strong>，購買日起 <strong>90 天內出境</strong>時在機場／港口的免稅手續機台刷護照、讓海關確認商品，之後才退錢。商品在日本用掉或沒帶出境，<strong>整張收據都不能退</strong>。</div>
@@ -33,7 +33,7 @@ const jsonLd = [
     <p><label>最早一筆購買日 <input type="date" id="buy" value="2027-03-28" /></label>　<label>出境日 <input type="date" id="out" value="2027-04-03" /></label></p>
     <p><label>退稅手續費 <input type="number" id="fee" min="0" max="100" step="0.5" value="0" style="width:5em" /> %</label>
       <span class="meta">各店家不同，政府沒有統一規定，結帳時問店員。預設 0% 只是方便試算，不代表實際費用。</span></p>
-    <p><label>匯率 1 日圓 = <input type="number" id="fx" step="0.0001" value="0.2107" style="width:7em" /> 新台幣</label> <span class="meta">預設：臺銀現金賣出 2026-11-20（見<a href="/sources/">資料來源</a>）</span></p>
+    <p><label>匯率 1 日圓 = <input type="number" id="fx" step="0.0001" value="0.2107" style="width:7em" /> 新台幣</label> <span class="meta">預設：臺銀現金賣出 2026-11-20（見<a href="/japan/sources/">資料來源</a>）</span></p>
 
     <h2>3. 結果</h2>
     <div id="warn"></div>
@@ -68,7 +68,7 @@ const jsonLd = [
     <li>收據、商品不要拆開用掉：同一張收據有一件用掉，整張都不能退。</li>
     <li>結帳時問清楚：退到哪裡（信用卡／現金／帳戶）、有沒有手續費。2026 年 10 月底報導，唐吉訶德、Bic Camera、多慶屋、鶴羽藥妝宣布不收申請手續費（<a href="https://city.gvm.com.tw/article/134015" rel="nofollow noopener" target="_blank">遠見</a>），其他店待確認。</li>
   </ol>
-  <p>其他 2026–2027 新規定（出國稅、京都住宿稅、JESTA）見<a href="/articles/japan-new-rules-2026-2027/">日本旅遊新制度總整理</a>。</p>
+  <p>其他 2026–2027 新規定（出國稅、京都住宿稅、JESTA）見<a href="/japan/articles/japan-new-rules-2026-2027/">日本旅遊新制度總整理</a>。</p>
 
   <script>
     const tb = document.getElementById('rows')!;

@@ -18,11 +18,11 @@
 5. **06～10 素材包**（從 A 的頁面拆出，數字與網站資料檔一致）：
    | # | 資料夾 | 題材 | 長度 | 導流 |
    |---|---|---|---|---|
-   | 06 | `06-jr-pass-price-2026` | JR Pass 漲價：官網 vs 代理商差 ¥3,000、Nozomi 券 | 44s | `/articles/jr-pass-price-2026/` |
-   | 07 | `07-tokyo-osaka-jr-pass-math` | 東京⇄大阪單買省 ¥20,560，要跑到九州才回本 | 41s | `/articles/tokyo-osaka-shinkansen-jr-pass/` |
-   | 08 | `08-sakura-avoid-crowds` | 賞櫻避人潮 4 技巧 | 33s | `/articles/sakura-avoid-crowds-2027/` |
-   | 09 | `09-sakura-chase-routes` | 追櫻 3 路線（福岡 3/31 → 札幌 5/6） | 42s | `/sakura/2027/` |
-   | 10 | `10-trip-budget-hidden-costs` | 最容易漏算的 4 筆錢 | 39s | `/tools/japan-trip-budget/` |
+   | 06 | `06-jr-pass-price-2026` | JR Pass 漲價：官網 vs 代理商差 ¥3,000、Nozomi 券 | 44s | `/japan/articles/jr-pass-price-2026/` |
+   | 07 | `07-tokyo-osaka-jr-pass-math` | 東京⇄大阪單買省 ¥20,560，要跑到九州才回本 | 41s | `/japan/articles/tokyo-osaka-shinkansen-jr-pass/` |
+   | 08 | `08-sakura-avoid-crowds` | 賞櫻避人潮 4 技巧 | 33s | `/japan/articles/sakura-avoid-crowds-2027/` |
+   | 09 | `09-sakura-chase-routes` | 追櫻 3 路線（福岡 3/31 → 札幌 5/6） | 42s | `/japan/sakura/2027/` |
+   | 10 | `10-trip-budget-hidden-costs` | 最容易漏算的 4 筆錢 | 39s | `/japan/tools/japan-trip-budget/` |
 
 ## 建議發布順序（每 2～3 天一支）
 01 → 02 → 06 → 03 → 04 → 07 → 05 → 08 → 09 → 10

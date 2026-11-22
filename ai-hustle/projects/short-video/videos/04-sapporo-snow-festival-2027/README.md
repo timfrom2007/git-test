@@ -21,18 +21,18 @@
 🏨 雪祭期間住宿很搶 → 先訂可免費取消
 👟 防滑鞋（或鞋底冰爪）比羽絨衣更重要
 📌 北海道冬季行程 → 主頁連結
-🔗 {SITE_URL}/articles/hokkaido-winter-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v04
+🔗 {SITE_URL}/japan/articles/hokkaido-winter-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v04
 官網：https://www.snowfes.com/（日期以官方公告為準）
 ```
 
 ## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
 | 平台 | 說明欄連結 |
 |---|---|
-| YouTube | `{SITE_URL}/articles/hokkaido-winter-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v04` |
-| Instagram | `{SITE_URL}/articles/hokkaido-winter-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v04` |
-| Threads | `{SITE_URL}/articles/hokkaido-winter-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v04` |
+| YouTube | `{SITE_URL}/japan/articles/hokkaido-winter-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v04` |
+| Instagram | `{SITE_URL}/japan/articles/hokkaido-winter-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v04` |
+| Threads | `{SITE_URL}/japan/articles/hokkaido-winter-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v04` |
 
-補充連結：`{SITE_URL}/tools/japan-trip-budget/`
+補充連結：`{SITE_URL}/japan/tools/japan-trip-budget/`
 
 - 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
 - `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。

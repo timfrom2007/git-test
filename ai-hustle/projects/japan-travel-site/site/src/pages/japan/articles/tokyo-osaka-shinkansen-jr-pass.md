@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Article.astro
+layout: ../../../layouts/Article.astro
 title: 東京–大阪新幹線票價與 JR Pass 划算門檻（2026 實算 6 種行程）
 short: 東京–大阪新幹線與 JR Pass
 description: 東京到大阪、京都、廣島、博多的新幹線單程票價整理，並實算 6 種常見台灣旅客行程，看 JR Pass 7 日券到底要坐多遠才回本。
@@ -66,4 +66,4 @@ checked: 2026-11-22
 
 </div>
 
-smartEX 與早特 21 價格來源：[NAVITIME](https://japantravel.navitime.com/en/area/jp/guide/NTJhowto0210-en/)。周遊券細節見[關西出發周遊券比較](/articles/kansai-area-passes-2026/)。
+smartEX 與早特 21 價格來源：[NAVITIME](https://japantravel.navitime.com/en/area/jp/guide/NTJhowto0210-en/)。周遊券細節見[關西出發周遊券比較](/japan/articles/kansai-area-passes-2026/)。

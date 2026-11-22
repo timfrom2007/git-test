@@ -1,8 +1,8 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Badge from '../../components/Badge.astro';
-import Affiliate from '../../components/Affiliate.astro';
-import data from '../../data/fares.json';
+import Base from '../../../layouts/Base.astro';
+import Badge from '../../../components/Badge.astro';
+import Affiliate from '../../../components/Affiliate.astro';
+import data from '../../../data/fares.json';
 const yen = (n: number | null) => (n == null ? '待確認' : '¥' + n.toLocaleString('en-US'));
 const title = 'JR Pass／周遊券划算試算器（2026 年 10 月新價）';
 const description = '勾選你的新幹線行程，即時比較 JR Pass 全國版、關西廣域、關西廣島、北陸拱型周遊券與單買車票哪個便宜。票價標註來源與查核日期。';
@@ -10,7 +10,7 @@ const jsonLd = [
   {
     '@context': 'https://schema.org', '@type': 'WebApplication', name: 'JR Pass／周遊券划算試算器',
     applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW',
-    url: new URL('/tools/jr-pass-calculator/', Astro.site).href, description,
+    url: new URL('/japan/tools/jr-pass-calculator/', Astro.site).href, description,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' },
   },
   {
@@ -24,7 +24,7 @@ const jsonLd = [
 ];
 const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozomiSupplement };
 ---
-<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: 'JR Pass 試算', path: '/tools/jr-pass-calculator/' }]}>
+<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: 'JR Pass 試算', path: '/japan/tools/jr-pass-calculator/' }]}>
   <h1>{title}</h1>
   <p class="lead">輸入每段行程搭幾次，試算器會比較「全部單買」和每一種票券的總花費。票價查核日期：{data.checked}。</p>
   <div class="note">
@@ -96,9 +96,9 @@ const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozo
   <h3>試算器的票價從哪裡來？</h3>
   <p>每筆票價旁都有來源連結與可信度標籤，查核日期 {data.checked}。查不到的票價標「待確認」，需要你自行填入。</p>
   <h3>JR Pass 可以搭 Nozomi 嗎？</h3>
-  <p>JR Pass 本身不含 Nozomi／Mizuho，可以搭 Hikari／Sakura；若要搭 Nozomi，要另購 JR Pass 專用 Nozomi・Mizuho 券：東京–新大阪／京都 ¥4,960、東京–廣島 ¥6,500、東京–博多 ¥8,140（<a href="https://japanrailpass.net/en/use/special-ticket/" rel="nofollow noopener" target="_blank">JR Pass 官網</a>）。細節見<a href="/articles/tokyo-osaka-shinkansen-jr-pass/">東京–大阪新幹線票價與 JR Pass 划算門檻</a>。</p>
+  <p>JR Pass 本身不含 Nozomi／Mizuho，可以搭 Hikari／Sakura；若要搭 Nozomi，要另購 JR Pass 專用 Nozomi・Mizuho 券：東京–新大阪／京都 ¥4,960、東京–廣島 ¥6,500、東京–博多 ¥8,140（<a href="https://japanrailpass.net/en/use/special-ticket/" rel="nofollow noopener" target="_blank">JR Pass 官網</a>）。細節見<a href="/japan/articles/tokyo-osaka-shinkansen-jr-pass/">東京–大阪新幹線票價與 JR Pass 划算門檻</a>。</p>
   <h3>在官網買和在代理商買價格一樣嗎？</h3>
-  <p>2026 年 10 月 1 日起不一樣，見<a href="/articles/jr-pass-price-2026/">2026 年 10 月 JR Pass 漲價整理</a>。</p>
+  <p>2026 年 10 月 1 日起不一樣，見<a href="/japan/articles/jr-pass-price-2026/">2026 年 10 月 JR Pass 漲價整理</a>。</p>
 
   <script type="application/json" id="fare-data" set:html={JSON.stringify(clientData)}></script>
   <script>

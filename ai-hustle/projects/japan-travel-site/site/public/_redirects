@@ -1,0 +1,9 @@
+# 舊路徑 → /japan/（2026-11-22 品牌改版「走啊敢不敢」）。Cloudflare Pages 會讀這個檔，回 301。
+/tools/* /japan/tools/:splat 301
+/articles/* /japan/articles/:splat 301
+/sakura/* /japan/sakura/:splat 301
+/sources/* /japan/sources/:splat 301
+/tools /japan/ 301
+/articles /japan/articles/ 301
+/sakura /japan/sakura/2027/ 301
+/sources /japan/sources/ 301

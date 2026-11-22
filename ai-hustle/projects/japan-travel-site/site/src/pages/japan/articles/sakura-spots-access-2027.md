@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Article.astro
+layout: ../../../layouts/Article.astro
 title: 賞櫻名所 × 交通方式：5 個經典景點怎麼去、搭什麼車（2027 櫻花季）
 short: 賞櫻名所交通
 description: 上野恩賜公園、哲學之道、大阪城西之丸庭園、金澤城公園・兼六園、弘前公園的最近車站、從 JR 站怎麼轉乘、平年滿開日與適合的周遊券，一張表整理。
@@ -8,7 +8,7 @@ checked: 2026-11-22
 affiliates: [klook-sakura, klook-kansai-pass, kkday-kansai-pass, esim]
 ---
 
-**用法：**先在 [2027 櫻花時程表](/sakura/2027/) 確認你的日期遇得到哪個城市的滿開，再用這篇查景點怎麼去。2027 年的開花預測公布後（約 2027 年 1–2 月）會更新日期欄。
+**用法：**先在 [2027 櫻花時程表](/japan/sakura/2027/) 確認你的日期遇得到哪個城市的滿開，再用這篇查景點怎麼去。2027 年的開花預測公布後（約 2027 年 1–2 月）會更新日期欄。
 
 ## 5 個景點一覽
 
@@ -30,13 +30,13 @@ affiliates: [klook-sakura, klook-kansai-pass, kkday-kansai-pass, esim]
 大阪城：[るるぶ](https://rurubu.jp/andmore/spot/80028527/sakura)、[Walkerplus](https://www.walkerplus.com/article/141950/)；
 金澤：[ジョルダン 石川](https://sp.jorudan.co.jp/hanami/rank_ishikawa.html)；
 弘前：[ANA Japan Travel Planner](https://www.ana.co.jp/ja/be/japan-travel-planner/aomori/0000002.html)、[るるぶ](https://rurubu.jp/andmore/spot/80002073/)。
-平年滿開日見[時程表來源](/sakura/2027/)。查核日 2026-11-22，皆為第三方資料，交通時間和費用請出發前再確認。
+平年滿開日見[時程表來源](/japan/sakura/2027/)。查核日 2026-11-22，皆為第三方資料，交通時間和費用請出發前再確認。
 
 ## 各景點重點
 
 ### 上野恩賜公園（東京）
 - 約 800 棵櫻花（染井吉野等約 50 種），開園 5:00–23:00，免費入園（[GLTJP](https://www.gltjp.com/ja/directory/item/10136/)）。
-- 同一來源寫例年人潮約 400 萬人，是東京最擠的賞櫻地之一。想避開人潮見[避開人潮的策略](/articles/sakura-avoid-crowds-2027/)。
+- 同一來源寫例年人潮約 400 萬人，是東京最擠的賞櫻地之一。想避開人潮見[避開人潮的策略](/japan/articles/sakura-avoid-crowds-2027/)。
 
 ### 哲學之道（京都）
 - 約 400 棵染井吉野等，沿水道步道，**沒有停車場**（[ジョルダン](https://sp.jorudan.co.jp/hanami/spot_302.html)）。
@@ -48,7 +48,7 @@ affiliates: [klook-sakura, klook-kansai-pass, kkday-kansai-pass, esim]
 
 ### 金澤城公園・兼六園（金澤）
 - 從 JR 金澤站搭北鐵巴士約 20 分到「兼六園下・金沢城」。兼六園本身的櫻花數量與門票本次查不到可靠資料，標「待確認」。
-- 從東京可搭北陸新幹線（東京–金澤指定席約 ¥14,600，二手來源），若之後還要去大阪，北陸拱型周遊券 ¥35,000 可以比較看看（見 [關西周遊券比較](/articles/kansai-area-passes-2026/)）。
+- 從東京可搭北陸新幹線（東京–金澤指定席約 ¥14,600，二手來源），若之後還要去大阪，北陸拱型周遊券 ¥35,000 可以比較看看（見 [關西周遊券比較](/japan/articles/kansai-area-passes-2026/)）。
 
 ### 弘前公園（青森）
 - 2020–2025 年滿開日在 4/13–4/27 之間，年年落差大（[弘前さくらまつり官方](https://www.hirosakipark.jp/sakura/kaika/data/)）。
@@ -67,4 +67,4 @@ affiliates: [klook-sakura, klook-kansai-pass, kkday-kansai-pass, esim]
 
 </div>
 
-用自己的行程算一次：[JR Pass／周遊券試算器](/tools/jr-pass-calculator/)。
+用自己的行程算一次：[JR Pass／周遊券試算器](/japan/tools/jr-pass-calculator/)。

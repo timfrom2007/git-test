@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    { "source": "/tools/:path*", "destination": "/japan/tools/:path*", "permanent": true },
+    { "source": "/articles/:path*", "destination": "/japan/articles/:path*", "permanent": true },
+    { "source": "/sakura/:path*", "destination": "/japan/sakura/:path*", "permanent": true },
+    { "source": "/sources/:path*", "destination": "/japan/sources/:path*", "permanent": true },
+    { "source": "/tools", "destination": "/japan/", "permanent": true },
+    { "source": "/articles", "destination": "/japan/articles/", "permanent": true },
+    { "source": "/sakura", "destination": "/japan/sakura/2027/", "permanent": true },
+    { "source": "/sources", "destination": "/japan/sources/", "permanent": true }
+  ]
+}

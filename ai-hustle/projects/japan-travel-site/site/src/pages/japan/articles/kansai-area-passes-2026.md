@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Article.astro
+layout: ../../../layouts/Article.astro
 title: 關西出發周遊券怎麼選：關西廣域、關西＋廣島、北陸拱型比較（2026）
 short: 關西周遊券比較
 description: 2026 年關西地區周遊券（Kansai Area Pass）停售後，台灣旅客從大阪出發還能買哪些 JR 周遊券？整理關西廣域、關西＋廣島、北陸拱型的價格、天數、涵蓋範圍與回本門檻。
@@ -67,4 +67,4 @@ checked: 2026-11-22
 2. **從東京進、大阪出（或反過來），又想順路去金澤？** → 北陸拱型周遊券，避開東海道新幹線。
 3. **只玩京阪神＋一天去岡山、城崎或白濱？** → 關西廣域周遊券；若只在京都、大阪、奈良市區移動，通常 ICOCA 直接刷就好，不用買周遊券。
 
-不確定的話，把行程丟進[試算器](/tools/jr-pass-calculator/)，三張券和 JR Pass 全國版會並排比較。
+不確定的話，把行程丟進[試算器](/japan/tools/jr-pass-calculator/)，三張券和 JR Pass 全國版會並排比較。

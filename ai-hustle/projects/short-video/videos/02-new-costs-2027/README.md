@@ -23,18 +23,18 @@
 3️⃣ JESTA 電子入境認證：預計 2028 年度實施，費用未定 → 現在叫你付錢的先當詐騙
 
 📌 旅遊預算試算 → 主頁連結
-🔗 {SITE_URL}/articles/japan-new-rules-2026-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v02
+🔗 {SITE_URL}/japan/articles/japan-new-rules-2026-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v02
 資料來源：日本觀光廳、京都市、出入國在留管理廳相關報導（查核 2026-11-22）
 ```
 
 ## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
 | 平台 | 說明欄連結 |
 |---|---|
-| YouTube | `{SITE_URL}/articles/japan-new-rules-2026-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v02` |
-| Instagram | `{SITE_URL}/articles/japan-new-rules-2026-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v02` |
-| Threads | `{SITE_URL}/articles/japan-new-rules-2026-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v02` |
+| YouTube | `{SITE_URL}/japan/articles/japan-new-rules-2026-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v02` |
+| Instagram | `{SITE_URL}/japan/articles/japan-new-rules-2026-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v02` |
+| Threads | `{SITE_URL}/japan/articles/japan-new-rules-2026-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v02` |
 
-補充連結：`{SITE_URL}/tools/japan-trip-budget/`
+補充連結：`{SITE_URL}/japan/tools/japan-trip-budget/`
 
 - 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
 - `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。

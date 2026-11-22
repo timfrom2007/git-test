@@ -1,33 +1,36 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SITE_NAME, SITE_DESC } from '../site';
-const articles = Object.values(import.meta.glob('./articles/*.md', { eager: true })) as any[];
+import { SITE_NAME, SITE_DESC, SITE_TAGLINE, DESTINATIONS } from '../site';
 const jsonLd = [{
-  '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: Astro.site?.href, inLanguage: 'zh-Hant-TW', description: SITE_DESC,
+  '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, alternateName: SITE_TAGLINE, url: Astro.site?.href, inLanguage: 'zh-Hant-TW', description: SITE_DESC,
 }];
 ---
 <Base title={SITE_NAME} jsonLd={jsonLd}>
-  <h1>JR Pass 要不要買？先算再說。</h1>
-  <p class="lead">{SITE_DESC}</p>
-  <div class="card">
-    <h2 style="margin-top:0">🧮 JR Pass／周遊券划算試算器</h2>
-    <p>勾選你的新幹線路段，立刻比較 JR Pass 全國版（2026 年 10 月新價）、關西廣域、關西＋廣島、北陸拱型周遊券與單買車票。</p>
-    <a class="btn" href="/tools/jr-pass-calculator/">開始試算</a>
-  </div>
+  <h1>走啊，敢不敢？<br />出發前先算一下。</h1>
+  <p class="lead">{SITE_TAGLINE}。票價、規定、日期都附來源與查核日期，查不到的寫「待確認」，不用估計值充數。</p>
+
+  <h2>選目的地</h2>
   <div class="cards">
-    <div class="card"><h3>🌸 2027 櫻花季時程表</h3><p class="meta">10 城市平年開花・滿開日，輸入旅遊日期看哪裡遇得到滿開。</p><a class="btn ghost" href="/sakura/2027/">查日期</a></div>
-    <div class="card"><h3>🧾 日本退稅試算（11/1 新制）</h3><p class="meta">先付稅、出境才退：輸入收據，算能退多少、哪筆沒過門檻。</p><a class="btn ghost" href="/tools/japan-tax-refund/">算退稅</a></div>
-    <div class="card"><h3>💰 日本旅遊預算計算機</h3><p class="meta">住宿、交通、餐飲、機票加總，以台幣顯示，匯率可自訂。</p><a class="btn ghost" href="/tools/japan-trip-budget/">算預算</a></div>
-  </div>
-  <h2>懶人包文章</h2>
-  <div class="cards">
-    {articles.map((a) => (
-      <div class="card"><h3><a href={a.url.replace(/\/?$/, '/')}>{a.frontmatter.title}</a></h3><p class="meta">{a.frontmatter.description}</p></div>
+    {DESTINATIONS.map((d) => d.status === 'live' ? (
+      <a class="card" href={d.path!} style="text-decoration:none;color:inherit">
+        <h3>{d.emoji} {d.name}</h3><p class="meta">{d.desc}</p><span class="btn">進入 →</span>
+      </a>
+    ) : (
+      <div class="card soon" aria-disabled="true"><h3>{d.emoji} {d.name}</h3><p class="meta">即將推出</p></div>
     ))}
   </div>
+
+  <h2>日本熱門工具</h2>
+  <ul>
+    <li><a href="/japan/tools/jr-pass-calculator/">JR Pass／周遊券划算試算器</a></li>
+    <li><a href="/japan/tools/japan-tax-refund/">日本退稅試算（2026/11/1 新制）</a></li>
+    <li><a href="/japan/tools/japan-trip-budget/">日本旅遊預算計算機</a></li>
+    <li><a href="/japan/sakura/2027/">2027 櫻花季時程表與日期速查</a></li>
+  </ul>
+
   <h2>本站原則</h2>
   <ul>
-    <li>每個票價都附來源連結與查核日期。</li>
+    <li>每個價格、日期都附來源連結與查核日期。</li>
     <li>查不到的寫「待確認」，不用估計值充數。</li>
     <li>二手來源會標示出來，提醒你購買前到官方網站核對。</li>
   </ul>

@@ -23,18 +23,18 @@ JR Pass 全國版（普通車、成人）2026/10/1 起：
 ⚠️ 搭 Nozomi 要另買 Nozomi 券，東京–新大阪單程約 ¥4,960
 2023 年漲價後，只跑東京＋關西 7 天，多半單買比較便宜。
 📌 JR Pass 試算 → 主頁連結
-🔗 {SITE_URL}/articles/jr-pass-price-2026/?utm_source=youtube&utm_medium=shorts&utm_campaign=v06
+🔗 {SITE_URL}/japan/articles/jr-pass-price-2026/?utm_source=youtube&utm_medium=shorts&utm_campaign=v06
 價格取自第三方整理，購買前請以 JR Pass 官網為準（查核 2026-11-22）
 ```
 
 ## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
 | 平台 | 說明欄連結 |
 |---|---|
-| YouTube | `{SITE_URL}/articles/jr-pass-price-2026/?utm_source=youtube&utm_medium=shorts&utm_campaign=v06` |
-| Instagram | `{SITE_URL}/articles/jr-pass-price-2026/?utm_source=instagram&utm_medium=shorts&utm_campaign=v06` |
-| Threads | `{SITE_URL}/articles/jr-pass-price-2026/?utm_source=threads&utm_medium=shorts&utm_campaign=v06` |
+| YouTube | `{SITE_URL}/japan/articles/jr-pass-price-2026/?utm_source=youtube&utm_medium=shorts&utm_campaign=v06` |
+| Instagram | `{SITE_URL}/japan/articles/jr-pass-price-2026/?utm_source=instagram&utm_medium=shorts&utm_campaign=v06` |
+| Threads | `{SITE_URL}/japan/articles/jr-pass-price-2026/?utm_source=threads&utm_medium=shorts&utm_campaign=v06` |
 
-補充連結：`{SITE_URL}/tools/jr-pass-calculator/`
+補充連結：`{SITE_URL}/japan/tools/jr-pass-calculator/`
 
 - 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
 - `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。

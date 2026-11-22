@@ -22,17 +22,17 @@
 4️⃣ 前後各留一天彈性，照當年開花狀況換城市
 以上是規劃技巧，實際人潮每年不同。
 📌 3 條避人潮追櫻路線 → 主頁連結
-🔗 {SITE_URL}/articles/sakura-avoid-crowds-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v08
+🔗 {SITE_URL}/japan/articles/sakura-avoid-crowds-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v08
 ```
 
 ## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
 | 平台 | 說明欄連結 |
 |---|---|
-| YouTube | `{SITE_URL}/articles/sakura-avoid-crowds-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v08` |
-| Instagram | `{SITE_URL}/articles/sakura-avoid-crowds-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v08` |
-| Threads | `{SITE_URL}/articles/sakura-avoid-crowds-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v08` |
+| YouTube | `{SITE_URL}/japan/articles/sakura-avoid-crowds-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v08` |
+| Instagram | `{SITE_URL}/japan/articles/sakura-avoid-crowds-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v08` |
+| Threads | `{SITE_URL}/japan/articles/sakura-avoid-crowds-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v08` |
 
-補充連結：`{SITE_URL}/sakura/2027/`
+補充連結：`{SITE_URL}/japan/sakura/2027/`
 
 - 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
 - `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。

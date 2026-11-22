@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Article.astro
+layout: ../../../layouts/Article.astro
 title: 北海道冬季懶人包 2027：札幌雪祭 2/4–2/11、機場交通、JR 周遊券
 short: 北海道冬季懶人包
 description: 2027 第 77 屆札幌雪祭 2/4（四）–2/11（四・國定假日）三個會場整理，新千歲機場到札幌交通與票價，北海道鐵路周遊券價格現況，以及雪祭期間訂房、防滑準備。
@@ -53,7 +53,7 @@ affiliates: [hotel-search, klook-jrpass, kkday-jrpass, esim]
 
 </div>
 
-JR 北海道官網寫明 **5 日券 ¥22,000**（[JR 北海道 Hokkaido Rail Pass](https://www.jrhokkaido.co.jp/global/english/ticket/railpass/index.html)），與來源 A 一致；其他天數官網價格表是圖片，本次無法自動讀取，仍以第三方數字列出、**待確認**。來源 A：[watabi.org](https://watabi.org/en/articles/hokkaido-jr-pass-guide)；來源 B：[Pelago](https://www.pelago.com/en/articles/hokkaido-rail-pass-guide/)。只在札幌、小樽一帶玩的話，單買車票通常就夠，周遊券要排到旭川、函館等長程才可能划算（實際以[試算器](/tools/jr-pass-calculator/)填入票價比較）。
+JR 北海道官網寫明 **5 日券 ¥22,000**（[JR 北海道 Hokkaido Rail Pass](https://www.jrhokkaido.co.jp/global/english/ticket/railpass/index.html)），與來源 A 一致；其他天數官網價格表是圖片，本次無法自動讀取，仍以第三方數字列出、**待確認**。來源 A：[watabi.org](https://watabi.org/en/articles/hokkaido-jr-pass-guide)；來源 B：[Pelago](https://www.pelago.com/en/articles/hokkaido-rail-pass-guide/)。只在札幌、小樽一帶玩的話，單買車票通常就夠，周遊券要排到旭川、函館等長程才可能划算（實際以[試算器](/japan/tools/jr-pass-calculator/)填入票價比較）。
 
 ## 雪祭行前清單
 
@@ -65,7 +65,7 @@ JR 北海道官網寫明 **5 日券 ¥22,000**（[JR 北海道 Hokkaido Rail Pas
 | 鞋子 | 防滑鞋或可套在鞋底的冰爪，比加厚羽絨衣更優先 |
 | 手機 | 低溫時電量掉得快，帶行動電源、放內側口袋 |
 | 交通 | 回程搭機日不要排太緊，下大雪時列車可能延誤 |
-| 預算 | 用[預算計算機](/tools/japan-trip-budget/)把旺季房價直接填進去 |
+| 預算 | 用[預算計算機](/japan/tools/japan-trip-budget/)把旺季房價直接填進去 |
 
 </div>
 
@@ -88,5 +88,5 @@ JR 北海道官網寫明 **5 日券 ¥22,000**（[JR 北海道 Hokkaido Rail Pas
 來源：[氣象廳 札幌 平年值（月別）](https://www.data.jma.go.jp/obd/stats/etrn/view/nml_sfc_ym.php?prec_no=14&block_no=47412&year=&month=&day=&view=)。白天最高氣溫平均也只在 0℃ 上下，路面結冰是常態，防滑鞋真的比較重要。
 
 ## 延伸
-- 冬天也想看合掌村？見[北陸冬季懶人包：白川鄉點燈 2027](/articles/hokuriku-winter-2027/)。
-- 春天賞櫻：札幌平年滿開約 5/6，見 [2027 櫻花時程表](/sakura/2027/)。
+- 冬天也想看合掌村？見[北陸冬季懶人包：白川鄉點燈 2027](/japan/articles/hokuriku-winter-2027/)。
+- 春天賞櫻：札幌平年滿開約 5/6，見 [2027 櫻花時程表](/japan/sakura/2027/)。
