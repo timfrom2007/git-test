@@ -41,6 +41,8 @@ python -m shot_tracker pick-rim videos\my_shots.mp4 --out videos\rim.json
 python -m shot_tracker analyze videos\my_shots.mp4 --rim videos\rim.json --out results
 ```
 
+**影片速度**：程式會用重力自動偵測影片是不是加速或慢動作，必要時自動校正。如果已經知道速度，也可以直接指定，例如 iPhone 慢動作以 1/8 速度匯出時加上 `--speed 0.125`。
+
 輸出（在 `results\`）：
 
 - `annotated.mp4`：疊上軌跡、數據和命中數的影片
@@ -61,6 +63,22 @@ python -m shot_tracker analyze videos\my_shots.mp4 --rim videos\rim.json --out r
 3. **擬合**：從最高點到籃框這段（一定是自由飛行）先擬合，再往回延伸，直到點不再落在拋物線上，那一點就是出手點
 4. **換算**：籃框直徑 45.72 cm，用來把像素換算成公分
 5. **品質檢查**：`gravity_ratio` 是擬合出來的重力 ÷ 9.81。接近 1.0 代表拍攝角度和比例尺正確；明顯偏離的話，表示鏡頭沒有和投籃方向垂直
+
+## 真實影片測試結果
+
+用公開專案 [chonyy/basketball-shot-detection](https://github.com/chonyy/basketball-shot-detection) 的範例影片測試（影片沒有放進本 repo）。
+這些影片是戶外、30fps、**斜 45° 拍攝**，不是建議的正側面：
+
+| 影片 | 正確答案 | 程式判定 |
+|---|---|---|
+| three_score_two_miss | 3 進 2 不進 | 3/5 ✅（自動偵測出影片是 2 倍速） |
+| two_score_two_miss | 2 進 2 不進 | 2/4 ✅ |
+| one_score_one_miss | 1 進 1 不進 | 1/2 ✅ |
+
+學到的事：
+- 真實的球在陽光、天空背景下顏色偏紅褐甚至偏紫，顏色範圍要放寬
+- 畫面中有很多和球顏色接近的東西（皮膚、褲子、紅色場地），所以要同時追蹤所有候選目標，再用「是不是拋物線」篩選
+- 斜拍時，**出手角度量不準**（透視變形，程式只能從飛行後段開始擬合）；入框角度和進球判定還是可用
 
 ## 已知限制
 

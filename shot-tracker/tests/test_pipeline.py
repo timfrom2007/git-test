@@ -93,3 +93,36 @@ def test_end_to_end_video(tmp_path):
     assert report["summary"]["shots"] == 3
     assert (tmp_path / "out" / "overlay.png").exists()
     assert not math.isnan(summary["depth_cm"]["mean"])
+
+
+@pytest.mark.parametrize("speed", [2.0, 0.125])
+def test_detects_sped_up_or_slow_motion_video(speed):
+    """A video played at `speed` x real time shows gravity scaled by speed^2;
+    the analysis should detect that and still produce correct metrics."""
+    from shot_tracker.analyze import estimate_time_scale
+
+    rim = make_rim()
+    tracks, truths = [], []
+    for i, spec in enumerate([ShotSpec(52, 6), ShotSpec(48, -14), ShotSpec(55, 3)]):
+        (tr,), truth = _tracks_from_spec(spec, rim)
+        off = i * 400
+        tracks.append([TrackPoint(p.frame + off, (p.t + off / FPS) / speed, p.x, p.y, p.X, p.Y, p.r) for p in tr])
+        truths.append(truth)
+    k = estimate_time_scale(tracks)
+    assert k == pytest.approx(speed, rel=0.02)
+    shots = analyze_tracks(tracks, time_scale=k)
+    assert [s.result for s in shots] == [t.result for t in truths]
+    for s, t in zip(shots, truths):
+        assert s.release_speed_ms == pytest.approx(t.release_speed_ms, abs=0.1)
+        assert s.entry_angle_deg == pytest.approx(t.entry_angle_deg, abs=0.5)
+
+
+def test_normal_speed_video_is_not_rescaled():
+    from shot_tracker.analyze import estimate_time_scale
+
+    rim = make_rim()
+    tracks = []
+    for i, spec in enumerate([ShotSpec(52, 6), ShotSpec(48, -14)]):
+        (tr,), _ = _tracks_from_spec(spec, rim)
+        tracks.append([TrackPoint(p.frame + i * 400, p.t + i * 400 / FPS, p.x, p.y, p.X, p.Y, p.r) for p in tr])
+    assert estimate_time_scale(tracks) == 1.0

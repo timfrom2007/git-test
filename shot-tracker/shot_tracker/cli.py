@@ -85,7 +85,7 @@ def cmd_analyze(a) -> None:
         rim = Rim.load(a.rim)
     else:
         raise SystemExit("need --rim rim.json or --rim-points x1,y1,x2,y2")
-    shots, summary = run(a.video, rim, a.out, detector=a.detector, annotate=not a.no_video)
+    shots, summary = run(a.video, rim, a.out, detector=a.detector, annotate=not a.no_video, speed=a.speed)
     _print_report(shots, summary)
     print(f"\noutputs in {a.out}/")
 
@@ -112,6 +112,11 @@ def main(argv=None) -> None:
     s.add_argument("--out", default="results")
     s.add_argument("--detector", choices=["color", "yolo"], default="color")
     s.add_argument("--no-video", action="store_true", help="skip annotated.mp4")
+    s.add_argument(
+        "--speed",
+        type=float,
+        help="playback speed vs real time, e.g. 0.125 for slow-mo exported at 1/8 (default: auto-detect)",
+    )
     s.set_defaults(func=cmd_analyze)
 
     a = p.parse_args(argv)

@@ -28,13 +28,15 @@ class ColorBallDetector:
     def __init__(
         self,
         rim: Rim,
-        hsv_lo: tuple[int, int, int] = (3, 80, 50),
-        hsv_hi: tuple[int, int, int] = (25, 255, 255),
+        hsv_ranges: list[tuple[tuple[int, int, int], tuple[int, int, int]]] | None = None,
         use_motion: bool = True,
     ) -> None:
         self.rim = rim
-        self.hsv_lo = np.array(hsv_lo, np.uint8)
-        self.hsv_hi = np.array(hsv_hi, np.uint8)
+        # Real balls range from bright orange to dull red-brown; red hue wraps
+        # around 180 in OpenCV, so two bands are needed.
+        if hsv_ranges is None:
+            hsv_ranges = [((0, 40, 40), (25, 255, 255)), ((145, 40, 40), (180, 255, 255))]
+        self.hsv_ranges = [(np.array(lo, np.uint8), np.array(hi, np.uint8)) for lo, hi in hsv_ranges]
         self.expected_r = BALL_RADIUS_CM * rim.px_per_cm
         self.use_motion = use_motion
         self._bg = cv2.createBackgroundSubtractorMOG2(history=300, varThreshold=32, detectShadows=False)
@@ -57,7 +59,9 @@ class ColorBallDetector:
 
     def __call__(self, frame: np.ndarray) -> list[Detection]:
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        mask = cv2.inRange(hsv, self.hsv_lo, self.hsv_hi)
+        mask = np.zeros(hsv.shape[:2], np.uint8)
+        for lo, hi in self.hsv_ranges:
+            mask |= cv2.inRange(hsv, lo, hi)
         if self.use_motion:
             motion = self._bg.apply(frame)
             motion = cv2.dilate(motion, self._kernel, iterations=2)
@@ -74,10 +78,12 @@ class ColorBallDetector:
             if area < math.pi * (0.35 * r0) ** 2:
                 continue
             (x, y), r = cv2.minEnclosingCircle(c)
-            if not (0.45 * r0 <= r <= 1.7 * r0):
+            # perspective: the ball can look quite a bit smaller/larger than
+            # at the rim, so size is judged on a log scale
+            if not (0.4 * r0 <= r <= 2.0 * r0):
                 continue
             fill = area / (math.pi * r * r + 1e-6)   # 1.0 for a perfect disc
-            size = math.exp(-((r / r0 - 1) ** 2) / 0.15)
+            size = math.exp(-(math.log(r / r0) ** 2) / 0.5)
             score = float(min(1.0, fill) * size)
             if score > 0.2:
                 out.append(Detection(float(x), float(y), float(r), score))

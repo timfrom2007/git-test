@@ -126,10 +126,42 @@ def _classify(entry_t: float, depth: float, later: list[TrackPoint]) -> tuple[st
     return "miss", "rim_out"
 
 
-def analyze_tracks(tracks: list[list[TrackPoint]]) -> list[Shot]:
-    all_pts = sorted((p for tr in tracks for p in tr), key=lambda p: p.t)
+def estimate_time_scale(tracks: list[list[TrackPoint]]) -> float:
+    """Detect videos whose timestamps don't match real time.
+
+    A ball in free flight must fall with g = 9.81 m/s^2. If all flights in a
+    video show e.g. 4x that, the video plays 2x faster than real time (sped
+    up); 1/64 means a slow-motion clip exported at 1/8 speed. Returns the
+    factor to multiply video time by to get real time (1.0 = no change).
+    """
+    ratios = []
+    for tr in tracks:
+        for s, e, apex in _flight_segments(tr):
+            pts, _, cx, cy = _robust_fit(tr[s : e + 1], apex - s)
+            if len(pts) < MIN_FLIGHT_POINTS or cy[0] >= 0:
+                continue
+            if abs(pts[0].X) < MIN_SHOT_DISTANCE_CM:
+                continue
+            ratios.append(-2 * cy[0] / GRAVITY_CM_S2)
+    if len(ratios) < 2:
+        return 1.0
+    k = math.sqrt(float(np.median(ratios)))
+    # within ~1.4x is perspective / calibration error, not a speed change
+    return k if not 0.7 < k < 1.4 else 1.0
+
+
+def analyze_tracks(tracks: list[list[TrackPoint]], time_scale: float = 1.0) -> list[Shot]:
+    if time_scale != 1.0:
+        tracks = [
+            [TrackPoint(p.frame, p.t * time_scale, p.x, p.y, p.X, p.Y, p.r) for p in tr] for tr in tracks
+        ]
+    # Tracks that begin at the rim: the ball after rim contact / in the net,
+    # when tracking broke at the rim. Used together with the shot's own track
+    # to decide make/miss.
+    rim_pts = [p for tr in tracks if math.hypot(tr[0].X, tr[0].Y) < 90 for p in tr]
     shots: list[Shot] = []
     for tr in tracks:
+        own_and_rim = sorted({id(p): p for p in tr + rim_pts}.values(), key=lambda p: p.t)
         for s, e, apex in _flight_segments(tr):
             pts, t0, cx, cy = _robust_fit(tr[s : e + 1], apex - s)
             if len(pts) < MIN_FLIGHT_POINTS:
@@ -160,7 +192,7 @@ def analyze_tracks(tracks: list[list[TrackPoint]]) -> list[Shot]:
             t_apex = -b / (2 * a)
             y_apex = np.polyval(cy, t_apex)
             entry_t = t0 + te
-            result, miss = _classify(entry_t, depth, [p for p in all_pts if p.t > pts[-1].t])
+            result, miss = _classify(entry_t, depth, [p for p in own_and_rim if p.t > pts[-1].t])
             fps_est = (pts[-1].frame - pts[0].frame) / max(1e-6, pts[-1].t - pts[0].t)
             shots.append(
                 Shot(

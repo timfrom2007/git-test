@@ -7,7 +7,7 @@ from pathlib import Path
 
 import cv2
 
-from .analyze import Shot, analyze_tracks, summarize
+from .analyze import Shot, analyze_tracks, estimate_time_scale, summarize
 from .detect import ColorBallDetector, YoloBallDetector
 from .geometry import Rim
 from .render import annotate_frame, overlay_image
@@ -43,7 +43,9 @@ def write_annotated(video, out_path, rim: Rim, shots: list[Shot], tracks, fps: f
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     writer = cv2.VideoWriter(str(out_path), cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
-    by_frame = {p.frame: p for tr in tracks for p in tr}
+    # only draw tracks that were above the rim at some point (the ball in
+    # flight), not every orange blob that was tracked
+    by_frame = {p.frame: p for tr in tracks if max(q.Y for q in tr) > 0 for p in tr}
     trail_len = int(fps * 0.6)
     i = 0
     while True:
@@ -57,14 +59,28 @@ def write_annotated(video, out_path, rim: Rim, shots: list[Shot], tracks, fps: f
     writer.release()
 
 
-def run(video, rim: Rim, out_dir, detector: str = "color", annotate: bool = True) -> tuple[list[Shot], dict]:
+def run(
+    video,
+    rim: Rim,
+    out_dir,
+    detector: str = "color",
+    annotate: bool = True,
+    speed: float | None = None,
+) -> tuple[list[Shot], dict]:
+    """speed: playback speed of the video relative to real time (2 = sped up
+    2x, 0.125 = slow motion at 1/8). None = detect it from gravity."""
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     print(f"analyzing {video}")
     tracks, fps, first = track_video(video, rim, detector)
-    shots = analyze_tracks(tracks)
+    time_scale = speed if speed else estimate_time_scale(tracks)
+    if time_scale != 1.0:
+        how = "given" if speed else "detected from gravity"
+        print(f"  video speed x{time_scale:.2f} vs real time ({how}); correcting")
+    shots = analyze_tracks(tracks, time_scale)
     summary = summarize(shots)
     summary["fps"] = fps
+    summary["video_speed"] = round(time_scale, 3)
 
     with open(out / "shots.csv", "w", newline="", encoding="utf-8") as f:
         rows = [s.to_row() for s in shots]
