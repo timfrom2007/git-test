@@ -1,0 +1,24 @@
+---
+import Base from './Base.astro';
+import { SITE_NAME } from '../site';
+const { frontmatter } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'Article',
+  headline: frontmatter.title, description: frontmatter.description, inLanguage: 'zh-Hant-TW',
+  datePublished: frontmatter.published, dateModified: frontmatter.updated ?? frontmatter.published,
+  mainEntityOfPage: url, image: new URL('/og-default.png', Astro.site).href,
+  author: { '@type': 'Organization', name: SITE_NAME }, publisher: { '@type': 'Organization', name: SITE_NAME },
+}];
+---
+<Base title={frontmatter.title} description={frontmatter.description} ogType="article" jsonLd={jsonLd}
+  breadcrumbs={[{ name: '文章', path: '/articles/' }, { name: frontmatter.short ?? frontmatter.title, path: Astro.url.pathname }]}>
+  <article class="prose">
+    <h1>{frontmatter.title}</h1>
+    <p class="meta">發布 {frontmatter.published}｜資料查核 {frontmatter.checked}</p>
+    <slot />
+    <div class="card">
+      <strong>用你的行程算一次：</strong><a href="/tools/jr-pass-calculator/">JR Pass／周遊券划算試算器</a>，勾選路段即可比較各票券與單買的總花費。
+    </div>
+  </article>
+</Base>

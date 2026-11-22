@@ -1,0 +1,159 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import data from '../../data/fares.json';
+const yen = (n: number | null) => (n == null ? '待確認' : '¥' + n.toLocaleString('en-US'));
+const title = 'JR Pass／周遊券划算試算器（2026 年 10 月新價）';
+const description = '勾選你的新幹線行程，即時比較 JR Pass 全國版、關西廣域、關西廣島、北陸拱型周遊券與單買車票哪個便宜。票價標註來源與查核日期。';
+const jsonLd = [
+  {
+    '@context': 'https://schema.org', '@type': 'WebApplication', name: 'JR Pass／周遊券划算試算器',
+    applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW',
+    url: new URL('/tools/jr-pass-calculator/', Astro.site).href, description,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: [
+      { q: '試算器的票價從哪裡來？', a: `每筆票價旁都有來源連結與可信度標籤，查核日期 ${data.checked}。查不到的票價標「待確認」，需要你自行填入。` },
+      { q: 'JR Pass 可以搭 Nozomi 嗎？', a: 'JR Pass 本身不含 Nozomi／Mizuho，可搭 Hikari／Sakura；若要搭 Nozomi 需另購 Nozomi・Mizuho 券，東京–新大阪約 ¥4,960（二手來源，待官方確認）。' },
+      { q: '在官網買和在代理商買 JR Pass 價格一樣嗎？', a: '2026 年 10 月 1 日起不一樣：代理商 7 日券 ¥53,000，JR 官網期間限定維持 ¥50,000（二手來源整理，待官方確認）。' },
+    ].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozomiSupplement };
+---
+<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: 'JR Pass 試算', path: '/tools/jr-pass-calculator/' }]}>
+  <h1>{title}</h1>
+  <p class="lead">輸入每段行程搭幾次，試算器會比較「全部單買」和每一種票券的總花費。票價查核日期：{data.checked}。</p>
+  <div class="note">
+    <strong>先看這裡：</strong>JR 官網、JR 西日本官網這次無法直接讀取，所以多數數字來自第三方整理，標為「二手來源・待官方確認」。
+    查不到的票價標「待確認」，欄位留空讓你自己填，<strong>不會用估計值代替</strong>。票券涵蓋範圍只是簡化，實際以官方路線圖為準。
+  </div>
+
+  <div class="card" id="calc">
+    <h2 style="margin-top:0">1. 購買管道</h2>
+    <label><input type="radio" name="channel" value="official" checked /> JR 官方網站（JR Pass 官網價）</label><br />
+    <label><input type="radio" name="channel" value="agency" /> 海外代理商（Klook、KKday、旅行社等，2026-10-01 起較貴）</label>
+    <p><label><input type="checkbox" id="nozomi" /> 持 JR Pass 也要搭 Nozomi（東京–新大阪／京都每趟加 Nozomi 券）</label></p>
+
+    <h2>2. 行程（填單程次數）</h2>
+    <p class="meta">快速套用：
+      <button class="btn ghost preset" data-p='{"tokyo-kyoto":1,"kyoto-osaka":1,"tokyo-shinosaka":1}'>東京→京都→大阪→東京</button>
+      <button class="btn ghost preset" data-p='{"tokyo-hiroshima":2}'>東京⇄廣島來回</button>
+      <button class="btn ghost preset" data-p='{"tokyo-shinosaka":2,"shinosaka-hiroshima":2}'>東京⇄大阪⇄廣島</button>
+      <button class="btn ghost preset" data-p='{"tokyo-kanazawa":1,"kanazawa-osaka":1,"tokyo-shinosaka":1}'>東京→金澤→大阪→東京</button>
+      <button class="btn ghost preset" data-p='{}'>清空</button>
+    </p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>路段</th><th class="num">單程票價（日圓，可改）</th><th class="num">次數</th><th>來源</th></tr></thead>
+        <tbody>
+          {data.routes.map((r) => (
+            <tr>
+              <td>{r.name}<br /><span class="meta">{r.train}｜{r.note}</span></td>
+              <td class="num"><input type="number" min="0" step="10" inputmode="numeric" data-fare={r.id} value={r.fare ?? ''} placeholder="待確認" style="width:7em" /></td>
+              <td class="num"><input type="number" min="0" max="20" inputmode="numeric" data-qty={r.id} value="0" style="width:4em" /></td>
+              <td><Badge c={r.confidence as any} />{r.sources.map((s) => <><br /><a href={s.url} rel="nofollow noopener" target="_blank" class="meta">{s.label}</a></>)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>3. 結果</h2>
+    <div id="warnings"></div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>方案</th><th class="num">票券價</th><th class="num">票券沒涵蓋、要另買</th><th class="num">總花費</th><th class="num">比單買</th></tr></thead>
+        <tbody id="result"></tbody>
+      </table>
+    </div>
+    <p id="verdict" style="font-weight:600"></p>
+    <p class="meta">計算方式：總花費＝票券價＋票券沒涵蓋的路段單買票價（＋Nozomi 券）。試算器不檢查行程天數是否在票券有效期限內，請自行確認。</p>
+  </div>
+
+  <h2>票券價格一覽</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>票券</th><th class="num">天數</th><th class="num">官網／一般價</th><th class="num">代理商價</th><th>備註</th><th>可信度</th></tr></thead>
+      <tbody>
+        {data.passes.map((p) => (
+          <tr>
+            <td>{p.name}</td><td class="num">{p.days}</td><td class="num">{yen(p.priceOfficialSite)}</td><td class="num">{p.priceAgency ? yen(p.priceAgency) : '—'}</td>
+            <td>{p.priceNote}<br />{p.sources.map((s) => <a href={s.url} rel="nofollow noopener" target="_blank" class="meta">{s.label}　</a>)}</td>
+            <td><Badge c={p.confidence as any} /></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>常見問題</h2>
+  <h3>試算器的票價從哪裡來？</h3>
+  <p>每筆票價旁都有來源連結與可信度標籤，查核日期 {data.checked}。查不到的票價標「待確認」，需要你自行填入。</p>
+  <h3>JR Pass 可以搭 Nozomi 嗎？</h3>
+  <p>JR Pass 本身不含 Nozomi／Mizuho，可以搭 Hikari／Sakura；若要搭 Nozomi，要另購 Nozomi・Mizuho 券，東京–新大阪約 ¥4,960（二手來源，待官方確認）。細節見<a href="/articles/tokyo-osaka-shinkansen-jr-pass/">東京–大阪新幹線票價與 JR Pass 划算門檻</a>。</p>
+  <h3>在官網買和在代理商買價格一樣嗎？</h3>
+  <p>2026 年 10 月 1 日起不一樣，見<a href="/articles/jr-pass-price-2026/">2026 年 10 月 JR Pass 漲價整理</a>。</p>
+
+  <script type="application/json" id="fare-data" set:html={JSON.stringify(clientData)}></script>
+  <script>
+    type Pass = { id: string; name: string; days: number; priceOfficialSite: number; priceAgency: number | null; covers: string[] };
+    type Route = { id: string; name: string };
+    const D = JSON.parse(document.getElementById('fare-data')!.textContent!) as { passes: Pass[]; routes: Route[]; nozomi: Record<string, any> };
+    const yen = (n: number) => '¥' + Math.round(n).toLocaleString('en-US');
+    const $ = <T extends Element>(s: string) => Array.from(document.querySelectorAll<T>(s));
+
+    function read() {
+      const trips = D.routes.map((r) => {
+        const fareEl = document.querySelector<HTMLInputElement>(`[data-fare="${r.id}"]`)!;
+        const qtyEl = document.querySelector<HTMLInputElement>(`[data-qty="${r.id}"]`)!;
+        const fare = fareEl.value === '' ? null : Math.max(0, Number(fareEl.value));
+        return { ...r, fare, qty: Math.max(0, Math.floor(Number(qtyEl.value) || 0)) };
+      }).filter((t) => t.qty > 0);
+      const channel = (document.querySelector<HTMLInputElement>('input[name=channel]:checked')!).value;
+      const nozomi = (document.getElementById('nozomi') as HTMLInputElement).checked;
+      return { trips, channel, nozomi };
+    }
+
+    function render() {
+      const { trips, channel, nozomi } = read();
+      const warn: string[] = [];
+      const missing = trips.filter((t) => t.fare == null);
+      if (missing.length) warn.push(`以下路段票價「待確認」，尚未計入：${missing.map((t) => t.name).join('、')}。請查到票價後填入。`);
+      const known = trips.filter((t) => t.fare != null) as (typeof trips[number] & { fare: number })[];
+      const single = known.reduce((s, t) => s + t.fare * t.qty, 0);
+      const rows: { name: string; pass: number | null; extra: number; total: number }[] = [{ name: '全部單買', pass: null, extra: single, total: single }];
+      for (const p of D.passes) {
+        const price = channel === 'agency' && p.priceAgency ? p.priceAgency : p.priceOfficialSite;
+        let extra = 0;
+        for (const t of known) {
+          if (!p.covers.includes(t.id)) extra += t.fare * t.qty;
+          else if (nozomi && p.id.startsWith('jrp') && D.nozomi[t.id]) extra += D.nozomi[t.id] * t.qty;
+        }
+        rows.push({ name: `${p.name}`, pass: price, extra, total: price + extra });
+      }
+      if (nozomi) warn.push('Nozomi 券金額 ¥4,960 為二手來源，待官方確認；東京–廣島／博多的 Nozomi 券金額待確認，未計入。');
+      const best = rows.reduce((a, b) => (b.total < a.total ? b : a));
+      document.getElementById('warnings')!.innerHTML = warn.map((w) => `<div class="note">${w}</div>`).join('');
+      document.getElementById('result')!.innerHTML = rows.map((r) => {
+        const diff = r.total - single;
+        const isBest = r === best && known.length > 0;
+        return `<tr${isBest ? ' style="background:var(--ok-bg)"' : ''}><td>${isBest ? '✅ ' : ''}${r.name}</td><td class="num">${r.pass == null ? '—' : yen(r.pass)}</td><td class="num">${yen(r.extra)}</td><td class="num"><strong>${yen(r.total)}</strong></td><td class="num">${r.pass == null ? '—' : (diff < 0 ? '省 ' + yen(-diff) : '多花 ' + yen(diff))}</td></tr>`;
+      }).join('');
+      const v = document.getElementById('verdict')!;
+      if (!known.length) v.textContent = '先在上方填入行程次數，或點「快速套用」。';
+      else if (best.name === '全部單買') v.textContent = `結論：以這個行程，單買車票（${yen(single)}）最便宜，不需要買周遊券。`;
+      else v.textContent = `結論：「${best.name}」最划算，總花費 ${yen(best.total)}，比單買省 ${yen(single - best.total)}。`;
+    }
+
+    $<HTMLInputElement>('#calc input').forEach((el) => el.addEventListener('input', render));
+    $<HTMLButtonElement>('.preset').forEach((b) => b.addEventListener('click', () => {
+      const p = JSON.parse(b.dataset.p || '{}');
+      $<HTMLInputElement>('[data-qty]').forEach((el) => { el.value = String(p[el.dataset.qty!] ?? 0); });
+      render();
+    }));
+    render();
+  </script>
+</Base>

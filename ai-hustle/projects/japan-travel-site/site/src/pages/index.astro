@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME, SITE_DESC } from '../site';
+const articles = Object.values(import.meta.glob('./articles/*.md', { eager: true })) as any[];
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: Astro.site?.href, inLanguage: 'zh-Hant-TW', description: SITE_DESC,
+}];
+---
+<Base title={SITE_NAME} jsonLd={jsonLd}>
+  <h1>JR Pass 要不要買？先算再說。</h1>
+  <p class="lead">{SITE_DESC}</p>
+  <div class="card">
+    <h2 style="margin-top:0">🧮 JR Pass／周遊券划算試算器</h2>
+    <p>勾選你的新幹線路段，立刻比較 JR Pass 全國版（2026 年 10 月新價）、關西廣域、關西＋廣島、北陸拱型周遊券與單買車票。</p>
+    <a class="btn" href="/tools/jr-pass-calculator/">開始試算</a>
+  </div>
+  <h2>懶人包文章</h2>
+  <div class="cards">
+    {articles.map((a) => (
+      <div class="card"><h3><a href={a.url.replace(/\/?$/, '/')}>{a.frontmatter.title}</a></h3><p class="meta">{a.frontmatter.description}</p></div>
+    ))}
+  </div>
+  <h2>本站原則</h2>
+  <ul>
+    <li>每個票價都附來源連結與查核日期。</li>
+    <li>查不到的寫「待確認」，不用估計值充數。</li>
+    <li>二手來源會標示出來，提醒你購買前到官方網站核對。</li>
+  </ul>
+</Base>

@@ -1,0 +1,5 @@
+---
+const { c } = Astro.props as { c: 'official' | 'secondary' | 'unknown' };
+const label = { official: '官方', secondary: '二手來源・待官方確認', unknown: '待確認' }[c];
+---
+<span class={`badge ${c}`}>{label}</span>

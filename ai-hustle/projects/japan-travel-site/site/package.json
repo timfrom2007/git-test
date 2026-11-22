@@ -1,0 +1,16 @@
+{
+  "name": "japan-travel-tools",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check-data": "node scripts/check-data.mjs"
+  },
+  "dependencies": {
+    "astro": "5.13.5",
+    "@astrojs/sitemap": "3.5.1"
+  }
+}

@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import data from '../data/fares.json';
+const items = [...data.passes.map((p) => ({ name: p.name, value: p.priceOfficialSite, c: p.confidence, sources: p.sources, note: p.priceNote })),
+  ...data.routes.map((r) => ({ name: r.name, value: r.fare, c: r.confidence, sources: r.sources, note: r.note }))];
+---
+<Base title="資料來源與查核日期" description="本站所有票價的來源連結、可信度與查核日期。" breadcrumbs={[{ name: '資料來源', path: '/sources/' }]}>
+  <h1>資料來源與查核日期</h1>
+  <p>最近一次查核：<strong>{data.checked}</strong>（Asia/Taipei）。金額為日圓、成人、單程、普通車指定席、一般期，另有註明者除外。</p>
+  <ul>
+    <li><Badge c="official" />：取自 JR 官方頁面。</li>
+    <li><Badge c="secondary" />：取自第三方網站，多個來源一致時採用；有落差時取較低值並註明。</li>
+    <li><Badge c="unknown" />：查不到可靠數字，試算器中留空讓使用者自行填入。</li>
+  </ul>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>項目</th><th class="num">金額</th><th>可信度</th><th>來源／備註</th></tr></thead>
+      <tbody>
+        {items.map((i) => (
+          <tr><td>{i.name}</td><td class="num">{i.value == null ? '待確認' : '¥' + i.value.toLocaleString('en-US')}</td><td><Badge c={i.c as any} /></td>
+          <td>{i.sources.map((s) => <><a href={s.url} rel="nofollow noopener" target="_blank">{s.label}</a><br /></>)}<span class="meta">{i.note}</span></td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>發現錯誤或價格更新？本站會定期重新查核並更新此頁。</p>
+</Base>

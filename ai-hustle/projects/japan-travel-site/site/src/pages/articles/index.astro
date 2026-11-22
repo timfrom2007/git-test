@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+const articles = Object.values(import.meta.glob('./*.md', { eager: true })) as any[];
+---
+<Base title="日本鐵道懶人包文章" description="JR Pass 價格、新幹線票價、關西周遊券比較等台灣旅客實用整理，附來源與查核日期。" breadcrumbs={[{ name: '文章', path: '/articles/' }]}>
+  <h1>日本鐵道懶人包文章</h1>
+  {articles.map((a) => (
+    <div class="card"><h2 style="margin-top:0;border:0;padding:0"><a href={a.url.replace(/\/?$/, '/')}>{a.frontmatter.title}</a></h2><p class="meta">{a.frontmatter.description}</p><p class="meta">查核 {a.frontmatter.checked}</p></div>
+  ))}
+</Base>

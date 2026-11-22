@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+import { SITE_NAME, SITE_DESC } from '../site';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>[];
+  breadcrumbs?: { name: string; path: string }[];
+}
+const { title, description = SITE_DESC, ogImage = '/og-default.png', ogType = 'website', jsonLd = [], breadcrumbs = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogUrl = new URL(ogImage, Astro.site).href;
+const fullTitle = title === SITE_NAME ? title : `${title}｜${SITE_NAME}`;
+
+const ld: Record<string, unknown>[] = [...jsonLd];
+if (breadcrumbs.length) {
+  ld.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [{ name: '首頁', path: '/' }, ...breadcrumbs].map((b, i) => ({
+      '@type': 'ListItem', position: i + 1, name: b.name, item: new URL(b.path, Astro.site).href,
+    })),
+  });
+}
+---
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogUrl} />
+  {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">🚄 {SITE_NAME}</a>
+      <nav>
+        <a href="/tools/jr-pass-calculator/">JR Pass 試算</a>
+        <a href="/articles/">文章</a>
+        <a href="/sources/">資料來源</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {breadcrumbs.length > 0 && (
+      <nav class="crumbs" aria-label="麵包屑">
+        <a href="/">首頁</a>{breadcrumbs.map((b) => <> › <a href={b.path}>{b.name}</a></>)}
+      </nav>
+    )}
+    <slot />
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>票價會變動，本站資料僅供規劃參考，購買前請以 JR 官方公告為準。各筆資料的來源與查核日期列於<a href="/sources/">資料來源</a>頁。</p>
+      <p>© {new Date().getFullYear()} {SITE_NAME}</p>
+    </div>
+  </footer>
+</body>
+</html>
