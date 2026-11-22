@@ -1,6 +1,6 @@
 # 01｜日本免稅變了！11 月起先付稅、出境才退
 
-**優先度：最高（新制剛上路，搜尋與討論正熱）**｜長度約 44 秒｜導流：網站「退稅試算」工具（Project A 尚未完成時改導流「日本退稅新制懶人包」）
+**優先度：最高（新制剛上路，搜尋與討論正熱）**｜長度約 44 秒｜導流：網站「退稅試算」工具
 
 ## 檔案
 | 檔案 | 用途 |
@@ -33,13 +33,22 @@
 退款方式依店家不同，結帳時先問清楚。
 
 📌 退稅試算 → 主頁連結
-🔗 {SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=01-tax-free-refund
+🔗 {SITE_URL}/tools/japan-tax-refund/?utm_source=youtube&utm_medium=shorts&utm_campaign=v01
 資料來源：日本觀光廳、日本海關（查核 2026-11-22）
 ```
 
-## 導流連結
-- 目前：`{SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=01-tax-free-refund`（退稅試算（Project A 製作中，LINKS.md 出現後改為正式路徑））
-- `{SITE_URL}` 在網站部署（human-todo A-1）後由 AI 換成正式網域。YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」；Threads 的連結可以點。
+## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
+| 平台 | 說明欄連結 |
+|---|---|
+| YouTube | `{SITE_URL}/tools/japan-tax-refund/?utm_source=youtube&utm_medium=shorts&utm_campaign=v01` |
+| Instagram | `{SITE_URL}/tools/japan-tax-refund/?utm_source=instagram&utm_medium=shorts&utm_campaign=v01` |
+| Threads | `{SITE_URL}/tools/japan-tax-refund/?utm_source=threads&utm_medium=shorts&utm_campaign=v01` |
+
+補充連結：`{SITE_URL}/articles/japan-new-rules-2026-2027/`
+
+- 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
+- `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。
+- YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」（建議放首頁 `/`）；Threads 的連結可以點。
 
 ## Hashtag
 YouTube（放標題或說明欄最後，3 個以內最有效）：`#日本旅遊 #日本退稅 #日本免稅`

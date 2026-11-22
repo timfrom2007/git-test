@@ -24,12 +24,21 @@
 ⚠️ 往年約 10 月開賣，現在最實際是找巴士團
 📸 經典俯瞰照的展望台要另外預約
 📌 金澤＋白川鄉＋高山 冬季行程 → 主頁連結
-🔗 {SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=05-shirakawago-lightup-2027
+🔗 {SITE_URL}/articles/hokuriku-winter-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v05
 ```
 
-## 導流連結
-- 目前：`{SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=05-shirakawago-lightup-2027`（北陸冬季懶人包（Project A 製作中，待 LINKS.md））
-- `{SITE_URL}` 在網站部署（human-todo A-1）後由 AI 換成正式網域。YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」；Threads 的連結可以點。
+## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
+| 平台 | 說明欄連結 |
+|---|---|
+| YouTube | `{SITE_URL}/articles/hokuriku-winter-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v05` |
+| Instagram | `{SITE_URL}/articles/hokuriku-winter-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v05` |
+| Threads | `{SITE_URL}/articles/hokuriku-winter-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v05` |
+
+補充連結：`{SITE_URL}/tools/jr-pass-calculator/`
+
+- 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
+- `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。
+- YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」（建議放首頁 `/`）；Threads 的連結可以點。
 
 ## Hashtag
 YouTube：`#白川鄉 #合掌村 #日本旅遊`

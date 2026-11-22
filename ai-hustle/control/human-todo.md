@@ -49,14 +49,15 @@
   審核通過後，在平台後台產生以下商品的連結，貼到 STATUS.md 或直接改 `affiliates.json`：JR Pass 全國版、關西地區周遊券、賞櫻行程、日本 eSIM、訂房搜尋頁。
   注意：各平台條款（是否接受新網站、分潤比例、付款門檻）以申請頁為準，這裡沒有替你查證；有的平台要求網站先上線且有內容，建議 A-1 完成後再申請。
 
-## Project B 短影音（B1 交付，2026-11-22）
-建議順序：B-1 → B-2 → B-3 當天做完；B-4 之後每 2–3 天一支。檔案都在 `ai-hustle/projects/short-video/`。
+## Project B 短影音（B1／B2 交付，2026-11-22）
+建議順序：B-1 → B-2 → B-3 當天做完；B-4 之後每 2–3 天一支。**10 支影片都已產好 `out/video.mp4`，可以直接上傳。**檔案都在 `ai-hustle/projects/short-video/`。
 
 - [ ] [B] B-1 聽範例影片，決定旁白用 AI 還是自己錄（5 分鐘）
-  1. 在 GitHub 打開 `ai-hustle/projects/short-video/videos/01-tax-free-refund/out/video.mp4`（分支 `claude/short-video-b1`，或已合併後的主分支）→ 按「Download raw file」。
+  1. 在 GitHub 打開 `ai-hustle/projects/short-video/videos/01-tax-free-refund/out/video.mp4`（分支 `claude/gifted-ride-nnfsux`）→ 按「Download raw file」。
   2. 用手機看完 44 秒。重點聽：口音（AI 是大陸普通話口音）、數字有沒有念錯。
   3. 在 `projects/short-video/STATUS.md` 最下面「人類決定」寫一行：`旁白：AI` 或 `旁白：自己錄`。
-     - 選「自己錄」：之後每支只要照 `narration.txt` 用手機錄 1 分鐘，把音檔放到該影片資料夾，AI 會合成影片。
+     - 選「自己錄」：每支照該資料夾的 `narration.txt` 念（約 1 分鐘），**每段 [1][2]… 之間停 1 秒**，用 iPhone「語音備忘錄」錄一次就好，念錯就從那段重念。
+       傳到 repo：GitHub 網頁打開該影片資料夾 →「Add file」→「Upload files」→ 檔名改成 `voice.m4a` → Commit。AI 會自動切段、對齊字卡字幕、縮短停頓，重新產出影片。
 
 - [ ] [B] B-2 確認帳號名稱並註冊 YouTube 頻道＋IG 帳號（15 分鐘）
   1. 推薦名稱：**日本行前60秒**（其他候選見 `positioning.md`）。若要跟網站同名，先跟主控確認網站名稱。
@@ -78,7 +79,13 @@
   5. 發布。
   6. IG：「＋」→ Reels → 選同一支影片 → 封面選 `out/cover.jpg` → 說明貼「說明欄」＋IG 那行 hashtag → 分享。勾「同時分享到 Threads」若有此選項；沒有就到 Threads 另發一則：貼說明欄 3 個重點＋附影片。
   7. 在 `STATUS.md` 記下發布日期與連結。
-  - 之後 02～05 照同樣步驟，每 2–3 天一支。05 白川鄉發布前，先打開 https://shirakawa-go.gr.jp/ 確認 2027 日期（2 分鐘）。
+  - 說明欄裡的 `🔗 {SITE_URL}…` 那行：網站還沒上線前**整行刪掉**；上線後 AI 會換成正式網址。
+  - 之後照建議順序 01 → 02 → 06 → 03 → 04 → 07 → 05 → 08 → 09 → 10，每 2–3 天一支（理由見 `projects/short-video/STATUS.md`）。05 白川鄉發布前，先打開 https://shirakawa-go.gr.jp/ 確認 2027 日期（2 分鐘）。
 
 - [ ] [B] B-5 每日回覆留言（每天 ≤ 10 分鐘，影片上線後開始）
   - 有人問的問題若影片沒講到，複製到 `projects/short-video/STATUS.md`「觀眾問題」，AI 會拿來做下一支。
+
+- [ ] [B] B-6（可選）同一支影片再發一則 IG 輪播貼文（5 分鐘）— 建議在 Reels 發布 2～3 天後
+  1. 下載該影片資料夾 `carousel/` 裡的全部圖片（01.jpg、02.jpg…）。
+  2. IG「＋」→「貼文」→ 右上「選取多張」→ 照檔名順序選 → 說明貼 README 的「說明欄」（IG 版連結）＋IG hashtag → 分享。
+  - 輪播圖每張都有完整文字，沒聲音也看得懂；適合被收藏、分享。

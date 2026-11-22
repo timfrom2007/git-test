@@ -21,13 +21,22 @@ JR Pass 7 日券（官網 ¥50,000／代理商 ¥53,000）實算，只算新幹�
 3️⃣ 東京→博多→新大阪→東京 ¥54,350 → JR Pass 省 ¥4,350
 沒算進去：市區 JR、機場快線（JR Pass 加分）；Nozomi 券（扣分）
 📌 你的行程算算看 → 主頁連結
-🔗 {SITE_URL}/articles/tokyo-osaka-shinkansen-jr-pass/?utm_source=shorts&utm_medium=social&utm_campaign=07-tokyo-osaka-jr-pass-math
+🔗 {SITE_URL}/articles/tokyo-osaka-shinkansen-jr-pass/?utm_source=youtube&utm_medium=shorts&utm_campaign=v07
 票價為第三方整理的一般期價格，購票前以 JR 官方為準（查核 2026-11-22）
 ```
 
-## 導流連結
-- 文章：`{SITE_URL}/articles/tokyo-osaka-shinkansen-jr-pass/?utm_source=shorts&utm_medium=social&utm_campaign=07-tokyo-osaka-jr-pass-math`
-- 試算器：`{SITE_URL}/tools/jr-pass-calculator/`
+## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
+| 平台 | 說明欄連結 |
+|---|---|
+| YouTube | `{SITE_URL}/articles/tokyo-osaka-shinkansen-jr-pass/?utm_source=youtube&utm_medium=shorts&utm_campaign=v07` |
+| Instagram | `{SITE_URL}/articles/tokyo-osaka-shinkansen-jr-pass/?utm_source=instagram&utm_medium=shorts&utm_campaign=v07` |
+| Threads | `{SITE_URL}/articles/tokyo-osaka-shinkansen-jr-pass/?utm_source=threads&utm_medium=shorts&utm_campaign=v07` |
+
+補充連結：`{SITE_URL}/tools/jr-pass-calculator/`
+
+- 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
+- `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。
+- YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」（建議放首頁 `/`）；Threads 的連結可以點。
 
 ## Hashtag
 YouTube：`#JRPass #新幹線 #日本旅遊`

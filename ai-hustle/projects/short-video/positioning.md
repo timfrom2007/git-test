@@ -45,4 +45,4 @@ Handle 建議：`@japan60s`、`@japan.before60`、`@xingqian60`（按順序試�
 
 ## 驗收指標（沿用 BRIEF）
 發布 14 天內，單支最高觀看 > 5,000，或總追蹤 > 200。
-追加觀察指標：平均觀看比例 > 70%（低於 50% 就改 hook）、主頁連結點擊數（用網站的 UTM：`?utm_source=yt_shorts&utm_campaign=NN-slug`）。
+追加觀察指標：平均觀看比例 > 70%（低於 50% 就改 hook）、主頁連結點擊數（UTM 依 Project A 的 `LINKS.md`：`?utm_source=youtube|instagram|threads&utm_medium=shorts&utm_campaign=vNN`）。

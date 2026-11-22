@@ -1,6 +1,6 @@
 # 02｜2027 去日本變貴了？3 個新規一次看
 
-**優先度：高**｜長度約 48 秒｜導流：網站「旅遊預算計算機」（A3 尚未完成時改導流首頁）
+**優先度：高**｜長度約 48 秒｜導流：網站「2026–2027 日本新制度總整理」＋預算計算機
 
 檔案結構同 01（`scenes.json`、`narration.txt`、`subtitles.srt`、`storyboard.md`、`out/video.mp4`、`out/cover.jpg`、`carousel/`）。
 
@@ -23,13 +23,22 @@
 3️⃣ JESTA 電子入境認證：預計 2028 年度實施，費用未定 → 現在叫你付錢的先當詐騙
 
 📌 旅遊預算試算 → 主頁連結
-🔗 {SITE_URL}/tools/japan-trip-budget/?utm_source=shorts&utm_medium=social&utm_campaign=02-new-costs-2027
+🔗 {SITE_URL}/articles/japan-new-rules-2026-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v02
 資料來源：日本觀光廳、京都市、出入國在留管理廳相關報導（查核 2026-11-22）
 ```
 
-## 導流連結
-- 目前：`{SITE_URL}/tools/japan-trip-budget/?utm_source=shorts&utm_medium=social&utm_campaign=02-new-costs-2027`（預算計算機；新制度總整理上線後可改連過去（待 LINKS.md））
-- `{SITE_URL}` 在網站部署（human-todo A-1）後由 AI 換成正式網域。YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」；Threads 的連結可以點。
+## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
+| 平台 | 說明欄連結 |
+|---|---|
+| YouTube | `{SITE_URL}/articles/japan-new-rules-2026-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v02` |
+| Instagram | `{SITE_URL}/articles/japan-new-rules-2026-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v02` |
+| Threads | `{SITE_URL}/articles/japan-new-rules-2026-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v02` |
+
+補充連結：`{SITE_URL}/tools/japan-trip-budget/`
+
+- 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
+- `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。
+- YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」（建議放首頁 `/`）；Threads 的連結可以點。
 
 ## Hashtag
 YouTube：`#日本旅遊 #京都 #出國稅`

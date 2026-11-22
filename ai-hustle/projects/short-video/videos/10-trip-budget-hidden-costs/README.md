@@ -22,11 +22,21 @@
 3️⃣ 網路＋保險：eSIM／網卡、旅平險、不便險，每人一份
 4️⃣ 退稅新制：先付含稅價、出境後才退 → 信用卡額度多留
 📌 預算計算機（台幣、匯率可改）→ 主頁連結
-🔗 {SITE_URL}/tools/japan-trip-budget/?utm_source=shorts&utm_medium=social&utm_campaign=10-trip-budget-hidden-costs
+🔗 {SITE_URL}/tools/japan-trip-budget/?utm_source=youtube&utm_medium=shorts&utm_campaign=v10
 ```
 
-## 導流連結
-- `{SITE_URL}/tools/japan-trip-budget/?utm_source=shorts&utm_medium=social&utm_campaign=10-trip-budget-hidden-costs`
+## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
+| 平台 | 說明欄連結 |
+|---|---|
+| YouTube | `{SITE_URL}/tools/japan-trip-budget/?utm_source=youtube&utm_medium=shorts&utm_campaign=v10` |
+| Instagram | `{SITE_URL}/tools/japan-trip-budget/?utm_source=instagram&utm_medium=shorts&utm_campaign=v10` |
+| Threads | `{SITE_URL}/tools/japan-trip-budget/?utm_source=threads&utm_medium=shorts&utm_campaign=v10` |
+
+補充連結：`{SITE_URL}/tools/japan-tax-refund/`
+
+- 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
+- `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。
+- YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」（建議放首頁 `/`）；Threads 的連結可以點。
 
 ## Hashtag
 YouTube：`#日本旅遊 #旅遊預算 #日本自由行`

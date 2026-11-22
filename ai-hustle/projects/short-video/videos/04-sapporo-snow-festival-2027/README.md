@@ -1,6 +1,6 @@
 # 04｜2027 札幌雪祭日期出來了！去之前先看這 4 點
 
-**優先度：中高（12 月中前發，趕上農曆年前訂房期）**｜長度約 35 秒｜導流：網站「北海道冬季行程」懶人包（尚未規劃，建議 Project A 列入）
+**優先度：中高（12 月中前發，趕上農曆年前訂房期）**｜長度約 35 秒｜導流：網站「北海道冬季 2027」懶人包
 
 檔案結構同 01（`scenes.json`、`narration.txt`、`subtitles.srt`、`storyboard.md`、`out/video.mp4`、`out/cover.jpg`、`carousel/`）。
 
@@ -21,13 +21,22 @@
 🏨 雪祭期間住宿很搶 → 先訂可免費取消
 👟 防滑鞋（或鞋底冰爪）比羽絨衣更重要
 📌 北海道冬季行程 → 主頁連結
-🔗 {SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=04-sapporo-snow-festival-2027
+🔗 {SITE_URL}/articles/hokkaido-winter-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v04
 官網：https://www.snowfes.com/（日期以官方公告為準）
 ```
 
-## 導流連結
-- 目前：`{SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=04-sapporo-snow-festival-2027`（北海道冬季懶人包（Project A 製作中，待 LINKS.md））
-- `{SITE_URL}` 在網站部署（human-todo A-1）後由 AI 換成正式網域。YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」；Threads 的連結可以點。
+## 導流連結（路徑依 `../../LINKS.md`，UTM 依 Project A 建議）
+| 平台 | 說明欄連結 |
+|---|---|
+| YouTube | `{SITE_URL}/articles/hokkaido-winter-2027/?utm_source=youtube&utm_medium=shorts&utm_campaign=v04` |
+| Instagram | `{SITE_URL}/articles/hokkaido-winter-2027/?utm_source=instagram&utm_medium=shorts&utm_campaign=v04` |
+| Threads | `{SITE_URL}/articles/hokkaido-winter-2027/?utm_source=threads&utm_medium=shorts&utm_campaign=v04` |
+
+補充連結：`{SITE_URL}/tools/japan-trip-budget/`
+
+- 上面的說明欄已放 YouTube 版；貼到 IG／Threads 時改用對應那一行。
+- `{SITE_URL}` 在網站部署（human-todo A-1／A-3）後由 AI 換成正式網域，人類不用手動改。
+- YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」（建議放首頁 `/`）；Threads 的連結可以點。
 
 ## Hashtag
 YouTube：`#札幌雪祭 #北海道 #日本旅遊`
