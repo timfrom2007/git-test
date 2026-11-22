@@ -1,0 +1,7 @@
+numpy>=1.26
+opencv-python>=4.9
+# optional, for --detector yolo (AGPL license):
+# ultralytics>=8.3
+
+# development
+pytest>=8
