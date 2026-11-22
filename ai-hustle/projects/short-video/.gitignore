@@ -3,3 +3,8 @@ videos/*/out/*
 !videos/*/out/cover.jpg
 !videos/*/out/video.mp4
 # 人類放的錄音檔要進 repo（AI 才拿得到）：voice.m4a 不忽略
+# 聲音樣本不可進公開 repo（見 voice/README.md）
+voice/sample.*
+voice/*.wav
+voice/*.m4a
+__pycache__/

@@ -48,12 +48,21 @@
 ## Project B 短影音（B1／B2 交付，2026-11-22）
 建議順序：B-1 → B-2 → B-3 當天做完；B-4 之後每 2–3 天一支。**10 支影片都已產好 `out/video.mp4`，可以直接上傳。**檔案都在 `ai-hustle/projects/short-video/`。
 
-- [ ] [B] B-1 聽範例影片，決定旁白用 AI 還是自己錄（5 分鐘）
-  1. 在 GitHub 打開 `ai-hustle/projects/short-video/videos/01-tax-free-refund/out/video.mp4`（分支 `claude/gifted-ride-nnfsux`）→ 按「Download raw file」。
-  2. 用手機看完 44 秒。重點聽：口音（AI 是大陸普通話口音）、數字有沒有念錯。
-  3. 在 `projects/short-video/STATUS.md` 最下面「人類決定」寫一行：`旁白：AI` 或 `旁白：自己錄`。
-     - 選「自己錄」：每支照該資料夾的 `narration.txt` 念（約 1 分鐘），**每段 [1][2]… 之間停 1 秒**，用 iPhone「語音備忘錄」錄一次就好，念錯就從那段重念。
-       傳到 repo：GitHub 網頁打開該影片資料夾 →「Add file」→「Upload files」→ 檔名改成 `voice.m4a` → Commit。AI 會自動切段、對齊字卡字幕、縮短停頓，重新產出影片。
+- [ ] [B] B-1 錄聲音樣本，讓 AI 用你的聲音產旁白（10 分鐘）
+  - 先聽一支現有影片（例如 `videos/01-tax-free-refund/out/video.mp4`）知道目前 AI 聲音的程度。
+  - 照 `projects/short-video/voice/RECORDING_GUIDE.md` 做：
+    1. **建立私有 repo `ai-hustle-voice`**（本 repo 是公開 fork，不能放聲音樣本）。
+    2. 安靜小房間、手機本體麥克風、距離 20 公分，照 `voice/script.txt` 念約 2 分鐘（第一段是同意聲明）。
+    3. 檔名改 `sample.m4a`，上傳到 `ai-hustle-voice`。
+    4. 在 `projects/short-video/STATUS.md`「人類決定」寫：`聲音樣本已上傳到 ai-hustle-voice，日期`。
+  - 不想複製自己的聲音：寫 `旁白：Azure 台灣腔`（要另外註冊 Azure，見 `voice/README.md`），或 `旁白：每支自己錄`（舊流程：每支照 `narration.txt` 錄、上傳成該資料夾的 `voice.m4a`，同樣放私有 repo）。
+
+- [ ] [B] B-1b 允許 AI 在雲端容器執行聲音複製模型（2 分鐘，Claude Code 設定）
+  - 原因：AI 嘗試用開源模型 Fun-CosyVoice3（Apache-2.0，可商用）做 CPU 測試時，被 Claude Code 的自動權限檢查擋下兩次，AI 沒有繞過。
+  - 做法（二選一）：
+    1. 在這個 Project B 的 Claude 對話裡直接回覆：「允許執行 CosyVoice 聲音複製測試（只用我本人同意的聲音）」，AI 會再試一次，系統會跳出確認時按允許。
+    2. 或在 Claude Code 設定中為 Bash 加入允許規則（見 Claude Code 文件「permissions」）。
+  - 不允許也可以：改用 ElevenLabs（約 US$6／月，你自己操作網頁）或 Azure 台灣腔。
 
 - [ ] [B] B-2 確認帳號名稱並註冊 YouTube 頻道＋IG 帳號（15 分鐘）
   1. 推薦名稱：**日本行前60秒**（其他候選見 `positioning.md`）。若要跟網站同名，先跟主控確認網站名稱。

@@ -282,7 +282,7 @@ def main():
             subs.append((cur, cur + d, c)); cur += d
 
     (vd / "narration.txt").write_text(
-        f"# {spec['title']}\n# 旁白稿：照念即可，括號內為語氣提示。\n# 錄音方式：手機錄音 App，一次錄完；每段 [1][2]… 之間停頓約 1 秒（段內正常說話即可）。\n# 錄好存成 voice.m4a 放在這個資料夾，AI 會自動切段、對齊字卡與字幕，並把段間停頓縮短。\n\n" +
+        f"# {spec['title']}\n# 旁白稿：照念即可，括號內為語氣提示。\n# 錄音方式：手機錄音 App，一次錄完；每段 [1][2]… 之間停頓約 1 秒（段內正常說話即可）。\n# 錄好存成 voice.m4a，上傳到私有 repo ai-hustle-voice 的同名資料夾（本 repo 公開，不放錄音），AI 會自動切段、對齊字卡與字幕，並把段間停頓縮短。\n\n" +
         "\n\n".join(f"[{i+1}] {sc['say']}" + (f"（{sc['tone']}）" if sc.get("tone") else "") for i, sc in enumerate(scenes)) + "\n",
         encoding="utf-8")
     (vd / "subtitles.srt").write_text(

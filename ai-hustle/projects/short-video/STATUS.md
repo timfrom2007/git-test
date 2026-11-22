@@ -1,6 +1,14 @@
 # 狀態：Project B 短影音
 
-最後更新：2026-11-22（Asia/Taipei）｜階段：**B2 完成，等人類 B-1（旁白）與 B-2（帳號）**｜分支：`claude/gifted-ride-nnfsux`
+最後更新：2026-11-22（Asia/Taipei）｜階段：**B3 第 1～3 步完成；第 2 步的 CPU 實測被權限檢查擋下，等人類 B-1／B-1b**｜分支：`claude/gifted-ride-nnfsux`
+
+## B3（進行中）：旁白真實度／聲音複製
+- **方案比較表** → `voice/README.md`：開源（CosyVoice3／2、GPT-SoVITS、IndexTTS-2、OpenVoice；排除 F5-TTS、MaskGCT、Spark-TTS、XTTS-v2、Fish 等非商用權重）、Azure zh-TW、Google cmn-TW、ElevenLabs。權重授權是從 Hugging Face API 實際查的。
+- **推薦**：Fun-CosyVoice3-0.5B（Apache-2.0）＋人類本人的聲音樣本。備案：ElevenLabs Starter（約 US$6／月）或 Azure 台灣腔（免費額度內 0 元，但不是本人聲音）。
+- **CPU 實測：沒有完成**。環境已裝好（Python 3.10 venv、CPU torch、9GB 權重，都在暫存區，沒進 repo），也做好了 MeloTTS 合成的假參考音檔。但執行複製推論的指令被 Claude Code 的 auto mode classifier 擋下兩次（"Undermining Oversight"），我沒有繞過，所以**速度與品質都是未實測**。人類待辦 B-1b。
+- **錄音指南與錄音稿** → `voice/RECORDING_GUIDE.md`、`voice/script.txt`（約 2 分鐘：同意聲明、數字、日期、地名、英文專有名詞、旅遊常用詞）。
+- **安全**：這個 repo 是**公開的 fork**（`udemy-course/git-test`，無法改成私有），所以聲音樣本改放人類新建的私有 repo `ai-hustle-voice`。`.gitignore` 已擋掉 `voice/*.m4a`、`voice/*.wav`。各影片的 `narration.txt` 也改成提示「錄音放私有 repo」。
+- 第 4 步（用 sample.m4a 重產 01）：等人類上傳樣本、允許 B-1b 後再做。
 
 ## B2 做了什麼
 1. **10 支影片都產好 `out/video.mp4`**（1080×1920、H.264/AAC、33–48 秒、各約 2–4MB），旁白暫用 TTS，可直接上傳。
@@ -39,6 +47,8 @@
 5. 上線 14 天後依 YouTube Studio 的觀看比例和滑走率調整 hook 與長度。
 
 ## 需要主控協調
+- **repo 是公開的 fork**：整個 ai-hustle（商業計畫、待辦、未來的錄音）對外可見。建議主控評估是否把 ai-hustle 搬到私有 repo。
+- **B-1b 權限**：聲音複製推論被自動權限檢查擋下，需要人類決定是否允許。
 - 品牌統一（網站名與帳號名「日本行前60秒」），tasks.md 已列。
 - 是否申請 Azure／Google 台灣腔 TTS（需人類註冊、可能有費用）。
 
