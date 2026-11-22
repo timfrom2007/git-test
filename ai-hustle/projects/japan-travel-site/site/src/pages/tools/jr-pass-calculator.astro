@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Badge from '../../components/Badge.astro';
+import Affiliate from '../../components/Affiliate.astro';
 import data from '../../data/fares.json';
 const yen = (n: number | null) => (n == null ? '待確認' : '¥' + n.toLocaleString('en-US'));
 const title = 'JR Pass／周遊券划算試算器（2026 年 10 月新價）';
@@ -72,6 +73,8 @@ const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozo
     <p id="verdict" style="font-weight:600"></p>
     <p class="meta">計算方式：總花費＝票券價＋票券沒涵蓋的路段單買票價（＋Nozomi 券）。試算器不檢查行程天數是否在票券有效期限內，請自行確認。</p>
   </div>
+
+  <Affiliate slots={['klook-jrpass', 'kkday-jrpass', 'klook-kansai-pass', 'kkday-kansai-pass']} />
 
   <h2>票券價格一覽</h2>
   <div class="table-scroll">

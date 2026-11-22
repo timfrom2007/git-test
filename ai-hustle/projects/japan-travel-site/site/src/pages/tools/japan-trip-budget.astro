@@ -1,0 +1,118 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import Affiliate from '../../components/Affiliate.astro';
+import b from '../../data/budget.json';
+import fares from '../../data/fares.json';
+const title = '日本旅遊預算計算機（台幣顯示，可自訂匯率）';
+const description = '輸入天數、人數、住宿、餐飲、交通、機票，算出日本自由行總預算與每人花費，以新台幣顯示。預設匯率標註臺灣銀行牌告日期，可自行修改。';
+const passOptions = fares.passes.map((p) => ({ id: p.id, name: p.name, price: p.priceOfficialSite }));
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'WebApplication', name: '日本旅遊預算計算機', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW',
+  url: new URL('/tools/japan-trip-budget/', Astro.site).href, description, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' },
+}];
+---
+<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: '旅遊預算計算機', path: '/tools/japan-trip-budget/' }]}>
+  <h1>{title}</h1>
+  <p class="lead">每個人住的、吃的差很多，所以這個計算機<strong>不替你預設住宿、餐飲金額</strong>。填你查到的價格（例如訂房網站的報價），它會幫你加總並換成台幣。</p>
+
+  <div class="card" id="budget">
+    <h2 style="margin-top:0">基本</h2>
+    <p>
+      <label>人數 <input type="number" id="people" min="1" value="2" style="width:5em" /></label>
+      <label>晚數 <input type="number" id="nights" min="0" value="5" style="width:5em" /></label>
+      <span class="meta">（天數＝晚數＋1）</span>
+    </p>
+    <p>
+      <label>匯率：1 日圓 = <input type="number" id="fx" step="0.0001" value={b.fx.jpyToTwd} style="width:7em" /> 新台幣</label><br />
+      <span class="meta">預設值：{b.fx.type} {b.fx.jpyToTwd}（{b.fx.date}），<a href={b.fx.source.url} rel="nofollow noopener" target="_blank">{b.fx.source.label}</a> <Badge c={b.fx.confidence as any} />。{b.fx.note}</span>
+    </p>
+
+    <h2>住宿（日圓）</h2>
+    <p><label>每晚每間房 ¥ <input type="number" id="hotel" min="0" step="100" placeholder="請填訂房報價" style="width:9em" /></label>
+    <label>房間數 <input type="number" id="rooms" min="1" value="1" style="width:5em" /></label></p>
+    <p class="meta">住宿稅等另收費用依城市不同，請以訂房頁顯示的總價為準。</p>
+
+    <h2>交通（日圓，每人）</h2>
+    <p><label>長程交通
+      <select id="pass">
+        <option value="0">不買周遊券（在下方填單買金額）</option>
+        {passOptions.map((p) => <option value={p.price}>{p.name}：¥{p.price.toLocaleString('en-US')}</option>)}
+      </select></label></p>
+    <p class="meta">周遊券價格取自<a href="/sources/">資料來源</a>頁（JR Pass 為官網價）。</p>
+    <p><label>單買車票合計 ¥ <input type="number" id="tickets" min="0" step="10" placeholder="0" style="width:9em" /></label>
+      <span class="meta">不確定買哪個？先用 <a href="/tools/jr-pass-calculator/">JR Pass 試算器</a> 算。</span></p>
+    <p><label>市區交通（地鐵、公車）每人每天 ¥ <input type="number" id="local" min="0" step="10" placeholder="0" style="width:8em" /></label></p>
+
+    <h2>餐飲・活動・購物（日圓，每人）</h2>
+    <p><label>餐飲每人每天 ¥ <input type="number" id="food" min="0" step="100" placeholder="0" style="width:8em" /></label></p>
+    <p><label>門票・體驗合計 ¥ <input type="number" id="tickets2" min="0" step="100" placeholder="0" style="width:8em" /></label>
+    <label>購物預算 ¥ <input type="number" id="shop" min="0" step="100" placeholder="0" style="width:8em" /></label></p>
+
+    <h2>台灣端費用（新台幣，每人）</h2>
+    <p><label>來回機票 NT$ <input type="number" id="flight" min="0" step="100" placeholder="請填訂位報價" style="width:9em" /></label>
+    <label>網卡／eSIM NT$ <input type="number" id="sim" min="0" step="10" placeholder="0" style="width:7em" /></label>
+    <label>旅平險 NT$ <input type="number" id="ins" min="0" step="10" placeholder="0" style="width:7em" /></label></p>
+
+    <h2>結果</h2>
+    <div id="b-warn"></div>
+    <div class="table-scroll"><table><thead><tr><th>項目</th><th class="num">日圓</th><th class="num">新台幣</th></tr></thead><tbody id="b-rows"></tbody></table></div>
+    <p id="b-total" style="font-size:1.2rem;font-weight:700"></p>
+    <p class="meta" id="b-ref"></p>
+  </div>
+
+  <Affiliate slots={['hotel-search', 'esim', 'klook-jrpass', 'kkday-jrpass']} />
+
+  <h2>參考：台灣旅客在日本平均花多少？</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>統計</th><th class="num">金額</th><th>可信度</th><th>來源</th></tr></thead>
+      <tbody>
+        <tr><td>{b.reference.label}</td><td class="num">¥{b.reference.taiwanPerPersonJpy.toLocaleString('en-US')}</td><td><Badge c={b.reference.confidence as any} /></td>
+          <td>{b.reference.sources.map((s) => <><a href={s.url} rel="nofollow noopener" target="_blank">{s.label}</a><br /></>)}</td></tr>
+        <tr><td>台灣旅客住宿、餐飲、交通各項平均</td><td class="num">待確認</td><td><Badge c="unknown" /></td><td>—</td></tr>
+        <tr><td>台灣旅客平均停留晚數</td><td class="num">待確認</td><td><Badge c="unknown" /></td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">{b.reference.note}</p>
+
+  <script type="application/json" id="b-data" set:html={JSON.stringify({ ref: b.reference.taiwanPerPersonJpy })}></script>
+  <script>
+    const REF = JSON.parse(document.getElementById('b-data')!.textContent!).ref as number;
+    const n = (id: string) => { const v = (document.getElementById(id) as HTMLInputElement).value; return v === '' ? null : Math.max(0, Number(v)); };
+    const f = (x: number) => Math.round(x).toLocaleString('en-US');
+    function calc() {
+      const people = Math.max(1, n('people') ?? 1), nights = n('nights') ?? 0, days = nights + 1, fx = n('fx') ?? 0;
+      const hotel = n('hotel'), rooms = Math.max(1, n('rooms') ?? 1);
+      const passPrice = Number((document.getElementById('pass') as HTMLSelectElement).value);
+      const warn: string[] = [];
+      if (hotel == null && nights > 0) warn.push('住宿還沒填，總額未含住宿。');
+      if (n('flight') == null) warn.push('機票還沒填，總額未含機票。');
+      if (!fx) warn.push('匯率為 0，台幣金額無法計算。');
+      const jpy: [string, number][] = [
+        ['住宿', (hotel ?? 0) * rooms * nights],
+        ['周遊券', passPrice * people],
+        ['單買車票', (n('tickets') ?? 0) * people],
+        ['市區交通', (n('local') ?? 0) * days * people],
+        ['餐飲', (n('food') ?? 0) * days * people],
+        ['門票・體驗', (n('tickets2') ?? 0) * people],
+        ['購物', (n('shop') ?? 0) * people],
+      ];
+      const twd: [string, number][] = [['機票', (n('flight') ?? 0) * people], ['網卡／eSIM', (n('sim') ?? 0) * people], ['旅平險', (n('ins') ?? 0) * people]];
+      const jpyTotal = jpy.reduce((s, [, v]) => s + v, 0);
+      const twdTotal = jpyTotal * fx + twd.reduce((s, [, v]) => s + v, 0);
+      document.getElementById('b-warn')!.innerHTML = warn.map((w) => `<div class="note">${w}</div>`).join('');
+      document.getElementById('b-rows')!.innerHTML =
+        jpy.filter(([, v]) => v > 0).map(([k, v]) => `<tr><td>${k}</td><td class="num">¥${f(v)}</td><td class="num">NT$${f(v * fx)}</td></tr>`).join('') +
+        twd.filter(([, v]) => v > 0).map(([k, v]) => `<tr><td>${k}</td><td class="num">—</td><td class="num">NT$${f(v)}</td></tr>`).join('');
+      document.getElementById('b-total')!.textContent = `總預算 NT$${f(twdTotal)}（${people} 人 ${days} 天 ${nights} 夜），每人 NT$${f(twdTotal / people)}`;
+      const perJpy = jpyTotal / people;
+      document.getElementById('b-ref')!.textContent = perJpy > 0
+        ? `你的日本境內花費每人約 ¥${f(perJpy)}；觀光廳 2025 年台灣旅客平均每人 ¥${f(REF)}（統計定義不同，僅供粗略對照）。`
+        : '';
+    }
+    document.querySelectorAll('#budget input, #budget select').forEach((el) => el.addEventListener('input', calc));
+    calc();
+  </script>
+</Base>

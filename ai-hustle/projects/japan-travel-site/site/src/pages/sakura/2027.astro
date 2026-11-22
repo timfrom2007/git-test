@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import Affiliate from '../../components/Affiliate.astro';
+import data from '../../data/sakura.json';
+const md = (s: string | null) => (s ? `${Number(s.slice(0, 2))}/${Number(s.slice(3))}` : '待確認');
+const title = '2027 日本櫻花季懶人包：10 城市開花・滿開時程表與日期速查';
+const description = '東京、京都、大阪、福岡、名古屋、廣島、金澤、仙台、弘前、札幌的櫻花平年開花・滿開日與近年實際日期。輸入旅遊日期，馬上看哪些城市可能遇到滿開與該買哪張 JR 周遊券。';
+const years = [...new Set(data.cities.flatMap((c) => c.recent.map((r) => r.year)))].sort();
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'Article', headline: title, description, inLanguage: 'zh-Hant-TW', datePublished: '2026-11-22', dateModified: data.checked, mainEntityOfPage: new URL('/sakura/2027/', Astro.site).href, image: new URL('/og-default.png', Astro.site).href, author: { '@type': 'Organization', name: '日本鐵道省錢工具箱' } },
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: '櫻花滿開日期速查', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW', url: new URL('/sakura/2027/', Astro.site).href, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' } },
+];
+---
+<Base title={title} description={description} jsonLd={jsonLd} ogType="article" breadcrumbs={[{ name: '2027 櫻花季', path: '/sakura/2027/' }]}>
+  <h1>{title}</h1>
+  <p class="meta">發布 2026-11-22｜資料查核 {data.checked}</p>
+  <div class="note">
+    <strong>2027 預測公布後更新：</strong>日本氣象協會、Weathernews 等的 2027 年開花預測通常在 1–2 月起陸續公布（Weathernews 的景點頁寫「2027 年 2 月掲載予定」）。在那之前，這頁用<strong>氣象廳平年值（1991–2020 年平均）</strong>和<strong>近年實際日期</strong>來規劃。近年實際日期多數城市只查到部分年份，查不到的標「待確認」。
+  </div>
+
+  <div class="card" id="sakura-tool">
+    <h2 style="margin-top:0">🌸 旅遊日期 → 哪裡可能遇到滿開？</h2>
+    <label>出發 <input type="date" id="d1" value="2027-03-28" min="2027-03-01" max="2027-05-31" /></label>
+    <label>回國 <input type="date" id="d2" value="2027-04-03" min="2027-03-01" max="2027-05-31" /></label>
+    <div class="table-scroll">
+      <table><thead><tr><th>城市</th><th>判斷</th><th>平年滿開</th><th>建議票券</th></tr></thead><tbody id="sakura-result"></tbody></table>
+    </div>
+    <p class="meta">判斷方式：<br />
+      「很可能」＝行程和「平年滿開日前 2 天～後 4 天」重疊；<br />
+      「看當年早晚」＝和「平年滿開日前 14 天～後 7 天」重疊。範圍依據：近年實際滿開最早比平年早 14 天（弘前 2023 年 4/13，平年 4/27），最晚晚 4 天（東京 2024 年 4/4，平年 3/31）。<br />
+      滿開平年值待確認的城市（仙台），以開花平年值＋7 天推算，標「推算」。這不是預測，只是用歷史資料估計機率高低。</p>
+  </div>
+
+  <Affiliate slots={['klook-sakura', 'klook-jrpass', 'kkday-jrpass']} />
+
+  <h2>10 城市平年值（1991–2020 年平均，染井吉野）</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>城市</th><th>觀測點</th><th class="num">平年開花</th><th class="num">平年滿開</th><th>可信度</th><th>來源</th></tr></thead>
+      <tbody>
+        {data.cities.map((c) => (
+          <tr><td>{c.name}</td><td>{c.station}</td><td class="num">{md(c.normalBloom)}</td><td class="num">{md(c.normalFull)}</td><td><Badge c={c.confidence as any} /></td>
+          <td>{c.sources.map((s) => <><a href={s.url} rel="nofollow noopener" target="_blank" class="meta">{s.label}</a><br /></>)}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">氣象廳「滿開」定義：標本木約 80% 以上花朵開放的第一天。弘前為弘前公園標準木（弘前市發表）的平年值，不是氣象廳青森站。</p>
+
+  <h2>近年實際日期（開花／滿開）</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>城市</th>{years.map((y) => <th class="num">{y}</th>)}</tr></thead>
+      <tbody>
+        {data.cities.map((c) => (
+          <tr><td>{c.name}</td>{years.map((y) => {
+            const r = c.recent.find((x) => x.year === y);
+            return <td class="num">{r ? `${md(r.bloom)}／${md(r.full)}` : '待確認'}</td>;
+          })}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">格式「開花／滿開」。來源同上表；2024 年札幌滿開日是從 2025 年報導「比去年晚 3 日」推算的。查核日 {data.checked}。</p>
+
+  <h2>怎麼看這張表</h2>
+  <ul>
+    <li><strong>南北差一個多月：</strong>福岡、東京平年滿開在 3 月底，札幌在 5 月初，弘前在 4 月底。</li>
+    <li><strong>年年早晚不同：</strong>弘前 2020–2025 年的滿開日從 4/13 到 4/27，前後差 14 天，所以出發前 2–3 週要再看當年預測。</li>
+    <li><strong>近年偏早：</strong>2026 年東京、名古屋、廣島、仙台開花都比平年早 5–8 天；氣象廳長期資料也顯示開花日逐年提早。</li>
+  </ul>
+
+  <h2>延伸閱讀</h2>
+  <ul>
+    <li><a href="/articles/sakura-spots-access-2027/">賞櫻名所 × 交通方式：5 個經典景點怎麼去、搭什麼車</a></li>
+    <li><a href="/articles/sakura-avoid-crowds-2027/">櫻花季避開人潮：用開花時間差規劃追櫻路線</a></li>
+    <li><a href="/tools/jr-pass-calculator/">JR Pass／周遊券划算試算器</a>｜<a href="/tools/japan-trip-budget/">日本旅遊預算計算機</a></li>
+  </ul>
+
+  <script type="application/json" id="sakura-data" set:html={JSON.stringify(data.cities)}></script>
+  <script>
+    type City = { id: string; name: string; normalBloom: string; normalFull: string | null; passes: { name: string; link: string | null }[] };
+    const cities = JSON.parse(document.getElementById('sakura-data')!.textContent!) as City[];
+    const d = (mmdd: string, add = 0) => { const t = new Date(`2027-${mmdd}T00:00:00`); t.setDate(t.getDate() + add); return t; };
+    const fmt = (t: Date) => `${t.getMonth() + 1}/${t.getDate()}`;
+    const overlap = (a1: Date, a2: Date, b1: Date, b2: Date) => a1 <= b2 && b1 <= a2;
+    function run() {
+      const v1 = (document.getElementById('d1') as HTMLInputElement).value, v2 = (document.getElementById('d2') as HTMLInputElement).value;
+      const tb = document.getElementById('sakura-result')!;
+      if (!v1 || !v2) { tb.innerHTML = ''; return; }
+      let s = new Date(v1 + 'T00:00:00'), e = new Date(v2 + 'T00:00:00');
+      if (e < s) [s, e] = [e, s];
+      const rows = cities.map((c) => {
+        const est = !c.normalFull;
+        const full = est ? d(c.normalBloom, 7) : d(c.normalFull!);
+        const fullKey = `${String(full.getMonth() + 1).padStart(2, '0')}-${String(full.getDate()).padStart(2, '0')}`;
+        const core = overlap(s, e, d(fullKey, -2), d(fullKey, 4));
+        const maybe = overlap(s, e, d(fullKey, -14), d(fullKey, 7));
+        const rank = core ? 0 : maybe ? 1 : 2;
+        const label = ['🌸 很可能遇到滿開', '🤞 看當年早晚', '— 不太可能'][rank];
+        const pass = c.passes.map((p) => p.link ? `<a href="${p.link}">${p.name}</a>` : p.name).join('、');
+        return { rank, html: `<tr${rank === 0 ? ' style="background:var(--ok-bg)"' : ''}><td>${c.name}</td><td>${label}</td><td class="num">${fmt(full)}${est ? '（推算）' : ''}</td><td>${pass}</td></tr>` };
+      }).sort((a, b) => a.rank - b.rank);
+      tb.innerHTML = rows.map((r) => r.html).join('');
+    }
+    ['d1', 'd2'].forEach((id) => document.getElementById(id)!.addEventListener('input', run));
+    run();
+  </script>
+</Base>

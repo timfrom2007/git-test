@@ -1,33 +1,38 @@
-# 狀態：A1 完成（2026-11-22，Asia/Taipei）
+# 狀態：A2 完成（2026-11-22，Asia/Taipei）
 
-分支：`claude/gifted-ride-nnfsux`
+分支：`claude/gifted-ride-nnfsux`｜本地 `npm run build` 成功，共 12 頁。
 
-## 做了什麼
-- 用 Astro 5 建了靜態網站，繁體中文、面向台灣旅客，本地 `npm run build` 成功（8 頁）。
-- 第一個工具：**JR Pass／周遊券划算試算器**。比較 JR Pass 全國版 7／14／21 日（官網價或代理商價）、關西廣域、關西＋廣島、北陸拱型周遊券和全部單買。有快速套用行程、可選 Nozomi 券，也能自行修改票價。已用瀏覽器測過，結果和手算一致，手機寬度不會橫向捲動。
-- 3 篇支援文章，每篇都有表格和實際計算：
-  1. `/articles/jr-pass-price-2026/`：2026 年 10 月 JR Pass 漲價，官網和代理商價差表、兒童價、Nozomi 券
-  2. `/articles/tokyo-osaka-shinkansen-jr-pass/`：新幹線單程票價，加上 6 種行程的 JR Pass 回本實算
-  3. `/articles/kansai-area-passes-2026/`：關西地區周遊券停售後的三張替代券比較與回本門檻
-- `/sources/` 頁列出所有票價的來源、可信度、查核日期。
-- SEO：sitemap（@astrojs/sitemap）、robots.txt、canonical、description、OG/Twitter 卡（1200×630 OG 圖）、JSON-LD（WebSite、WebApplication、FAQPage、Article、BreadcrumbList）。
+## A2 做了什麼
+- **2027 櫻花季懶人包** `/sakura/2027/`：
+  - 10 城市（東京、京都、大阪、福岡、名古屋、廣島、金澤、仙台、弘前、札幌）的平年開花・滿開日（1991–2020 年），加上近年實際日期表。頁面標明「2027 預測公布後更新」。
+  - 小工具「旅遊日期 → 哪裡可能遇到滿開」：分成很可能／看當年早晚／不太可能三級。判斷範圍取自近年實際偏差（最早比平年早 14 天，最晚晚 4 天）。每個城市附建議周遊券，連到 A1 的試算器和周遊券文章。
+- **2 篇櫻花支援文章**：
+  - `/articles/sakura-spots-access-2027/`：5 個名所的車站、轉乘、費用與周遊券對照表
+  - `/articles/sakura-avoid-crowds-2027/`：用南北滿開時間差排出 3 條追櫻路線，加上避人潮做法與出發前檢查清單
+- **日本旅遊預算計算機** `/tools/japan-trip-budget/`：輸入人數、晚數、住宿、周遊券、車票、市區交通、餐飲、門票、購物、機票、eSIM、保險，以台幣顯示總額與每人金額。匯率可改，預設為臺銀現金賣出 0.2107（2026-11-20）並標明日期與來源。也附觀光廳 2025 年台灣旅客每人支出 ¥184,413 作對照。住宿、餐飲等**不預設金額**：沒有可靠的來源，要使用者自己填報價。
+- **聯盟連結預留位置**：`src/components/Affiliate.astro`，連結設定在 `src/data/affiliates.json`（全部 `url: null`）。正式 build 只留 HTML 註解 `<!-- affiliate-slot:… -->`，不會讓訪客看到空框；`npm run dev` 時會顯示虛線框。填入 url 後自動顯示，並加上 `rel="sponsored nofollow"` 與揭露文字。已放進兩個試算器、櫻花頁、所有文章。
+- 導覽列、首頁、`/sources/` 都加上了新內容。
+- 已用瀏覽器測過：櫻花工具兩組日期結果正確；預算計算機和手算一致（NT$73,515）；手機寬度沒有橫向捲動。
+
+## A1（之前完成）
+JR Pass／周遊券試算器、3 篇 JR 文章、SEO 基本功（sitemap、robots、canonical、OG、JSON-LD）。詳見 git log。
 
 ## 成果在哪
-- 程式碼：`projects/japan-travel-site/site/`（說明見 `site/README.md`）
-- 票價資料：`site/src/data/fares.json`（用 `npm run check-data` 檢查：有數字的一定要有來源，沒數字的一定要標 unknown）
+- 程式碼：`projects/japan-travel-site/site/`（`site/README.md`）
+- 資料：`src/data/fares.json`（票價）、`sakura.json`（櫻花）、`budget.json`（匯率、參考支出）、`affiliates.json`（聯盟連結）
 
 ## 資料可信度（重要）
-- 這個環境無法開 japanrailpass.net、westjr.co.jp、JR 東海等官方網站（DNS 被擋），票價只能從搜尋結果取得。
-- 只有 Kansai WIDE ¥12,000 標為「官方」。其他都標「二手來源・待官方確認」，來源間有落差時取較低值。
-- 查不到的標「待確認」，沒有填估計值：Haruka（關西機場–京都）、京都–大阪、新大阪–岡山、金澤–大阪、7 日綠色車廂官網價、多數兒童價、關西地區周遊券確切停售日。
+- 這個環境連不到 JR、氣象廳（data.jma.go.jp）等網站，所有網頁抓取都失敗，資料只能從搜尋結果摘要取得。
+- 櫻花平年值標為官方的有東京、京都、弘前。其他標二手來源。
+- 標「待確認」的：仙台滿開平年值（工具中用開花平年值＋7 天推算，有標「推算」）；多數城市 2017–2025 年的實際日期（只查到東京 2018／2024／2025／2026、弘前 2020–2026、京都 2026 等零星年份）；JR 東日本東北・JR 九州・JR 北海道周遊券價格；兼六園門票；弘前城天守 2027 年是否開放；台灣旅客分項支出與平均停留晚數。
+- 2024 年札幌滿開日是從 2025 年報導「比去年晚 3 日」推算的，有標註。
 
 ## 下一步（建議）
-1. 讓 agent 能讀官方網站後（需主控或人類把上述網域加進環境網路白名單），把二手數字逐一換成官方數字，補齊「待確認」。
-2. 第二個工具：旅遊預算計算機或退稅試算。
-3. 長尾文章：北陸（金澤）、四國、山陰的交通與周遊券。
-4. 上線後設定聯盟連結（Klook／KKday 的 JR Pass、周遊券商品頁），需人類先申請聯盟帳號。
+1. **2027 年 1–2 月**：預測公布後更新 `sakura.json` 的 `forecast2027` 與頁面（時效關鍵，建議主控排程提醒）。
+2. 網路白名單放行 data.jma.go.jp、japanrailpass.net、westjr.co.jp 後，補齊近 10 年實際日期與官方票價。
+3. 退稅試算工具；北陸、四國、山陰長尾文章。
 
 ## 需要人類做什麼
-見 `control/human-todo.md` 的「Project A」段落：A-1 Vercel 部署（10 分）、A-2 選購網域（15 分，付費）、A-3 接網域（10 分）、A-4 Search Console（10 分）、A-5 核對官方票價（15 分，可選）。
+見 `control/human-todo.md` Project A 段落：A-1 Vercel 部署、A-2 網域（付費）、A-3 接網域、A-4 Search Console、A-5 核對票價（可選）、**A-6 申請聯盟行銷帳號（新增）**。櫻花頁要在 2027/01 底前被收錄，建議 A-1、A-4 本週內完成。
 
 預覽網址：（人類完成 A-1 後填寫）

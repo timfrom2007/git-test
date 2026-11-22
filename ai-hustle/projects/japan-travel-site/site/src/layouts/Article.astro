@@ -1,5 +1,6 @@
 ---
 import Base from './Base.astro';
+import Affiliate from '../components/Affiliate.astro';
 import { SITE_NAME } from '../site';
 const { frontmatter } = Astro.props;
 const url = new URL(Astro.url.pathname, Astro.site).href;
@@ -17,6 +18,7 @@ const jsonLd = [{
     <h1>{frontmatter.title}</h1>
     <p class="meta">發布 {frontmatter.published}｜資料查核 {frontmatter.checked}</p>
     <slot />
+    <Affiliate slots={frontmatter.affiliates ?? ['klook-jrpass', 'kkday-jrpass', 'esim']} />
     <div class="card">
       <strong>用你的行程算一次：</strong><a href="/tools/jr-pass-calculator/">JR Pass／周遊券划算試算器</a>，勾選路段即可比較各票券與單買的總花費。
     </div>

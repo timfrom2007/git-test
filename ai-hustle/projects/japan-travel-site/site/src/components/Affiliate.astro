@@ -1,0 +1,19 @@
+---
+import aff from '../data/affiliates.json';
+const { slots } = Astro.props as { slots: (keyof typeof aff.slots)[] };
+const items = slots.map((id) => ({ id, ...(aff.slots as any)[id] }));
+const live = items.filter((i) => i.url);
+const dev = import.meta.env.DEV;
+---
+{items.map((i) => <Fragment set:html={`<!-- affiliate-slot:${i.id} -->`} />)}
+{live.length > 0 && (
+  <aside class="card aff">
+    <p class="meta">以下為聯盟連結，透過連結購買本站可能獲得分潤，不影響你的價格。</p>
+    {live.map((i) => <a class="btn ghost" href={i.url} rel="sponsored nofollow noopener" target="_blank">{i.label}</a>)}
+  </aside>
+)}
+{dev && live.length === 0 && (
+  <aside class="card" style="border-style:dashed">
+    <p class="meta">【開發模式才顯示】聯盟連結預留位置：{items.map((i) => `${i.partner}（${i.id}）`).join('、')}</p>
+  </aside>
+)}

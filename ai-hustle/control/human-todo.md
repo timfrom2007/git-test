@@ -38,3 +38,13 @@
   1. https://japanrailpass.net/ （JR Pass 7／14／21 日，官網價與代理商價）
   2. https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_hiroshima/ （關西＋廣島 ¥17,000？）
   3. https://tabidachi.travel/hokuriku-arch-pass 或 JR 西日本北陸拱型券頁面（¥35,000？）
+
+- [ ] [japan-travel-site] A-6 申請聯盟行銷帳號（每個約 15 分鐘，分天做；**是註冊帳號，需你決定**）
+  網站已在工具和文章裡預留聯盟連結位置，正式版目前不顯示。拿到連結後填進 `site/src/data/affiliates.json` 的 `url` 欄，就會自動顯示並加上「聯盟連結」揭露文字。
+  建議順序（一天做一個）：
+  1. **KKday 聯盟**：搜尋「KKday Affiliate」或「KKday 聯盟行銷」進官方申請頁 → 填網站網址（用 A-1 的 vercel.app 網址或 A-3 的正式網域）與網站介紹「日本鐵道 JR Pass／周遊券試算與櫻花季懶人包，繁中、台灣旅客」→ 送出等審核。
+  2. **Klook 聯盟**：搜尋「Klook Affiliate Partner」→ 同上。
+  3. **訂房**：Agoda Partners 或 Booking.com Affiliate Partner 擇一先申請。
+  4. **eSIM／網卡**：審核通過的平台內通常有 eSIM 商品，可先用 KKday／Klook 的商品頁連結，不用另外申請。
+  審核通過後，在平台後台產生以下商品的連結，貼到 STATUS.md 或直接改 `affiliates.json`：JR Pass 全國版、關西地區周遊券、賞櫻行程、日本 eSIM、訂房搜尋頁。
+  注意：各平台條款（是否接受新網站、分潤比例、付款門檻）以申請頁為準，這裡沒有替你查證；有的平台要求網站先上線且有內容，建議 A-1 完成後再申請。

@@ -1,0 +1,15 @@
+{
+  "checked": "2026-11-22",
+  "fx": { "jpyToTwd": 0.2107, "date": "2026-11-20", "type": "臺灣銀行 日圓 現金賣出", "source": { "label": "臺灣銀行 日圓歷史牌告匯率", "url": "https://rate.bot.com.tw/xrt/quote/day/JPY" }, "confidence": "secondary", "note": "取自搜尋摘要，換匯前請以臺銀即時牌告為準。" },
+  "reference": {
+    "taiwanPerPersonJpy": 184413,
+    "year": 2025,
+    "label": "觀光廳 インバウンド消費動向調査：2025 年台灣旅客每人旅行支出",
+    "sources": [
+      { "label": "honichi：2025 年訪日台灣人消費額", "url": "https://honichi.com/news/2026/02/18/inbound-taiwan-2025/" },
+      { "label": "觀光廳 2025 年訪日外國人旅行消費額（確報）", "url": "https://www.mlit.go.jp/kankocho/content/001992584.pdf" }
+    ],
+    "confidence": "secondary",
+    "note": "另有計算方式得出約 ¥178,000；統計定義與本試算不同，只能粗略對照。費用細項與平均停留晚數的台灣數字查不到，待確認。"
+  }
+}

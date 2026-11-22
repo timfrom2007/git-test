@@ -1,0 +1,12 @@
+{
+  "_readme": "聯盟行銷連結。url 為 null 時正式版不顯示（只留 HTML 註解），開發模式顯示虛線框 placeholder。人類申請到聯盟帳號後把 url 填上即可。",
+  "slots": {
+    "klook-jrpass": { "partner": "Klook", "label": "在 Klook 買 JR Pass", "url": null },
+    "kkday-jrpass": { "partner": "KKday", "label": "在 KKday 買 JR Pass", "url": null },
+    "klook-kansai-pass": { "partner": "Klook", "label": "Klook 關西地區周遊券", "url": null },
+    "kkday-kansai-pass": { "partner": "KKday", "label": "KKday 關西地區周遊券", "url": null },
+    "hotel-search": { "partner": "Agoda／Booking.com", "label": "比價訂房", "url": null },
+    "esim": { "partner": "eSIM／網卡", "label": "日本 eSIM／網卡", "url": null },
+    "klook-sakura": { "partner": "Klook", "label": "賞櫻行程與夜櫻門票", "url": null }
+  }
+}

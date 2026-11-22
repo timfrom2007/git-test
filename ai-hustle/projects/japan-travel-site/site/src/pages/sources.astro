@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import Badge from '../components/Badge.astro';
 import data from '../data/fares.json';
+import sakura from '../data/sakura.json';
+import budget from '../data/budget.json';
 const items = [...data.passes.map((p) => ({ name: p.name, value: p.priceOfficialSite, c: p.confidence, sources: p.sources, note: p.priceNote })),
   ...data.routes.map((r) => ({ name: r.name, value: r.fare, c: r.confidence, sources: r.sources, note: r.note }))];
 ---
@@ -24,5 +26,15 @@ const items = [...data.passes.map((p) => ({ name: p.name, value: p.priceOfficial
       </tbody>
     </table>
   </div>
+  <h2>櫻花平年值與近年實際日期</h2>
+  <p>查核日 {sakura.checked}。平年值＝1991–2020 年平均；詳細表格見 <a href="/sakura/2027/">2027 櫻花時程表</a>。</p>
+  <div class="table-scroll"><table><thead><tr><th>城市</th><th>可信度</th><th>來源</th></tr></thead><tbody>
+    {sakura.cities.map((c) => <tr><td>{c.name}</td><td><Badge c={c.confidence as any} /></td><td>{c.sources.map((s) => <><a href={s.url} rel="nofollow noopener" target="_blank">{s.label}</a><br /></>)}</td></tr>)}
+  </tbody></table></div>
+  <h2>預算計算機</h2>
+  <ul>
+    <li>預設匯率 {budget.fx.jpyToTwd}（{budget.fx.type}，{budget.fx.date}）：<a href={budget.fx.source.url} rel="nofollow noopener" target="_blank">{budget.fx.source.label}</a> <Badge c={budget.fx.confidence as any} /></li>
+    <li>台灣旅客每人旅行支出 ¥{budget.reference.taiwanPerPersonJpy.toLocaleString('en-US')}（{budget.reference.year}）：{budget.reference.sources.map((s) => <><a href={s.url} rel="nofollow noopener" target="_blank">{s.label}</a>　</>)} <Badge c={budget.reference.confidence as any} /></li>
+  </ul>
   <p>發現錯誤或價格更新？本站會定期重新查核並更新此頁。</p>
 </Base>
