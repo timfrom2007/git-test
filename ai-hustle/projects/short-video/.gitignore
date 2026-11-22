@@ -1,0 +1,4 @@
+# 產出物：只保留範例影片與封面，其餘可用 tools/make_video.py 重建
+videos/*/out/*
+!videos/*/out/cover.jpg
+!videos/01-tax-free-refund/out/video.mp4
