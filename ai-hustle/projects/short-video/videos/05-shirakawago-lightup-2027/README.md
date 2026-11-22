@@ -2,6 +2,8 @@
 
 **優先度：中高（1 月前發；只要官方日期公告就立刻發）**｜長度約 37 秒｜導流：網站「北陸冬季行程（金澤＋白川鄉＋高山）」— 對應 Project A 的冷門長尾策略
 
+檔案結構同 01（`scenes.json`、`narration.txt`、`subtitles.srt`、`storyboard.md`、`out/video.mp4`、`out/cover.jpg`、`carousel/`）。
+
 > ⚠️ 發布前人類花 2 分鐘確認：白川鄉觀光協會官網（https://shirakawa-go.gr.jp/）是否已公告 2027 日期。若日期不同，改 `scenes.json` 第 2 幕後重跑。
 
 ## 標題
@@ -22,7 +24,12 @@
 ⚠️ 往年約 10 月開賣，現在最實際是找巴士團
 📸 經典俯瞰照的展望台要另外預約
 📌 金澤＋白川鄉＋高山 冬季行程 → 主頁連結
+🔗 {SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=05-shirakawago-lightup-2027
 ```
+
+## 導流連結
+- 目前：`{SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=05-shirakawago-lightup-2027`（北陸冬季懶人包（Project A 製作中，待 LINKS.md））
+- `{SITE_URL}` 在網站部署（human-todo A-1）後由 AI 換成正式網域。YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」；Threads 的連結可以點。
 
 ## Hashtag
 YouTube：`#白川鄉 #合掌村 #日本旅遊`

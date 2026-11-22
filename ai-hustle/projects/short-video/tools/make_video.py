@@ -92,7 +92,7 @@ def wrap(draw, text, f, maxw):
     for para in text.split("\n"):
         cur = ""
         for ch in para:
-            if draw.textlength(cur + ch, font=f) <= maxw:
+            if draw.textlength(cur + ch, font=f) <= maxw or (ch in "，。、！？：；）」』,.!?:;)" and cur):
                 cur += ch
             else:
                 lines.append(cur); cur = ch
@@ -105,10 +105,10 @@ def hex2rgb(h):
     h = h.lstrip("#"); return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 
-def gradient(c1, c2):
-    a = np.linspace(0, 1, H)[:, None, None]
+def gradient(c1, c2, w=W, h=H):
+    a = np.linspace(0, 1, h)[:, None, None]
     g = (np.array(c1)[None, None, :] * (1 - a) + np.array(c2)[None, None, :] * a)
-    return Image.fromarray(np.repeat(g, W, axis=1).astype(np.uint8), "RGB")
+    return Image.fromarray(np.repeat(g, w, axis=1).astype(np.uint8), "RGB")
 
 
 def draw_center(draw, lines, f, y, fill, stroke=0, stroke_fill=(0, 0, 0), spacing=1.25):
@@ -160,6 +160,70 @@ def sub_layer(text):
     return im
 
 
+# ---------------- 人聲錄音模式 ----------------
+VOICE_NAMES = ["voice.m4a", "voice.mp3", "voice.wav", "voice.aac", "voice.mp4"]
+
+
+def load_recording(path, sr=44100):
+    """用 ffmpeg 轉成單聲道 wav，順便濾掉低頻雜音並做音量標準化（-16 LUFS，平台建議值附近）。"""
+    import soundfile as sf, tempfile
+    with tempfile.TemporaryDirectory() as td:
+        w = Path(td) / "v.wav"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(path), "-ac", "1", "-ar", str(sr),
+                        "-af", "highpass=f=80,loudnorm=I=-16:TP=-1.5:LRA=11", str(w)], check=True)
+        x, _ = sf.read(w, dtype="float32")
+    return x, sr
+
+
+def speech_segments(x, sr, frame=0.02, min_gap=0.22):
+    """回傳 [(start, end)] 有聲段（秒）。門檻依錄音底噪自動調整。"""
+    n = int(frame * sr)
+    m = len(x) // n
+    e = 20 * np.log10(np.sqrt(np.mean(x[: m * n].reshape(m, n) ** 2, axis=1)) + 1e-9)
+    floor, peak = np.percentile(e, 10), np.percentile(e, 95)
+    thr = max(floor + 0.35 * (peak - floor), -55)
+    on = e > thr
+    segs, i = [], 0
+    while i < m:
+        if on[i]:
+            j = i
+            while j < m and on[j]:
+                j += 1
+            segs.append([i * frame, j * frame]); i = j
+        else:
+            i += 1
+    merged = []
+    for s0, s1 in segs:
+        if merged and s0 - merged[-1][1] < min_gap:
+            merged[-1][1] = s1
+        else:
+            merged.append([s0, s1])
+    return [(a, b) for a, b in merged if b - a >= 0.08]
+
+
+def split_scenes(segs, scenes):
+    """把有聲段分成 len(scenes) 組：取最長的 N-1 個停頓當場景分界。回傳 [(start, end)]。"""
+    n = len(scenes)
+    if len(segs) < n:
+        raise SystemExit(f"錄音只偵測到 {len(segs)} 段聲音，但有 {n} 個場景。請在每段之間停頓約 1 秒後重錄，"
+                         "或改用 TTS（不放 voice.m4a）。")
+    gaps = sorted(range(len(segs) - 1), key=lambda k: segs[k + 1][0] - segs[k][1], reverse=True)[: n - 1]
+    cuts = sorted(gaps)
+    groups, st = [], 0
+    for c in cuts + [len(segs) - 1]:
+        groups.append((segs[st][0], segs[c][1])); st = c + 1
+    # 檢查：每段語速（字／秒）偏離中位數太多 → 可能切錯或漏念
+    rates = [len(re.sub(r"\s", "", sc["say"])) / max(0.1, b - a) for sc, (a, b) in zip(scenes, groups)]
+    med = float(np.median(rates))
+    for i, r in enumerate(rates):
+        if r > med * 2.2 or r < med / 2.2:
+            print(f"⚠️ 第 {i+1} 段語速異常（{r:.1f} 字/秒，中位數 {med:.1f}）：可能少念、多念或停頓位置不對，請看一下成品。",
+                  file=sys.stderr)
+    shortest = min(segs[k + 1][0] - segs[k][1] for k in cuts) if cuts else 0
+    print(f"場景分界的最短停頓 {shortest:.2f}s", file=sys.stderr)
+    return groups
+
+
 # ---------------- 主流程 ----------------
 def main():
     ap = argparse.ArgumentParser()
@@ -167,29 +231,44 @@ def main():
     ap.add_argument("--no-video", action="store_true")
     ap.add_argument("--bgm")
     ap.add_argument("--speed", type=float, default=1.12)
+    ap.add_argument("--voice", help="人聲錄音檔（預設自動找資料夾內的 voice.m4a／mp3／wav）")
+    ap.add_argument("--tts", action="store_true", help="即使有錄音檔也用 TTS")
     a = ap.parse_args()
 
     vd = Path(a.video_dir)
     spec = json.loads((vd / "scenes.json").read_text(encoding="utf-8"))
     scenes = spec["scenes"]
-
-    tts = load_tts()
     import soundfile as sf
-    sr = None
+
+    voice = None if a.tts else (Path(a.voice) if a.voice else next((vd / v for v in VOICE_NAMES if (vd / v).exists()), None))
     audio, timeline, t = [], [], 0.0
-    for i, sc in enumerate(scenes):
-        g = tts.generate(sc.get("tts", sc["say"]), sid=0, speed=sc.get("speed", a.speed))
-        sr = g.sample_rate
-        s = np.array(g.samples, dtype=np.float32)
-        # 修剪首尾靜音
-        nz = np.where(np.abs(s) > 0.01)[0]
-        if len(nz):
-            s = s[max(0, nz[0] - int(0.03 * sr)): nz[-1] + int(0.08 * sr)]
-        dur = len(s) / sr
-        hold = sc.get("hold", 0.0)
-        audio += [s, np.zeros(int((GAP + hold) * sr), dtype=np.float32)]
-        timeline.append((t, t + dur, t + dur + GAP + hold))
-        t += dur + GAP + hold
+    if voice:
+        print(f"人聲模式：{voice}", file=sys.stderr)
+        x, sr = load_recording(voice)
+        groups = split_scenes(speech_segments(x, sr), scenes)
+        pad = 0.06
+        for sc, (g0, g1) in zip(scenes, groups):
+            s = x[max(0, int((g0 - pad) * sr)): int((g1 + pad) * sr)]
+            dur = len(s) / sr
+            hold = sc.get("hold", 0.0)
+            audio += [s, np.zeros(int((GAP + hold) * sr), dtype=np.float32)]
+            timeline.append((t, t + dur, t + dur + GAP + hold))
+            t += dur + GAP + hold
+    else:
+        tts = load_tts()
+        for sc in scenes:
+            g = tts.generate(sc.get("tts", sc["say"]), sid=0, speed=sc.get("speed", a.speed))
+            sr = g.sample_rate
+            s = np.array(g.samples, dtype=np.float32)
+            # 修剪首尾靜音
+            nz = np.where(np.abs(s) > 0.01)[0]
+            if len(nz):
+                s = s[max(0, nz[0] - int(0.03 * sr)): nz[-1] + int(0.08 * sr)]
+            dur = len(s) / sr
+            hold = sc.get("hold", 0.0)
+            audio += [s, np.zeros(int((GAP + hold) * sr), dtype=np.float32)]
+            timeline.append((t, t + dur, t + dur + GAP + hold))
+            t += dur + GAP + hold
     total = t
 
     # 字幕：每個場景的片段按字數比例分配語音長度
@@ -203,7 +282,7 @@ def main():
             subs.append((cur, cur + d, c)); cur += d
 
     (vd / "narration.txt").write_text(
-        f"# {spec['title']}\n# 旁白稿（真人錄音時照念即可；括號內為語氣提示）\n\n" +
+        f"# {spec['title']}\n# 旁白稿：照念即可，括號內為語氣提示。\n# 錄音方式：手機錄音 App，一次錄完；每段 [1][2]… 之間停頓約 1 秒（段內正常說話即可）。\n# 錄好存成 voice.m4a 放在這個資料夾，AI 會自動切段、對齊字卡與字幕，並把段間停頓縮短。\n\n" +
         "\n\n".join(f"[{i+1}] {sc['say']}" + (f"（{sc['tone']}）" if sc.get("tone") else "") for i, sc in enumerate(scenes)) + "\n",
         encoding="utf-8")
     (vd / "subtitles.srt").write_text(
@@ -214,7 +293,7 @@ def main():
         txt = (sc.get("badge", "") + " " + sc.get("text", "").replace("\n", " ") + (" ／ " + sc["sub"].replace("\n", " ") if sc.get("sub") else "")).strip()
         rows.append(f"| {i+1} | {st:0.1f}–{nxt:0.1f}s | {sc.get('visual','')} | {txt} | {sc['say']} |")
     (vd / "storyboard.md").write_text(
-        f"# 分鏡：{spec['title']}\n\n總長約 {total:0.1f} 秒（以 TTS 語速計；真人錄音通常 ±15%）。\n"
+        f"# 分鏡：{spec['title']}\n\n總長約 {total:0.1f} 秒（{'依人聲錄音' if voice else '以 TTS 語速計；真人錄音通常 ±15%'}）。\n"
         "畫面安全區：重要文字放在上方 1/4 到 2/3 之間，避開右側按鈕與底部標題列。\n\n" + "\n".join(rows) + "\n",
         encoding="utf-8")
     print(f"總長 {total:0.1f}s，字幕 {len(subs)} 條", file=sys.stderr)

@@ -9,8 +9,10 @@
 | `narration.txt` | 旁白稿（真人錄音用） |
 | `subtitles.srt` | 字幕（對齊 TTS 版本；真人錄音後請在剪輯軟體自動對齊或用 CapCut 自動字幕） |
 | `storyboard.md` | 分鏡表（時間碼、畫面、字卡、旁白） |
-| `out/video.mp4` | **可直接上傳的範例成品**（字卡動畫＋AI 旁白＋燒入字幕） |
+| `out/video.mp4` | **可直接上傳的成品**（字卡動畫＋AI 旁白＋燒入字幕） |
 | `out/cover.jpg` | 封面 1080×1920 |
+| `carousel/01.jpg`… | IG 輪播圖 1080×1350（同一則貼文依序上傳） |
+| `voice.m4a`（人類放） | 人聲錄音；放進來後重跑 `make_video.py` 就會改用人聲 |
 
 ## 標題（擇一，A/B 測試建議用前兩個）
 1. 日本免稅變了！11月起結帳不再直接扣稅
@@ -31,8 +33,13 @@
 退款方式依店家不同，結帳時先問清楚。
 
 📌 退稅試算 → 主頁連結
+🔗 {SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=01-tax-free-refund
 資料來源：日本觀光廳、日本海關（查核 2026-11-22）
 ```
+
+## 導流連結
+- 目前：`{SITE_URL}/?utm_source=shorts&utm_medium=social&utm_campaign=01-tax-free-refund`（退稅試算（Project A 製作中，LINKS.md 出現後改為正式路徑））
+- `{SITE_URL}` 在網站部署（human-todo A-1）後由 AI 換成正式網域。YouTube Shorts 與 IG 說明欄的連結不能點，主要靠「主頁連結」；Threads 的連結可以點。
 
 ## Hashtag
 YouTube（放標題或說明欄最後，3 個以內最有效）：`#日本旅遊 #日本退稅 #日本免稅`

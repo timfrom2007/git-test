@@ -4,6 +4,8 @@
   "bg1": "#3a1c3f",
   "bg2": "#e0789a",
   "accent": "#FFE3EC",
+  "checked": "2026-11-22",
+  "sources": ["日本氣象廳（平年值 1991–2020）", "nippon.com", "Weathernews"],
   "cover": {"text": "2027 櫻花\n現在訂房會不會太早？", "sub": "預測還沒出也能先卡位的 3 步"},
   "scenes": [
     {
