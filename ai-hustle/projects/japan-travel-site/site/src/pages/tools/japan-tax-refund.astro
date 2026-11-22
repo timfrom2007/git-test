@@ -1,0 +1,129 @@
+---
+import Base from '../../layouts/Base.astro';
+import Affiliate from '../../components/Affiliate.astro';
+const title = '日本退稅試算（2026/11/1 新制：先付稅、出境才退）';
+const description = '日本 2026 年 11 月 1 日起免稅改為退稅制（リファンド方式）。輸入每張收據金額，試算可退多少消費稅、要先墊多少錢、哪幾筆未達 5,000 日圓門檻，並檢查 90 天期限。';
+const checked = '2026-11-22';
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: '日本退稅試算', applicationCategory: 'TravelApplication', operatingSystem: 'Any', inLanguage: 'zh-Hant-TW', url: new URL('/tools/japan-tax-refund/', Astro.site).href, description, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+    { q: '2026 年 11 月起日本免稅怎麼變？', a: '改為リファンド方式：在免稅店先付含稅價，購買日起 90 天內出境時，在機場或港口的免稅手續機台出示護照與商品，經海關確認後由店家或退稅業者退還消費稅。' },
+    { q: '退稅門檻還是 5,000 日圓嗎？', a: '多個解說來源指出下限維持同一店同一天未稅合計 5,000 日圓，且不再區分一般物品與消耗品；消耗品 50 萬日圓上限取消。請以國稅廳、觀光廳原文為準。' },
+    { q: '退稅有手續費嗎？', a: '政府沒有統一規定，由店家與退稅業者決定。依 2026 年 10 月底報導，部分連鎖店宣布不收退稅申請手續費，但領款方式的費用各家不同，結帳時請先問。' },
+  ].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+---
+<Base title={title} description={description} jsonLd={jsonLd} breadcrumbs={[{ name: '退稅試算', path: '/tools/japan-tax-refund/' }]}>
+  <h1>{title}</h1>
+  <p class="meta">資料查核 {checked}</p>
+  <div class="note"><strong>新制一句話：</strong>2026/11/1 起在免稅店<strong>先付含稅價</strong>，購買日起 <strong>90 天內出境</strong>時在機場／港口的免稅手續機台刷護照、讓海關確認商品，之後才退錢。商品在日本用掉或沒帶出境，<strong>整張收據都不能退</strong>。</div>
+
+  <div class="card" id="refund">
+    <h2 style="margin-top:0">1. 輸入收據</h2>
+    <p class="meta">「店家＋日期」相同的收據會合算門檻（同店同日未稅合計 ≥ ¥5,000）。稅率以收據標示為準：多數商品 10%，食品飲料多為 8%。</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>店家＋日期</th><th class="num">含稅金額 ¥</th><th>稅率</th><th>在日本用掉／沒帶走</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p><button class="btn ghost" id="add" type="button">＋ 新增一張收據</button></p>
+
+    <h2>2. 日期與手續費</h2>
+    <p><label>最早一筆購買日 <input type="date" id="buy" value="2027-03-28" /></label>　<label>出境日 <input type="date" id="out" value="2027-04-03" /></label></p>
+    <p><label>退稅手續費 <input type="number" id="fee" min="0" max="100" step="0.5" value="0" style="width:5em" /> %</label>
+      <span class="meta">各店家不同，政府沒有統一規定，結帳時問店員。預設 0% 只是方便試算，不代表實際費用。</span></p>
+    <p><label>匯率 1 日圓 = <input type="number" id="fx" step="0.0001" value="0.2107" style="width:7em" /> 新台幣</label> <span class="meta">預設：臺銀現金賣出 2026-11-20（見<a href="/sources/">資料來源</a>）</span></p>
+
+    <h2>3. 結果</h2>
+    <div id="warn"></div>
+    <div class="table-scroll"><table><thead><tr><th>店家＋日期</th><th class="num">未稅合計</th><th class="num">消費稅</th><th>可退？</th></tr></thead><tbody id="res"></tbody></table></div>
+    <p id="sum" style="font-weight:700;font-size:1.1rem"></p>
+  </div>
+
+  <Affiliate slots={['esim', 'hotel-search']} />
+
+  <h2>新制 vs 舊制</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>項目</th><th>舊制（到 2026/10/31 購買）</th><th>新制（2026/11/1 起購買）</th></tr></thead>
+      <tbody>
+        <tr><td>結帳</td><td>店內直接以免稅價結帳</td><td>先付含稅價</td></tr>
+        <tr><td>退款時點</td><td>—</td><td>出境時海關確認後，由店家或退稅業者退還</td></tr>
+        <tr><td>期限</td><td>—</td><td>購買日起 90 天內出境</td></tr>
+        <tr><td>門檻</td><td>一般物品、消耗品各自 ≥ ¥5,000（未稅）</td><td>不分類，同店同日未稅合計 ≥ ¥5,000</td></tr>
+        <tr><td>消耗品上限</td><td>¥500,000</td><td>取消</td></tr>
+        <tr><td>密封袋</td><td>消耗品需特殊包裝</td><td>取消</td></tr>
+        <tr><td>在日本用掉</td><td>消耗品不可在日本使用</td><td>用掉或未帶出境，該筆交易不能退</td></tr>
+        <tr><td>退款方式、手續費</td><td>—</td><td>依店家／業者（信用卡、現金、帳戶等），<strong>待確認</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">來源：<a href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" rel="nofollow noopener" target="_blank">觀光廳 リファンド方式とは</a>、<a href="https://www.customs.go.jp/kaigairyoko/taxrefund/jpn.htm" rel="nofollow noopener" target="_blank">日本海關</a>、<a href="https://www.nippon.com/ja/japan-data/h02925/" rel="nofollow noopener" target="_blank">nippon.com</a>、<a href="https://zenmenkyo.jp/refund-top/refund-system-2026/" rel="nofollow noopener" target="_blank">全国免税店協会</a>、<a href="https://pievat.com/japan/merchant-blog/tax-free-changes-for-travelers-2026" rel="nofollow noopener" target="_blank">PIE VAT</a>、<a href="https://city.gvm.com.tw/article/134015" rel="nofollow noopener" target="_blank">遠見</a>。查核 {checked}。「同店同日合算」與 5,000 日圓下限出自民間解說，國稅廳原文本次未能直接讀取，待確認。</p>
+
+  <h2>出境前檢查清單</h2>
+  <ol>
+    <li>所有退稅商品放在<strong>手提或托運前可拿出來</strong>的地方，先到免稅手續機台，再托運行李。</li>
+    <li>帶護照（入境用的同一本）。</li>
+    <li>收據、商品不要拆開用掉：同一張收據有一件用掉，整張都不能退。</li>
+    <li>結帳時問清楚：退到哪裡（信用卡／現金／帳戶）、有沒有手續費。2026 年 10 月底報導，唐吉訶德、Bic Camera、多慶屋、鶴羽藥妝宣布不收申請手續費（<a href="https://city.gvm.com.tw/article/134015" rel="nofollow noopener" target="_blank">遠見</a>），其他店待確認。</li>
+  </ol>
+  <p>其他 2026–2027 新規定（出國稅、京都住宿稅、JESTA）見<a href="/articles/japan-new-rules-2026-2027/">日本旅遊新制度總整理</a>。</p>
+
+  <script>
+    const tb = document.getElementById('rows')!;
+    const seed: [string, number, number][] = [['藥妝店A 3/28', 6600, 10], ['藥妝店A 3/28', 2200, 10], ['超商零食 3/29', 3240, 8], ['電器行 3/30', 33000, 10]];
+    const f = (x: number) => Math.round(x).toLocaleString('en-US');
+    function addRow(label = '', amt: number | '' = '', rate = 10, used = false) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td><input class="lab" value="${label}" placeholder="例：藥妝店A 3/28" style="width:11em"></td>
+        <td class="num"><input class="amt" type="number" min="0" step="1" value="${amt}" style="width:7em"></td>
+        <td><select class="rate"><option value="10"${rate === 10 ? ' selected' : ''}>10%</option><option value="8"${rate === 8 ? ' selected' : ''}>8%</option></select></td>
+        <td><input class="used" type="checkbox"${used ? ' checked' : ''}></td>
+        <td><button type="button" class="del btn ghost" style="padding:2px 8px">刪</button></td>`;
+      tr.querySelector('.del')!.addEventListener('click', () => { tr.remove(); calc(); });
+      tr.querySelectorAll('input,select').forEach((el) => el.addEventListener('input', calc));
+      tb.appendChild(tr);
+    }
+    function calc() {
+      const groups = new Map<string, { excl: number; tax: number; used: boolean }>();
+      tb.querySelectorAll('tr').forEach((tr) => {
+        const lab = (tr.querySelector('.lab') as HTMLInputElement).value.trim() || '（未命名）';
+        const amt = Number((tr.querySelector('.amt') as HTMLInputElement).value) || 0;
+        const r = Number((tr.querySelector('.rate') as HTMLSelectElement).value);
+        const used = (tr.querySelector('.used') as HTMLInputElement).checked;
+        const tax = Math.floor(amt * r / (100 + r));
+        const g = groups.get(lab) ?? { excl: 0, tax: 0, used: false };
+        g.excl += amt - tax; g.tax += tax; g.used ||= used; groups.set(lab, g);
+      });
+      const warn: string[] = [];
+      const b = (document.getElementById('buy') as HTMLInputElement).value, o = (document.getElementById('out') as HTMLInputElement).value;
+      let late = false;
+      if (b && o) {
+        const days = Math.round((new Date(o).getTime() - new Date(b).getTime()) / 86400000);
+        if (days > 90) { late = true; warn.push(`出境日距最早購買日 ${days} 天，超過 90 天，不能退稅（試算器以最早購買日判斷；實際期限是每筆各自的購買日起 90 天）。`); }
+        if (days < 0) warn.push('出境日早於購買日，請檢查日期。');
+      }
+      if (b && b < '2026-11-01') warn.push('2026/10/31 以前的購買適用舊制（店內直接免稅），不用出境時辦理。');
+      const fee = Math.min(100, Math.max(0, Number((document.getElementById('fee') as HTMLInputElement).value) || 0)) / 100;
+      const fx = Number((document.getElementById('fx') as HTMLInputElement).value) || 0;
+      let paid = 0, refund = 0;
+      const rows: string[] = [];
+      for (const [k, g] of groups) {
+        paid += g.tax;
+        const ok = g.excl >= 5000 && !g.used && !late;
+        const why = g.used ? '✗ 有商品在日本用掉／沒帶走' : g.excl < 5000 ? `✗ 未稅 ¥${f(g.excl)}，差 ¥${f(5000 - g.excl)} 到門檻` : late ? '✗ 超過 90 天' : '✓ 可退';
+        if (ok) refund += g.tax;
+        rows.push(`<tr${ok ? ' style="background:var(--ok-bg)"' : ''}><td>${k}</td><td class="num">¥${f(g.excl)}</td><td class="num">¥${f(g.tax)}</td><td>${why}</td></tr>`);
+      }
+      const net = refund * (1 - fee);
+      document.getElementById('res')!.innerHTML = rows.join('');
+      document.getElementById('warn')!.innerHTML = warn.map((w) => `<div class="note">${w}</div>`).join('');
+      document.getElementById('sum')!.textContent = `先墊付的消費稅 ¥${f(paid)}｜預計可退 ¥${f(net)}（約 NT$${f(net * fx)}）｜退不回 ¥${f(paid - net)}`;
+    }
+    seed.forEach(([l, a, r]) => addRow(l, a, r));
+    document.getElementById('add')!.addEventListener('click', () => { addRow(); calc(); });
+    ['buy', 'out', 'fee', 'fx'].forEach((id) => document.getElementById(id)!.addEventListener('input', calc));
+    calc();
+  </script>
+</Base>

@@ -1,0 +1,79 @@
+---
+layout: ../../layouts/Article.astro
+title: 2026～2027 日本旅遊新制度總整理：退稅、出國稅、京都住宿稅、JESTA
+short: 日本旅遊新制度
+description: 2026 年起日本陸續上路的旅客新規定一次看：免稅改退稅制（11/1）、出國稅 1,000→3,000 日圓（7/1）、京都住宿稅五級距（3/1）、JESTA 電子入境認證（預計 2028 年度）。附生效日、金額與試算例子。
+published: 2026-11-22
+checked: 2026-11-22
+affiliates: [klook-jrpass, hotel-search, esim]
+---
+
+**一張表看完：**
+
+<div class="table-scroll">
+
+| 制度 | 生效 | 影響 | 你要做什麼 |
+|---|---|---|---|
+| 免稅 → 退稅制（リファンド方式） | 2026/11/1 購買起 | 先付含稅價，出境時才退 | 出境先到免稅手續機台，再托運；用[退稅試算](/tools/japan-tax-refund/)看能退多少 |
+| 國際觀光旅客稅（出國稅） | 2026/7/1 起 | 每人每次出境 ¥1,000 → ¥3,000 | 通常含在機票裡，不用另外繳 |
+| 京都市住宿稅 | 2026/3/1 起 | 每人每晚 ¥200～¥10,000，五級距 | 訂房時把稅算進預算 |
+| JESTA 電子入境認證 | 預計 2028 年度 | 台灣在免簽國家地區內，費用未定 | **現在不用申請**；有人叫你付錢先當詐騙 |
+
+</div>
+
+查核日 2026-11-22。各項來源附在下方各段。
+
+## 1. 免稅改退稅制（2026/11/1 起）
+
+- 在免稅店先付含稅價；**購買日起 90 天內**出境時，在機場或港口的免稅手續機台出示護照與商品，經海關確認後由店家或退稅業者退款（[觀光廳](https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html)、[日本海關](https://www.customs.go.jp/kaigairyoko/taxrefund/jpn.htm)）。
+- 取消一般物品／消耗品區分、消耗品 ¥500,000 上限與密封袋規定（[nippon.com](https://www.nippon.com/ja/japan-data/h02925/)）。
+- 門檻：同店同日未稅合計 ¥5,000（民間解說一致，國稅廳原文待確認，[PIE VAT](https://pievat.com/japan/merchant-blog/tax-free-changes-for-travelers-2026)）。
+- 退款方式與手續費：沒有統一規定，依店家而異（[遠見](https://city.gvm.com.tw/article/134015)），**待確認**。
+
+詳細規則與試算：[日本退稅試算](/tools/japan-tax-refund/)。
+
+## 2. 出國稅 ¥1,000 → ¥3,000（2026/7/1 起）
+
+<div class="table-scroll">
+
+| 項目 | 內容 |
+|---|---|
+| 金額 | 每人每次出境 ¥3,000（原 ¥1,000） |
+| 舊稅率過渡 | 2026/6/30 前開票的特定機票適用 ¥1,000 |
+| 免稅對象 | 未滿 2 歲 |
+| 怎麼繳 | 通常併入機票票價 |
+
+</div>
+
+來源：[觀光廳 國際觀光旅客稅](https://www.mlit.go.jp/kankocho/seisaku_seido/kihonkeikaku/inbound_kaifuku/ryokakuzei.html)、[乗りものニュース](https://trafficnews.jp/post/667615)。
+
+**試算：**一家 4 口（含 1 位 1 歲幼兒）出境一次 = 3 人 × ¥3,000 = **¥9,000**（舊制 ¥3,000，多 ¥6,000）。
+
+## 3. 京都市住宿稅（2026/3/1 起）
+
+<div class="table-scroll">
+
+| 住宿費（每人每晚） | 住宿稅（每人每晚） |
+|---|---:|
+| 未滿 ¥6,000 | ¥200 |
+| ¥6,000～未滿 ¥20,000 | ¥400 |
+| ¥20,000～未滿 ¥50,000 | ¥1,000 |
+| ¥50,000～未滿 ¥100,000 | ¥4,000 |
+| ¥100,000 以上 | ¥10,000 |
+
+</div>
+
+來源：[京都市公告 PDF](https://www.city.kyoto.lg.jp/gyozai/cmsfiles/contents/0000236/236952/A4822.pdf)、[LIVE JAPAN](https://livejapan.com/zh-tw/in-kansai/in-pref-kyoto/in-kyoto-station_to-ji-temple/article-a2001023/)。級距邊界（剛好 ¥6,000 算哪一級、住宿費是否含消費稅）**待確認**，以京都市公告原文為準。
+
+**試算：**2 人住 3 晚，每人每晚住宿費 ¥15,000 → ¥400 × 2 人 × 3 晚 = **¥2,400**。
+每人每晚 ¥25,000 的飯店 → ¥1,000 × 2 × 3 = **¥6,000**。
+
+## 4. JESTA 電子入境認證（預計 2028 年度）
+
+- 日本規劃的免簽旅客事前電子認證，預計 2028 年度實施；台灣在免簽國家地區內，**費用未定**（[台灣英文新聞](https://www.taiwannews.com.tw/zh/news/6118414)、[unwire.hk](https://unwire.hk/2026/02/24/japan-jesta-2028-travel-authorization-guide-hong-kong/life-tech/travel/)）。
+- 2027 年出發**不需要**申請。看到「JESTA 代辦」「先付費」的網站或訊息，先當詐騙處理。
+- 實施日期與費用公布後，本站會更新。
+
+## 把新費用算進預算
+
+用[日本旅遊預算計算機](/tools/japan-trip-budget/)：出國稅通常已含在機票報價裡；京都住宿稅可以加進住宿每晚金額一起算。
