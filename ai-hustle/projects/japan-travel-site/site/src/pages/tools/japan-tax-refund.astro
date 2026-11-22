@@ -23,7 +23,7 @@ const jsonLd = [
     <p class="meta">「店家＋日期」相同的收據會合算門檻（同店同日未稅合計 ≥ ¥5,000）。稅率以收據標示為準：多數商品 10%，食品飲料多為 8%。</p>
     <div class="table-scroll">
       <table>
-        <thead><tr><th>店家＋日期</th><th class="num">含稅金額 ¥</th><th>稅率</th><th>在日本用掉／沒帶走</th><th></th></tr></thead>
+        <thead><tr><th>店家＋日期</th><th class="num">含稅金額 ¥</th><th>稅率</th><th>在日本用掉／沒帶走</th><th>操作</th></tr></thead>
         <tbody id="rows"></tbody>
       </table>
     </div>
@@ -76,11 +76,11 @@ const jsonLd = [
     const f = (x: number) => Math.round(x).toLocaleString('en-US');
     function addRow(label = '', amt: number | '' = '', rate = 10, used = false) {
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td><input class="lab" value="${label}" placeholder="例：藥妝店A 3/28" style="width:11em"></td>
-        <td class="num"><input class="amt" type="number" min="0" step="1" value="${amt}" style="width:7em"></td>
-        <td><select class="rate"><option value="10"${rate === 10 ? ' selected' : ''}>10%</option><option value="8"${rate === 8 ? ' selected' : ''}>8%</option></select></td>
-        <td><input class="used" type="checkbox"${used ? ' checked' : ''}></td>
-        <td><button type="button" class="del btn ghost" style="padding:2px 8px">刪</button></td>`;
+      tr.innerHTML = `<td><input class="lab" aria-label="店家與日期" value="${label}" placeholder="例：藥妝店A 3/28" style="width:11em"></td>
+        <td class="num"><input class="amt" aria-label="含稅金額（日圓）" type="number" min="0" step="1" value="${amt}" style="width:7em"></td>
+        <td><select class="rate" aria-label="稅率"><option value="10"${rate === 10 ? ' selected' : ''}>10%</option><option value="8"${rate === 8 ? ' selected' : ''}>8%</option></select></td>
+        <td><input class="used" aria-label="在日本用掉或沒帶走" type="checkbox"${used ? ' checked' : ''}></td>
+        <td><button type="button" class="del btn ghost" aria-label="刪除這張收據" style="padding:2px 8px">刪</button></td>`;
       tr.querySelector('.del')!.addEventListener('click', () => { tr.remove(); calc(); });
       tr.querySelectorAll('input,select').forEach((el) => el.addEventListener('input', calc));
       tb.appendChild(tr);

@@ -53,8 +53,8 @@ const clientData = { passes: data.passes, routes: data.routes, nozomi: data.nozo
           {data.routes.map((r) => (
             <tr>
               <td>{r.name}<br /><span class="meta">{r.train}｜{r.note}</span></td>
-              <td class="num"><input type="number" min="0" step="10" inputmode="numeric" data-fare={r.id} value={r.fare ?? ''} placeholder="待確認" style="width:7em" /></td>
-              <td class="num"><input type="number" min="0" max="20" inputmode="numeric" data-qty={r.id} value="0" style="width:4em" /></td>
+              <td class="num"><input type="number" min="0" step="10" inputmode="numeric" data-fare={r.id} aria-label={`${r.name} 單程票價`} value={r.fare ?? ''} placeholder="待確認" style="width:7em" /></td>
+              <td class="num"><input type="number" min="0" max="20" inputmode="numeric" data-qty={r.id} aria-label={`${r.name} 搭乘次數`} value="0" style="width:4em" /></td>
               <td><Badge c={r.confidence as any} />{r.sources.map((s) => <><br /><a href={s.url} rel="nofollow noopener" target="_blank" class="meta">{s.label}</a></>)}</td>
             </tr>
           ))}
