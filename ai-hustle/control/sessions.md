@@ -3,8 +3,8 @@
 | 角色 | Session ID | Project | 工作分支 | 狀態 |
 |---|---|---|---|---|
 | 主控（原始） | session_01XgypoMENoSgdSM54kDmud1 | 全部 | claude/gifted-ride-nnfsux | 運作中 |
-| 子 agent A | session_01XgypoMpi3HmT6qe1Aj4vr3 | japan-travel-site | claude/gifted-ride-nnfsux | A1 完成，A2 進行中 |
-| 子 agent B | session_01XgypoKxeihXx2MunRihVdu | short-video | claude/gifted-ride-nnfsux | B1 進行中 |
+| 子 agent A | session_01XgypoMpi3HmT6qe1Aj4vr3 | japan-travel-site | claude/gifted-ride-nnfsux | A1–A3.5 完成，待命（等人類部署） |
+| 子 agent B | session_01XgypoKxeihXx2MunRihVdu | short-video | claude/gifted-ride-nnfsux | B1–B2 完成，待命（等人類決定旁白／上傳） |
 
 ## 既有的個人 project（不由主控驅動，僅追蹤）
 | 名稱 | Session ID | 狀態 |
