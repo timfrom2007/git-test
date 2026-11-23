@@ -1,0 +1,161 @@
+<title>AI 增強工具箱</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: single reading column; a sticky section nav; resource rows grouped by layer (Skill / MCP / built-in habit) */
+:root{
+  --bg:#f5f7f8; --surface:#ffffff; --fg:#17232b; --muted:#566a75; --line:#d9e2e6;
+  --accent:#1f6f8b; --accent-soft:#e1eff4; --pick:#9a5b00; --pick-soft:#fbefd9;
+  --f-display:"Space Grotesk","Noto Sans TC",system-ui,sans-serif;
+  --f-body:"Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f171b; --surface:#16222a; --fg:#e3ecef; --muted:#93a8b2; --line:#26363f;
+  --accent:#6cc0dc; --accent-soft:#16323d; --pick:#f0b660; --pick-soft:#3a2c14; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f171b; --surface:#16222a; --fg:#e3ecef; --muted:#93a8b2; --line:#26363f;
+  --accent:#6cc0dc; --accent-soft:#16323d; --pick:#f0b660; --pick-soft:#3a2c14; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.75 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto;padding-block:40px 64px;display:flex;flex-direction:column;gap:48px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:2rem} h2{font-size:1.45rem} h3{font-size:1.05rem}
+p{margin:0} a{color:var(--accent)} a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+code{font-family:var(--f-mono);font-size:.85em;background:var(--accent-soft);padding:1px 6px;border-radius:4px}
+.lede{color:var(--muted);max-width:62ch}
+.eyebrow{font:500 .75rem var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+header{display:flex;flex-direction:column;gap:12px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;gap:6px;flex-wrap:wrap;padding-block:10px}
+nav a{text-decoration:none;color:var(--fg);font-size:.9rem;padding:4px 12px;border-radius:999px;border:1px solid var(--line)}
+nav a:hover{border-color:var(--accent);color:var(--accent)}
+section{display:flex;flex-direction:column;gap:18px;scroll-margin-top:64px}
+/* layer diagram */
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:640px){.layers{grid-template-columns:1fr}}
+.layer{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.layer b{font-family:var(--f-display);font-size:1.05rem}
+.layer .what{color:var(--muted);font-size:.92rem}
+.layer .eg{font-size:.85rem}
+/* resource list */
+.list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.item h3 a{text-decoration:none;color:var(--fg)} .item h3 a:hover{color:var(--accent)}
+.item p{grid-column:1/-1;color:var(--muted);font-size:.95rem}
+.tag{align-self:start;font-size:.75rem;font-weight:500;padding:2px 10px;border-radius:999px;white-space:nowrap;background:var(--accent-soft);color:var(--accent)}
+.tag.pick{background:var(--pick-soft);color:var(--pick)}
+.src{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);grid-column:1/-1}
+/* starter pack */
+.pack{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.pack ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:10px}
+.say{display:flex;flex-direction:column;gap:8px}
+.say div{background:var(--accent-soft);border-radius:8px;padding:10px 14px;font-size:.95rem}
+.note{font-size:.9rem;color:var(--muted);border-left:3px solid var(--pick);padding-left:12px}
+footer{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+footer ul{margin:0;padding-left:1.2em}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">整理日期 2026-11-23</span>
+  <h1>AI 增強工具箱</h1>
+  <p class="lede">目前讓 Claude（以及類似 AI 助手）變得更好用的資源，大致分成三層：<b>Skill</b>（教 AI 一套做事方法）、<b>MCP 伺服器</b>（讓 AI 接上外部工具和資料）、<b>內建習慣</b>（不用裝任何東西，改變使用方式就有效）。下面每一項都標了推薦程度，挑你有興趣的跟我說，我就幫你裝到這個 repo，之後每個 session 都會自動生效。</p>
+</header>
+
+<nav aria-label="章節">
+  <a href="#layers">三層概念</a><a href="#skills">Skill</a><a href="#mcp">MCP</a><a href="#habits">內建習慣</a><a href="#start">建議起手式</a>
+</nav>
+
+<section id="layers">
+  <h2>先搞懂三層</h2>
+  <div class="layers">
+    <div class="layer"><span class="eyebrow">第 1 層</span><b>Skill</b><span class="what">一個資料夾裡放 <code>SKILL.md</code>，寫著「遇到某類工作時要怎麼做」。AI 只有在需要時才載入，不會佔記憶。</span><span class="eg">例：寫測試的流程、除錯步驟、設計規範</span></div>
+    <div class="layer"><span class="eyebrow">第 2 層</span><b>MCP 伺服器</b><span class="what">讓 AI 多一組工具，可以讀寫 GitHub、查最新文件、操作瀏覽器、查資料庫。</span><span class="eg">例：GitHub、Context7、Playwright</span></div>
+    <div class="layer"><span class="eyebrow">第 3 層</span><b>內建習慣</b><span class="what">Claude Code 本身就有的功能：專案說明檔、規劃模式、Hook、子代理。零安裝、效果最直接。</span><span class="eg">例：<code>CLAUDE.md</code>、Plan mode</span></div>
+  </div>
+  <p class="note">Plugin（外掛）則是把 Skill、MCP、指令打包在一起的安裝包，用 <code>/plugin</code> 指令從 marketplace 安裝。</p>
+</section>
+
+<section id="skills">
+  <h2>熱門 Skill 資源</h2>
+  <div class="list">
+    <div class="item"><h3><a href="https://github.com/anthropics/skills">anthropics/skills（官方）</a></h3><span class="tag pick">最推薦</span>
+      <p>Anthropic 官方的 Skill 範例庫。包含 Word / Excel / PowerPoint / PDF 文件處理、前端設計 (frontend-design)、建立新 Skill 的 skill-creator 等。最可靠的起點。</p><span class="src">注意：文件類 skill 是 source-available，僅供參考，其他多為 Apache 2.0</span></div>
+    <div class="item"><h3><a href="https://github.com/obra/superpowers">obra/superpowers</a></h3><span class="tag pick">最推薦</span>
+      <p>社群最常被推薦的一套。20 多個實戰流程：先寫測試再寫程式 (TDD)、系統化除錯、先規劃再執行、程式碼審查。適合寫程式的 session，能明顯減少 AI 亂改或跳步驟。</p></div>
+    <div class="item"><h3><a href="https://github.com/anthropics/skills/tree/main/skills/frontend-design">frontend-design</a></h3><span class="tag">做網頁時</span>
+      <p>讓 AI 做出來的介面不再是千篇一律的「AI 感」設計。安裝數非常高，做任何前端畫面都值得開。</p></div>
+    <div class="item"><h3><a href="https://github.com/travisvn/awesome-claude-skills">travisvn/awesome-claude-skills</a></h3><span class="tag">目錄</span>
+      <p>整理最完整、被引用最多的 Skill 清單。想找特定領域（行銷、資料分析、安全）的 skill 時，從這裡翻。</p></div>
+    <div class="item"><h3><a href="https://github.com/ComposioHQ/awesome-claude-skills">ComposioHQ/awesome-claude-skills</a></h3><span class="tag">目錄</span>
+      <p>另一份大型精選清單，偏重和外部 App 串接的 skill。</p></div>
+    <div class="item"><h3>Karpathy 風格行為規則</h3><span class="tag">寫程式時</span>
+      <p>把 Andrej Karpathy 歸納的「LLM 寫程式常犯錯誤」寫成規則，例如不要過度設計、不要亂改沒被要求的地方。很適合直接放進 <code>CLAUDE.md</code>。</p></div>
+    <div class="item"><h3>Trail of Bits 安全 skills、Addy Osmani agent-skills / web-quality-skills</h3><span class="tag">進階</span>
+      <p>專業團隊出的領域 skill：資安審查、網頁效能與品質檢查。有對應需求再裝。</p></div>
+  </div>
+  <p class="note">各篇文章列的 GitHub 星數差很多，排名只能當參考。第三方 skill 可能附帶會執行的腳本，安裝前我會先幫你讀過內容。</p>
+</section>
+
+<section id="mcp">
+  <h2>常用 MCP 伺服器</h2>
+  <div class="list">
+    <div class="item"><h3>GitHub MCP</h3><span class="tag pick">你已經有</span>
+      <p>幾乎每份清單都排第一：讀寫 issue、PR、Actions、release。這個 session 環境已經內建。</p></div>
+    <div class="item"><h3><a href="https://github.com/upstash/context7">Context7</a></h3><span class="tag pick">最推薦</span>
+      <p>讓 AI 查到函式庫的<b>最新</b>官方文件，避免它用過時的 API 寫程式。寫程式時效果很明顯。</p></div>
+    <div class="item"><h3><a href="https://github.com/microsoft/playwright-mcp">Playwright MCP</a></h3><span class="tag">做網頁時</span>
+      <p>讓 AI 開瀏覽器實際點擊、截圖、測試你的網頁。安裝：<code>claude mcp add playwright npx @playwright/mcp@latest</code></p></div>
+    <div class="item"><h3>搜尋 / 爬蟲：Firecrawl、Tavily、Exa、Brave Search</h3><span class="tag">選用</span>
+      <p>需要大量讀網頁、做研究時補強。內建的搜尋已能應付一般需求。</p></div>
+    <div class="item"><h3>資料庫、Slack、Linear、Notion 等</h3><span class="tag">看需求</span>
+      <p>依你用的服務接。MCP 裝太多會佔 AI 的注意力，原則是用得到才裝。</p></div>
+  </div>
+</section>
+
+<section id="habits">
+  <h2>不用安裝的內建習慣</h2>
+  <div class="list">
+    <div class="item"><h3><code>CLAUDE.md</code> 專案說明檔</h3><span class="tag pick">最推薦</span>
+      <p>放在 repo 根目錄，每個 session 開始時 AI 自動讀取。寫上：專案在做什麼、怎麼測試、你的偏好（例如「回覆用繁體中文」「改動前先說明計畫」）。這是讓「每個 session 都一樣聰明」最直接的方法。可用 <code>/init</code> 自動產生初稿。</p></div>
+    <div class="item"><h3>Plan mode（規劃模式）</h3><span class="tag">大改動前</span>
+      <p>按 Shift+Tab 切換。AI 先列出計畫給你確認，不會直接動手改檔案。</p></div>
+    <div class="item"><h3>專案內的 Skill 資料夾 <code>.claude/skills/</code></h3><span class="tag">可共用</span>
+      <p>把 skill 放進 repo 的這個資料夾並 commit，之後任何 session 開這個 repo 都能用。</p></div>
+    <div class="item"><h3>Hooks</h3><span class="tag">進階</span>
+      <p>在特定時機自動執行指令，例如每次改完檔案自動跑格式化、session 開始時自動安裝套件。</p></div>
+    <div class="item"><h3>Subagents（子代理）與 <code>/code-review</code></h3><span class="tag">進階</span>
+      <p>把大型搜尋或審查交給另一個代理，主對話保持乾淨；內建的 <code>/code-review</code>、<code>/security-review</code> 可直接檢查你的改動。</p></div>
+  </div>
+</section>
+
+<section id="start">
+  <h2>建議起手式</h2>
+  <div class="pack">
+    <ol>
+      <li><b>建立 <code>CLAUDE.md</code></b>：寫入你的語言偏好和工作規則（含 Karpathy 式行為規則）。</li>
+      <li><b>把 superpowers 的核心流程</b>（TDD、除錯、規劃）放進 <code>.claude/skills/</code>。</li>
+      <li><b>加入 Context7</b>，讓 AI 寫程式時查最新文件。</li>
+      <li>做網頁時再加 <b>frontend-design</b> 和 <b>Playwright</b>。</li>
+    </ol>
+    <div class="say">
+      <span class="eyebrow">直接這樣跟我說</span>
+      <div>「幫我做第 1 項，CLAUDE.md 用繁體中文」</div>
+      <div>「把 superpowers 裝到這個 repo」</div>
+      <div>「起手式 1 到 3 全部做」</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>資料來源</span>
+  <ul>
+    <li><a href="https://firecrawl.dev/blog/best-claude-code-skills">Firecrawl：14 Best Claude Code Skills (2026)</a></li>
+    <li><a href="https://composio.dev/content/top-claude-skills">Composio：Top 10 Claude Code Skills</a></li>
+    <li><a href="https://github.com/travisvn/awesome-claude-skills">travisvn/awesome-claude-skills</a></li>
+    <li><a href="https://composio.dev/content/best-mcp-servers-claude-code-codex">Composio：Best MCP servers for Claude Code</a></li>
+    <li><a href="https://scrimba.com/articles/best-mcp-servers-for-developers-2026/">Scrimba：Best MCP Servers for Developers 2026</a></li>
+  </ul>
+</footer>
+</div>
